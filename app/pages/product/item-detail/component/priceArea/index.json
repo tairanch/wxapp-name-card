@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+      "normal": "./notice/normal",
+      "seckill": "./notice/seckill",
+      "group": "./notice/group",
+      "good-title": "./title/index",
+      "good-price": "./price/index",
+      "good-tag": "./tag/index"
+  }
+}

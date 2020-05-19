@@ -1,0 +1,83 @@
+<!--pages/product/shopCart/components/couponPopup/CouponPopup.wxml-->
+<wxs module="shopCartUtils" src="../../shopCart.wxs"></wxs>
+<view bindtap='onSure'>
+  <view class='shady'></view>
+  <view class='{{show ? "popup-coupon active":"popup-coupon"}}' catchtap='_stopPropagation'>
+    <view class='header'>领取优惠券
+      <view class='icon-grid'>
+        <image 
+        src='/image/icon/close/black-close-icon.png' class='close-img' bindtap='onSure'></image>
+      </view>
+    </view>
+    <scroll-view
+      scroll-y
+      class='body'
+      wx:if='{{ selfData.coupons && selfData.coupons.length > 0}}'
+    >
+      <view  
+        class='one-coupon-box'
+        wx:for='{{selfData.coupons}}' 
+        wx:if='{{selfData.coupons && selfData.coupons.length}}' wx:key='coupon_id'
+      >
+        <image src='/image/evaluate/coupon-bg.png' style='width:100%;height:100%;'></image>
+        <view class='{{item.isset_limit_money ? "one-coupon coupon-red":"one-coupon coupon-yellow"}}'>
+          <image 
+            class='coupon-left-image'
+            src='{{item.isset_limit_money ? "/image/evaluate/coupon-red.png": "/image/evaluate/coupon-yellow.png"}}'
+          >
+          </image>
+          <view class='coupon-left'>
+            <view class='left-one'>
+              ¥
+              <view wx:if='{{item.type == 4}}' class='inline b'>
+                <view wx:if='{{shopCartUtils.getPrice(item.price).length === 1}}'>{{shopCartUtils.getPrice(item.price)[0]}}<view class='c-fs14'>.00</view></view>
+                <view wx:if='{{shopCartUtils.getPrice(item.price).length > 1 && shopCartUtils.getPrice(item.price)[1].length < 2}}'>{{shopCartUtils.getPrice(item.price)[0]}}<view class='c-fs14'>.{{shopCartUtils.getPrice(item.price)[1]}}0</view></view>
+                <view wx:if='{{shopCartUtils.getPrice(item.price).length > 1  && shopCartUtils.getPrice(item.price)[1].length > 2}}'>{{shopCartUtils.getPrice(item.price)[0]}}<view class='c-fs14'>.{{shopCartUtils.getPrice(item.price)[1]}}</view></view>
+              </view>
+              <view wx:else  class='inline b'>{{shopCartUtils._parseInt(item.deduct_money)}}</view>
+            </view>
+            <view class='left-two'>
+              {{item.type == 4 ? '原价'+ shopCartUtils._parseFloat(item.market_price) :'满' + item.limit_money + '使用'}}
+            </view>
+          </view>
+          <image
+          class='coupon-quan-image'
+          src='{{item.isset_limit_money ? "/image/evaluate/quan-red.png" : "/image/evaluate/quan-yellow.png"}}'
+          ></image>
+          <view 
+          class='coupon-right'
+          >
+            <view wx:if='{{receive[item.coupon_id]}}'
+            class='receive-btn' 
+            bindtap='receiveCoupon'
+            data-couponid='{{item.coupon_id}}'>立即领取</view>
+            <view wx:else
+            class='use-btn'
+            bindtap='turnLink'
+            data-couponid='{{item.coupon_id}}'
+            >去使用
+              <image src='/image/icon/arrow/arrow-right-red-icon.png'
+              wx:if='{{item.isset_limit_money}}' 
+              style='vertical-align:-2rpx;width:14rpx;height:24rpx'></image>
+              <image src='/image/icon/arrow/arrow-right-yellow-icon.png' 
+              wx:else='{{item.isset_limit_money}}' 
+              style='vertical-align:-2rpx;;width:14rpx;height:24rpx'></image>
+            </view>
+            <view class='right-one'>
+              <view class="c-fs16 c-c35">{{item.type == 4 ? "免单券" :
+                  (item.type == 0 ? "店铺券" :
+                  (item.type == 1 ?"跨店券" : "平台券"))}}</view>
+            </view>
+            <view class='right-two'>{{ item.apply_text }}</view>
+            <view class='right-three'>{{item.use_start_time}} <text wx:if='{{item.use_end_time}}'>至</text> {{item.use_end_time}}</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:else class='c-tc no-coupon'>
+      <image src='/image/product/coupon-apply-bg.png' style='height:180rpx;width:320rpx'></image>
+      <view class="c-cc9 c-fs13 c-mt10">您没有相关优惠券哦~</view>
+    </view>
+  </view>
+</view>
+

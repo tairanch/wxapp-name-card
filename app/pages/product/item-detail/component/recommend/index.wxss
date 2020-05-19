@@ -1,0 +1,56 @@
+.recommend{
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+.recommend-title{
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 28rpx;
+    padding: 0 30rpx;
+}
+.recommend-lists{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30rpx 30rpx;
+    justify-content: space-between;
+}
+
+.recommend-list{
+    width: 210rpx;
+    font-size: 24rpx;
+}
+.recommend-list-image{
+    position: relative;
+}
+.recommend-list-image>image{
+    width: 210rpx;
+    height: 210rpx;
+}
+
+.recommend-list-image>text{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 10rpx;
+    border: 1rpx solid #e60a30;
+}
+
+.recommend-list-title{
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    align-content: center;
+    line-height: 36rpx;
+    margin: 10rpx 0;
+}
+
+.recommend-list>view:nth-of-type(3){
+    text-align: center;
+    color: #e60a30;
+    line-height: 42rpx;
+}
+
+

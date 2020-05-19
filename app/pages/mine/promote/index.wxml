@@ -1,0 +1,79 @@
+<view class='page-container'>
+
+    <view wx:if="{{showVerifyTips}}" class='verify-bg-view'>
+        <block wx:if="{{haveVerifyInfo}}">
+            <text class="verify-text">当前已实名。 </text>
+            <view class="verify-btn" bindtap='gotoLookBtnClick'>查看 ></view>
+        </block>
+        <block wx:else>
+            <text class="verify-text">实名认证后，资金才能正常结算！</text>
+            <view class="verify-btn" bindtap='gotoAuthBtnClick'>去实名 ></view>
+        </block>
+    </view>
+
+    <view class="page-bg-view">
+        <!-- 头部背景 -->
+        <image class='image-background' src='../../../image/promote_backgroud.png'></image>
+
+        <view class='position-view'>
+            <view class='header-bg-view'>
+                <view class="head-image-bg-view">
+                    <image class="header-image-view" src="{{avatar ? avatar : '/image/mine/head_icon.png'}}"></image>
+                </view>
+                <text class="nick-name-text">{{nickName}}</text>
+            </view>
+
+            <view class='income-card-view'>
+                <!--账户余额-->
+                <view class='top-part-view'>
+                    <view class='balance-view'>
+                        <text class='balance-desc-text'>账户余额(元)</text>
+                        <text class='balance-text'>{{assetInfo.amount}}</text>
+                    </view>
+                    <view class='cash-out-btn' bindtap='cashOutBtnClick'>
+                        <image class='cash-btn-image' src="/image/mine/cash_btn_icon.png"></image>
+                        <view class='cash-text-bg'>
+                            <text class='cash-text'>提现</text>
+                        </view>
+                    </view>
+                </view>
+
+                <!--累积余额-->
+                <view class='bottom-part-view'>
+                    <view class='total-view'>
+                        <text class='balance-desc-text'>累积收益(元)</text>
+                        <text class='total-text'>{{assetInfo.income}}</text>
+                    </view>
+                    <view class='current-month-total-view' bindtap='currentMonthTotalBtnClick'>
+                        <view class='current-month-total-left-part-view'>
+                            <text class='balance-desc-text'>本月预计收入(元)</text>
+                            <text class='total-text'>{{assetInfo.predict_income}}</text>
+                        </view>
+                        <view class='current-month-total-right-part-view'>
+                            <image class='right-arrow' src="/image/mine/arrow_right.png"></image>
+                        </view>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+    </view>
+
+    <!--实名认证 模态视图-->
+    <view wx:if="{{showModelView}}" class='model-view'>
+        <view class='mode-sub-view'>
+            <view class='top-close-bg-view'>
+                <view class='close-btn' bindtap='closeBtnClick'>
+                    <image class='close-image' src='/image/mine/close_btn_icon.png'></image>
+                </view>
+            </view>
+            <text class='model-title'>实名认证</text>
+            <text class='model-content'>为确保您的预计收入能正常结算，请先添加身份证信息！</text>
+            <view class='model-btn' bindtap='gotoAuthBtnClick'>
+                <text class='model-btn-title'>立即认证</text>
+            </view>
+
+        </view>
+    </view>
+
+</view>

@@ -1,0 +1,156 @@
+<wxs module="sku" src="../../sku.wxs"></wxs>
+
+<view class="sku-title">
+    <image class="sku-img" bindtap="bindPrev" data-url="{{retState.img?sku.addImageSuffix(retState.img,'_s'):detail.primary_image}}" src="{{retState.img?sku.addImageSuffix(retState.img,'_s'):'../../images/no-img.png'}}"></image>
+    <view class="sku-title-price">¥
+        <block wx:if="{{detail.item_type == 'GroupBuy'}}">
+            <block wx:if="{{buyActive != 1}}">{{retState.groupPrice}}</block>
+            <block wx:else>{{retState.nowPrice}}</block>
+        </block>
+        <block wx:else>
+            {{retState.nowPrice}}
+        </block>
+    </view>
+    <block wx:if="{{!single && retState.selectTag}}">
+        <view class="sku-title-text">已选 <text>{{retState.selectTag}}</text></view>
+    </block>
+    <view class="sku-icon" bindtap="skuClose">
+        <image src="/image/icon/close/black-close-icon.png"></image>
+    </view>
+</view>
+<view class="sku-info">
+    <block wx:for="{{specArr}}" wx:key="{{index}}">
+        <view class="sku-info-list">
+            <text>{{item.name}}</text>
+            <view class="sku-info-list-c">
+                <block wx:for="{{item['values']}}" wx:for-item="value" wx:for-index="key" wx:key="{{key}}">
+                    <view
+                        class="sku-info-tag {{sku.judgeClass(index,value.spec_value_id,retState,skuArr)}}"
+                        bindtap="onSpecSelect"
+                        data-spec="{{value.spec_value_id}}"
+                        data-speckey="{{item.spec_id}}"
+                        data-index="{{index}}"
+                    >
+                        <image wx:if="{{value.image}}" src="{{value.image}}"></image>
+                        <text>{{value.text}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </block>
+    <view class="sku-info-store">
+        <text>数量:</text>
+        <text class="sku-info-num">库存{{retState.storeNum}}件</text>
+        <!--特卖商品可以设置限购数量-->
+        <block wx:if="{{promotion.activity_type === 'FlashSale'}}">
+            <view class="sku-info-btn">
+                <view
+                    class="btn-reduce {{retState.num<=1?'btn-reduce-disabled':''}}"
+                    bindtap="reduceNum"
+                ></view>
+                <input
+                    disabled="{{true}}}"
+                    type="number"
+                    value="{{retState.num}}"
+                    bindinput="changeNum"
+                />
+                <view
+                    class="btn-plus {{retState.num>=promotion.promotion[0].rules.user_buy_limit?'btn-plus-disabled':''}}"
+                    bindtap="plusNum"
+                ></view>
+                <block wx:if="{{promotion.activity_type === 'FlashSale'||promotion.activity_type === 'SecKill'|| detail.item_type=='GroupBuy'}}">
+                    <text class="sku-info-info" >限购{{promotion.promotion[0].rules.user_buy_limit}}件(已购{{promotion.promotion[0].purchased_quantity||0}}件)</text>
+                </block>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="sku-info-btn {{(promotion.activity_type === 'SecKill' || detail.item_type=='GroupBuy')?'sku-info-btn-disabled':''}}">
+                <view
+                    class="btn-reduce {{retState.num<=1?'btn-reduce-disabled':''}}"
+                    bindtap="reduceNum"
+                ></view>
+                <input
+                    disabled="{{promotion.activity_type === 'FlashSale'||promotion.activity_type === 'SecKill'|| detail.item_type=='GroupBuy'}}"
+                    type="number"
+                    value="{{retState.num}}"
+                    bindinput="changeNum"
+                />
+                <view
+                    class="btn-plus {{retState.num>=retState.storeNum?'btn-plus-disabled':''}}"
+                    bindtap="plusNum"
+                ></view>
+                <block wx:if="{{promotion.activity_type === 'FlashSale'||promotion.activity_type === 'SecKill'}}">
+                    <text class="sku-info-info" >限购{{promotion.promotion[0].rules.user_buy_limit}}件(已购{{promotion.promotion[0].purchased_quantity||0}}件)</text>
+                </block>
+            </view>
+        </block>
+    </view>
+    <view class="tax-rate" wx:if="{{tax}}">
+        <view class="tax-rate-title" bindtap="showTax">
+            <text>预计税费</text>
+            <text><block wx:if="{{!taxStatus}}">￥{{tax}}</block></text>
+            <image src="/image/icon/arrow/arrow-btm-icon.png"></image>
+        </view>
+        <view wx:if="{{taxStatus}}" class="tax-rate-content">
+            <view>￥{{tax}}</view>
+            <view class="tax-rate-content-list">
+                <view><image src="/image/icon/checked-icon.png"></image>税率{{rate}}%</view>
+                <view>按照国家规定，本商品适用于跨境综合税，税率为{{rate}}%， 实际结算税费请以提交订单时的应付总额明细为准。</view>
+            </view>
+            <view class="tax-rate-content-list">
+                <view><image src="/image/icon/checked-icon.png"></image>税费计算</view>
+                <view>进口税费=商品完税价格*税率</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="sku-btn">
+    <block wx:if="{{detail.item_type==='SecKill'}}">
+        <block wx:if="{{sku.isNonPayment(promotion)}}">
+            <view class="color1">还有机会</view>
+        </block>
+        <block wx:else>
+            <block wx:if="{{state==0}}">
+                <view class="color4">即将开始</view>
+            </block>
+            <block wx:else>
+                <!--已达到购买数量不能购买-->
+                <!-- wx:if="{{!loadCaptcha}}" -->
+                <view
+                    wx:if="{{!loadCaptcha}}"
+                    class="color3 {{(promotion.promotion[0].rules.user_buy_limit>promotion.promotion[0].purchased_quantity)?'':'color-disabled'}}"
+                    bindtap="seckill"
+                >立即秒杀</view>
+            </block>
+        </block>
+    </block>
+    <block wx:elif="{{detail.item_type==='GroupBuy'}}">
+         <block  wx:if="{{buyActive==1}}">
+            <view id="dcp-cart" class="color2" bindtap="addCart">加入购物袋</view>
+        </block>  
+        <block wx:elif="{{state==0}}">
+            <view class="color4">即将开始</view>
+        </block>
+        <block wx:else>
+            <view class="color3" bindtap="openGroup">立即开团</view>
+        </block>
+    </block>
+    <block wx:else>
+        <block wx:if="{{sku.isNonPayment(promotion)}}">
+            <view class="color1">还有机会</view>
+        </block>
+        <block wx:else>
+            <block>
+                <block wx:if="{{promotion.realStore}})}}">
+                    <view wx:if="{{buyActive==0 || buyActive==1}}" class="color2" bindtap="addCart">加入购物袋</view>
+                </block>
+                <block wx:else>
+                    <view class="color1">已售罄</view>
+                </block>
+            </block>
+            <block wx:if="{{promotion.realStore}}">
+                <view wx:if="{{buyActive==0 || buyActive==2}}" class="color3" bindtap="purchase">立即购买</view>
+            </block>
+        </block>
+    </block>
+</view>  

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText":"订单确认",
+  "usingComponents": {
+    "o-address": "./components/address/index",
+    "o-card": "./components/card/index",
+    "o-valid": "./components/valid/index",
+    "o-invalid": "./components/invalid/index",
+    "o-packet": "./components/packet/index",
+    "o-footer": "./components/footer/index"
+  }
+}

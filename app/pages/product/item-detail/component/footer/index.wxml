@@ -1,0 +1,104 @@
+
+<wxs module="sku" src="../../sku.wxs"></wxs>
+<view class="footer">
+    <view class="footer-icon" bindtap="onGoHomeTap">
+        <image src="../../images/home-icon.png"></image>
+        <text>首页</text>
+    </view>
+    <view class="footer-icon" bindtap="onCustomServiceTap">
+        <image src="../../images/serve-phone-icon.png"></image>
+        <text>客服</text>
+    </view>
+    <view class="footer-icon" bindtap="collectGoods" id="dcp-collect">
+        <image src="../../images/{{collect?'collected':'collect'}}-icon.png"></image>
+        <text>
+            <block wx:if="{{collect}}">已收藏</block>
+            <block wx:else>收藏</block>
+        </text>
+    </view>
+    <view class="footer-btn" wx:if="{{detail.item_id && promotion.info}}">
+        <block wx:if="{{detail.item_type == 'GroupBuy'}}">
+            <block wx:if="{{detail.status !== 'SHELVING'}}">
+                <view class="color1">已下架</view>
+            </block>
+            <block wx:else>
+                <block wx:if="{{promotion.realStore}}">
+                    <view class="color2 group-btn" data-key="addCart" bindtap="btnClick">
+                            <text>￥{{retState.nowPrice}}</text>
+                            <text>加入购物袋</text>
+                        </view>
+                    <block wx:if="{{state==0}}">
+                        <view class="color4 group-btn">
+                            <text>￥{{retState.groupPrice}}</text>
+                            <text>即将开始</text>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="color3 group-btn" data-key="buy" bindtap="btnClick">
+                            <text>￥{{retState.groupPrice}}</text>
+                            <text>{{promotion.promotion[0].rules.group_person}}人团</text>
+                        </view>
+                    </block>
+                </block>
+                <block wx:else>
+                    <view>已售罄</view>
+                </block>
+            </block>
+        </block>
+        <block wx:elif="{{detail.item_type == 'SecKill'}}">
+            <block wx:if="{{detail.status !== 'SHELVING'}}">
+                <view class="color1">已下架</view>
+            </block>
+            <block wx:else>
+                <block wx:if="{{promotion.realStore}}">
+                    <block wx:if="{{state==0}}">
+                        <view class="color4">即将开始</view>
+                    </block>
+                    <block wx:if="{{state==1}}">
+                        <view class="color1">秒杀结束</view>
+                    </block>
+                    <block wx:if="{{state==2}}">
+                        <view class="color3" data-key="buy" bindtap="btnClick">立即秒杀</view>
+                    </block>
+                </block>
+                <block wx:else>
+                    <block wx:if="{{sku.isNonPayment(promotion)}}">
+                        <view class="color1" >还有机会</view>
+                    </block>
+                    <block wx:else>
+                        <view class="color1">已秒完</view>
+                    </block>
+                </block>
+            </block>
+        </block>
+        <block wx:else>
+            <block wx:if="{{detail.status !== 'SHELVING'}}">
+                <view class="color1">已下架</view>
+            </block>
+            <block wx:else>
+                <block wx:if="{{promotion.realStore}}">
+                    <view class="color2" data-key="addCart" bindtap="btnClick">加入购物袋</view>
+                    <view class="color3" data-key="buy" bindtap="btnClick">立即购买</view>
+                </block>
+                <block wx:else>
+                    <block wx:if="{{sku.isNonPayment(promotion)}}">
+                        <view class="color1" >还有机会</view>
+                    </block>
+                    <block wx:else>
+                        <view class="color1">已售罄</view>
+                    </block>
+                </block>
+            </block>
+        </block>
+    </view>
+    <!--数据未加载时用来占位-->
+    <view class="footer-btn" wx:else>
+        <block wx:if="{{detail.item_type == 'SecKill'}}">
+            <view class="color3">立即秒杀</view>
+        </block>
+        <block wx:else>
+            <view class="color2">加入购物袋</view>
+            <view class="color3">立即购买</view>
+        </block>
+    </view>
+</view>

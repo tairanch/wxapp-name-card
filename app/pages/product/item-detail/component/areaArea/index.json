@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+      "popup": "../../../../../components/public/popup/index",
+      "area": "../../../../../components/public/area/index"
+  }
+}

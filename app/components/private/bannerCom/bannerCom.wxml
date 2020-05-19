@@ -1,0 +1,12 @@
+<!-- banner 轮播 -->
+<view class='banner-wraper'>
+  <swiper autoplay="{{autoplay}}" duration='{{duration}}' current="{{current}}" bindchange="swiperChange" circular="{{circular}}" class="banner-swiper">
+    <block wx:for="{{data.img_list}}" wx:key="unique">
+      <swiper-item>
+        <image src="{{item.url}}" class="banner-img" bindtap="bannerClick" data-data="{{item}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <text class="item-num banner-dots" wx:if="showLength>1">{{index+1}}/{{data.img_list.length}}</text>
+  <text class="item-num banner-dots" wx:else>1/{{data.img_list.length}}</text>
+</view>

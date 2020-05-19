@@ -1,0 +1,11 @@
+<view>
+    <o-address
+        address="{{orderConfirm.address}}"
+        bind:jumpAddress="jumpAddress"
+    />
+    <o-card/>
+    <o-valid/>
+    <o-invalid/>
+    <o-packet/>
+    <o-footer/>
+</view>

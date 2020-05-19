@@ -1,0 +1,15 @@
+<wxs module='sku' src='../../sku.wxs'></wxs>
+<view class="shop">
+    <image class="shop-logo" src="{{shop.logo && sku.addImageSuffix(shop.logo,'_s')}}"></image>
+    <view class="shop-name">
+        <view>
+            <block wx:if="{{shop.alias}}">{{shop.alias}}</block>
+            <block wx:else>{{shop.name}}</block>
+        </view>
+        <view>
+            <block wx:if="{{shop.biz_model === 1}}">泰然城自营</block>
+            <block wx:else>泰然城精选商家</block>
+        </view>
+    </view>
+    <view class="shop-tag">进入店铺</view>
+</view>

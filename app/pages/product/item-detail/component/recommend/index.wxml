@@ -1,0 +1,19 @@
+<wxs module='sku' src='../../sku.wxs'></wxs>
+<block wx:if="{{list.length>0}}">
+    <view class="recommend">
+        <view class="recommend-title">为您推荐</view>
+        <view class="recommend-lists">
+            <block wx:for="{{list}}" wx:key="{{index}}">
+                <view class="recommend-list" data-id="{{item.id}}" bindtap="goDetail">
+                    <view class="recommend-list-image">
+                        <image src="{{sku.addImageSuffix(item.primary_image,'_m')}}"></image>
+                        <text wx:if="{{item.promotion.tag}}">{{item.promotion.tag}}</text>
+                    </view>
+                    <view class="recommend-list-title">{{item.title}}</view>
+                    <view>¥{{item.sell_price}}</view>
+                </view>
+            </block>
+        </view>
+    </view>
+</block>
+

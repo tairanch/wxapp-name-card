@@ -1,0 +1,40 @@
+<view class="page">
+    <view class="header">
+        <view>发票类型</view>
+        <view class="tap-container">
+            <view class="item {{selectedIndex==0?'selected':'normal'}}" bindtap="onSelectInvoiceTap" data-index="0">
+                电子发票
+            </view>
+            <view class="item {{selectedIndex==1?'selected':'normal'}}" bindtap="onSelectInvoiceTap" data-index="1">
+                普通发票
+            </view>
+            <view class="item {{selectedIndex==2?'selected':'normal'}}" bindtap="onSelectInvoiceTap" data-index="2">
+                增值税发票
+            </view>
+        </view>
+        <view style="font-size:24rpx;color:#999">电子发票与纸质发票具备同等法律效应，可支持报销入账</view>
+    </view>
+    <view style="width:100%;height:20rpx;background:#f4f4f4"></view>
+    <!-- 侧滑部分的 -->
+    <swiper class="swiper" current="{{selectedIndex}}" bindchange="onSwiperValueChanged">
+        <swiper-item class="swiper-item">
+            <!-- 电子发票 -->
+            <elec-invoice id='elec'/>
+        </swiper-item>
+        <swiper-item class="swiper-item">
+            <!-- 普通发票 -->
+            <normal-invoice id="normal"/>
+        </swiper-item>
+        <swiper-item class="swiper-item">
+            <!-- 增值税发票 -->
+            <vat-invoice id="vat"/>
+        </swiper-item>
+    </swiper>
+
+<!-- 确定按钮 -->
+    <view class="sure-btn-container">
+        <view class="sure-btn" hover-class="sure-btn-hover" bindtap="onSureButtonTap">
+            确定
+        </view>
+    </view>
+</view>

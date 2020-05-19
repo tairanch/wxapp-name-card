@@ -1,0 +1,38 @@
+<!--pages/product/shopCart/components/numWidget/NumWidget.wxml-->
+<view class='num-ctrl'>
+    <view wx:if='{{quantity <= 1 || disable}}' class='link c-bgf4'>
+        <image src='../../../../../image/icon/sub-l-dis-icon.png' style="width: 35px; height: 35px;"></image>
+    </view>
+    <view wx:else class='link' bindtap='handleReduce'>
+        <image src='../../../../../image/icon/sub-l-icon.png' style="width: 35px; height: 35px;"></image>
+    </view>
+    <input
+        wx:if='{{buyLimit !== null}}'
+        class='input'
+        type='text'
+        min='1'
+        max='{{buyLimit}}'
+        maxlength='9'
+        value='{{quantity}}'
+        bindinput='handleNum'
+        bindfocus='scrollView'
+        bindblur='handleInputNum'
+    ></input>
+    <input
+        wx:else
+        class='input'
+        type="text"
+        min="1"
+        maxlength='9'
+        value='{{quantity}}'
+        bindinput='handleNum'
+        bindfocus='scrollView'
+        bindblur='handleInputNum'
+    ></input>
+    <view wx:if='{{(buyLimit !== null && quantity >= buyLimit) || disable}}' class='link c-bgf4'>
+        <image src='../../../../../image/icon/plus-l-dis-icon.png' style="width: 35px; height: 35px;"></image>
+    </view>
+    <view wx:else class='link' bindtap='handlePlus'>
+        <image src='../../../../../image/icon/plus-l-icon.png' style="width: 35px; height: 35px;"></image>
+    </view>
+</view>

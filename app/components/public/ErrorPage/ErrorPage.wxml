@@ -1,0 +1,10 @@
+<!--pages/component/empty/ErrorPage/ErrorPage.wxml-->
+<view class='error-page' class='error-page' style='{{"zIndex: " + zIndex + ";" }}'>
+  <view class='content'>
+    <view>
+       <image src='{{imgUrl}}' style='{{"width: " + imgWidth + "; height: " + imgHeight + ";" }}'></image>
+    </view>
+    <view class='c-fs12 c-cc9 c-mt10'>{{text}}</view>
+    <view class="reload-btn" style='{{btnStyle}}' bindtap='btnClick'>{{btnText}}</view>
+  </view>
+</view>

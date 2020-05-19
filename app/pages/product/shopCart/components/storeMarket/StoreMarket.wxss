@@ -1,0 +1,69 @@
+
+/* commom */
+.c-tr{  text-align:right;  }
+.c-dpib{  display:inline-block;  }
+.c-tc{  text-align:center;  }
+.store-market {
+  width: 100%;
+  position: relative; 
+  box-sizing: border-box;
+}
+  
+  
+.store-market .props-click {
+    position: relative;
+    background-color: #f4f4f4;
+    padding: 5px 20px 5px 5px; }
+
+.store-market.activity {
+    background-color: #fff5f5; }
+.store-market.activity .common-list {
+    background-color: #fff5f5;}
+
+    /* .store-market.activity .common-list .one-item-grid [data-item-info] */
+
+.store-market .common-list .one-item-grid .one-item-info{
+  border-bottom: 1px solid #e4e4e4; }
+  .store-market .common-list .gift-list .data-spec-item {
+  margin-bottom: 10px; }
+  .store-market .common-list .gift-list .data-spec-item-box:last-child .data-item-info {
+  border-bottom: 1px solid #e4e4e4; }
+  .store-market .props-click {
+  position: relative;
+  background-color: #f4f4f4;
+  padding: 5px 20px 5px 5px; }
+  .store-market.activity {
+  background: #fff5f5; }
+.store-market.activity .common-list .one-item-grid .one-item-info {
+  border-bottom: none; }
+  .store-market.activity .common-list .one-item-grid-box:last-child .one-item-info {
+  border-bottom: 1px solid #e4e4e4; }
+
+  .store-market .common-list .one-item-grid-box:not(:last-child) .one-item-grid .one-item-info {
+  border-bottom: 1px solid #e4e4e4; }
+
+
+.store-market.activity .gift-list .one-item-grid .one-item-info {
+  border-bottom: none; }
+   .store-market .common-list .gift-list .one-item-grid .one-item-info {
+  border-bottom: none; }
+
+  .store-market.activity .props-click {
+      background-color: #ffffff; }
+      .store-market.exchange .common-list .one-item-grid .one-item-info {
+  border-bottom: none; }
+
+  
+.active-row{
+	padding:15px;
+  margin-left: 44px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.red-btn{
+  padding:0 6px;
+	border:1px solid #e60a30;
+	font-size:13px;
+	line-height:25px;
+	color:#e60a30;
+	border-radius:3px
+}

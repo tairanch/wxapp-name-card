@@ -1,0 +1,8 @@
+<view class="all-tag" wx:if="{{list.length>0}}">
+    <block wx:for="{{list}}" wx:key="{{index}}">
+        <view class="each-tag">
+            <image class="logo" mode="widthFix" src='{{item.img}}'></image>
+            <text class="text">{{item.text}}</text>
+        </view>
+    </block>   
+</view>

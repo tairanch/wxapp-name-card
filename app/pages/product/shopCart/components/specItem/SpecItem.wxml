@@ -1,0 +1,51 @@
+<!--pages/product/shopCart/components/specItem/SpecItem.wxml-->
+<wxs module="filters" src="../../../../../utils/filter.wxs"></wxs>
+<wxs module="shopCartUtil" src="../../shopCart.wxs"></wxs>
+<view class='spec-item spec-class'>
+  <swiper-ctrl
+    disMove='{{ disMove }}'
+    class='swiper-ctrl'
+    isOpen='{{isOpen}}'
+    ctrlWidth='115'
+    bindcontrolOpen='controlOpen'
+  >
+    <view slot="content">
+      <view class='{{itemData.store <= 0 ? "invalid spec-info spec-content":"spec-info spec-content"}}'>
+        <view class='item-img'>
+          <view class='img-click' bindtap='godetail' data-itemid="{{itemData.item_id}}">
+            <image
+              style='width:70px;height: 70px'
+              src='{{itemData.image ? shopCartUtil.addImageSuffix(itemData.image, "_m"): "../../../../../image/icon/loading/default-no-item.png"}}'></image>
+            <image class='img-no-item' src='{{"../../../../../image/shopCart/no-item.png"}}' wx:if='{{!give && (itemData.is_deleted || itemData.store <= 0 || itemData.shelf_status != 30)}}'></image>
+          </view>
+        </view>
+        <view class='item-detail'>
+          <view class='title' bindtap='godetail' data-itemid="{{itemData.item_id}}">
+            <text class='c-mr3 grey-label' wx:if='{{itemData.promotion_single && itemData.store <=0 }}'>{{shopCartUtil.tagName(itemData.promotion_single.type)}}</text>
+            <text class='c-mr3 red-label' wx:elif='{{itemData.promotion_single && itemData.store > 0 }}'>{{shopCartUtil.tagName(itemData.promotion_single.type)}}</text>
+            <text class='c-mr3 red-label' wx:if='{{type === "ExchangeBuy"}}'>换购</text>
+            <text>{{itemData.title}}</text>
+          </view>
+          <view class='spec-props' wx:if='{{itemData.spec_text}}' bindtap='popupSaleAttr'>
+            {{itemData.spec_text }}
+          </view>
+          <view class='{{edit? "c-vh tax": "tax"}}' wx:if='{{itemData.tax_rate > 0 }}'>
+            <text>预计税费：¥{{shopCartUtil._toFixed(itemData.tax_rate * price * quantity)}}</text>
+          </view>
+          <view
+          class='{{(itemData.spec_text || (itemData.tax_rate > 0 && itemData.tax > 0) )? "numprice":"numprice numprice-top"}}'
+          >
+            <text class='{{ itemData.store <= 0 ? "c-fl red-bglabel c-bg999":"c-fl red-bglabel c-bgdred"}}' wx:if='{{give}}'>赠品</text>
+            <text class='span price' wx:else>¥{{shopCartUtil._toFixed(price)}}</text>
+            <text class='span num'>×{{quantity || 1}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view slot="ctrl" class='ctrl-btn'>
+      <view class='delete' bindtap='handleDelete'>
+        <view class='text-wrap'>删除</view>
+      </view>
+    </view>
+  </swiper-ctrl>
+</view>

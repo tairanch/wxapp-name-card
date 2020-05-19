@@ -1,0 +1,35 @@
+/* 首页公共样式 */
+.common-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+.common-title-text {
+  color: #353535;
+}
+
+.common-more-wraper {
+  display: inline;
+  position: absolute;
+  right: 30rpx;
+}
+
+.common-more {
+  float: right;
+  color: #666;
+  font-size: 26rpx;
+  font-weight: normal;
+}
+
+.common-arrow-right {
+  width: 15rpx;
+  height: 27rpx;
+  float: right;
+  margin-left: 6rpx;
+  margin-top: 32rpx;
+}

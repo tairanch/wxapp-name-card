@@ -1,0 +1,59 @@
+/* pages/component/swiperCtrlWidgetCom/swiperCtrlWidget.wxss */
+/* .swiper-wrap {
+  box-sizing: border-box;
+}
+.swiper-wrap .swiper-box{
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: calc(750rpx + 60px);
+}
+.swiper-wrap .width-change {
+  width: calc(100% + 60px + 60px);
+}
+.swiper-wrap .swiper-content{
+  background: white;
+  box-sizing: border-box;
+  width: 750rpx;
+  min-height: 50px;
+  flex: 1;
+}
+.swiper-wrap .swiper-ctrl {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  color: white;
+}  */
+
+
+
+.swiper-wrap {
+  box-sizing: border-box;
+  overflow: hidden;
+	/* width:100%; */
+}
+.swiper-wrap .swiper-box{
+  display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+  /* width: calc(100% + 60px); */
+}
+
+.swiper-wrap .swiper-content{
+  -webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+  width: 750rpx;
+}
+.swiper-wrap .swiper-ctrl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  height: 190rpx;
+  color: white;
+} 

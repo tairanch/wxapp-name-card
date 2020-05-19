@@ -1,0 +1,47 @@
+/* pages/product/shopCart/components/marketHeader/MarketHeader.wxss */
+.market-header{
+  padding:10px 15px 0 10px;
+  box-sizing: border-box;
+}
+.market-header .activityLink{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.market-header .tag{
+	font-weight:700;
+	vertical-align: 0;
+	margin-right:6px;
+	line-height:15px;
+}
+.market-header .red-label {
+	height: 15px;
+	font-size: 10px; 
+	padding: 0 3px;
+	border-radius: 3px;
+	border: 1px solid #e60a30;
+	vertical-align: middle;
+	color: #e60a30;
+}
+.market-header .activity-text{
+  display:block;
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+  display:-webkit-box;
+	word-break: break-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient:vertical;
+}
+.market-header .link-right{
+  color:#ff5555;
+}
+.market-header .g-col-1{
+  display:block;
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+}

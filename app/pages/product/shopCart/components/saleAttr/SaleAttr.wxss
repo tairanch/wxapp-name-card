@@ -1,0 +1,107 @@
+/* pages/product/shopCart/components/saleAttr/SaleAttr.wxss */
+.shady {
+  z-index:100; 
+  opacity:0.5;
+  background:#000;
+  top:0;
+  left:0;
+  position:fixed;
+  width:100%;
+  height:100%;
+  box-sizing: border-box;
+}
+.popup-sale-attr {
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#fff;
+  z-index:105;
+  font-size:12px;
+  transform: translate3d(0,120%,0);
+  transition:all 0.2s ease-in;
+  font: 12px/1.5 PingFangSC-Regular,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,\5FAE\8F6F\96C5\9ED1,tahoma,simsun,sans-serif;
+  box-sizing: border-box;
+}
+.popup-sale-attr.active{
+  transition:all 0.2s ease-out;
+	transform: translate3d(0,0,0);
+}
+.popup-sale-attr .sale-modal-content{
+  padding:0 10px;
+}
+.popup-sale-attr .sale-modal-content .sale-table-view{
+  position: relative;
+}
+.popup-sale-attr .sale-modal-content .sale-table-view .sale-table-view-cell{
+  padding-bottom: 5px;
+  border-bottom: 1px solid #f4f4f4;
+  min-height: 90px;
+}
+.popup-sale-attr .sale-modal-content .sale-table-view .sale-table-view-cell .sale-close-btn{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: block;
+  width: 18px;
+  height: 18px;
+  z-index: 100;
+}
+.popup-sale-attr .sale-modal-content .sale-table-view .sale-table-view-cell .sale-posit-img{
+  position: absolute;
+  top: -15px;
+  left: 15px;
+  display: block;
+  width: 90px;
+  height: 90px;
+  border: 1px solid #f4f4f4;
+  background-color: #f4f4f4;
+  line-height: 86px;
+}
+.popup-sale-attr .sale-modal-content .sale-table-view .sale-table-view-cell .sale-posit-img .sale-media-object{
+  width: 100%;
+  height: 100%
+}
+.popup-sale-attr .sale-modal-content .sale-table-view .sale-table-view-cell .sale-window-head{
+  padding-left: 37%;
+}
+.popup-sale-attr .sale-modal-content .sale-table-view .sale-table-view-cell .sale-window-head .sale-price-tag{
+  padding-top: 18px;
+  height: 50px;
+}
+.popup-sale-attr .sale-modal-content .sale-table-view .sale-table-view-cell .sale-window-head .sale-price-tag .sale-text-price{
+  font-size: 22px;
+  color: #e60a30;
+  display: inline-block;
+}
+.popup-sale-attr .sale-modal-content .sale-table-view .sale-table-view-cell .sale-window-head .sale-price-tag .sale-text-price-sel{
+  display: block;
+  width: 90%;
+  line-height: 16px;
+  height: 30px;
+  margin-top: 2px;
+  overflow: auto;
+  color: #999999;
+}
+.popup-sale-attr .sale-list-view {
+  height: 250px;
+  overflow-y: scroll;
+  padding: 13px 0 50px 0;
+}
+.popup-sale-attr .sale-modal-bottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #e60a30;
+}
+.popup-sale-attr .sale-modal-bottom .div{
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  z-index: 10;
+  height:50px;
+	line-height:50px;
+	overflow:hidden;
+}

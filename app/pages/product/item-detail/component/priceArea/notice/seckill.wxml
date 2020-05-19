@@ -1,0 +1,32 @@
+<wxs module="sku" src="../../../sku.wxs"></wxs>
+
+<view wx:if="state!=1" class="detail-seckil-state-area">
+    <view class="seckil-state-area-l">
+        <good-price
+            wx:if="{{state==2}}"
+            state="{{state}}"
+            detail="{{detail}}"
+            marketPrice="{{marketPrice}}"
+            sellPrice="{{sellPrice}}"
+        />
+        <block>
+            <text class="in-seckil" wx:if="{{state==2}}">秒杀中</text>
+            <text class="former-seckil" wx:else>秒杀</text>
+        </block>
+        <view class="seckil-state-area-r-no" wx:if="{{!state}}">
+            预计{{unStartTime}}开始
+        </view>
+    </view>
+    <view class="seckil-state-area-r-in" wx:if="{{!!state}}">
+        <view>
+            <view>离结束还剩</view>
+            <view class="time-remain">
+                <text>{{sku.timeCtrl.formatOneNum(toEnd/3600)}}</text>
+                <text>:</text>
+                <text>{{sku.timeCtrl.formatOneNum(toEnd % 3600 / 60)}}</text>
+                <text>:</text>
+                <text>{{sku.timeCtrl.formatOneNum(toEnd % 60)}}</text>
+            </view>
+        </view>
+    </view>
+</view>

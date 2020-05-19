@@ -1,0 +1,32 @@
+<wxs module="filters" src="./twoLinesCom.wxs"></wxs>
+<view class="category-item">
+  <!-- <view class="common-title">
+    <text class="common-title-text">{{data.with_recommend}}</text>
+    <view bindtap='goMore' class="common-more-wraper">
+      <image class="common-arrow-right" src="/image/icon/arrow-right-icon.png"></image>
+      <text class='common-more'>更多</text>
+    </view>
+  </view> -->
+  <view class="two-lines-wraper">
+    <view class="two-lines-item" wx:for='{{data.item_list}}' wx:key='unique'>
+      <view bindtap='goItemPage' data-item='{{item}}'>
+        <image class="two-lines-item-img" src='{{item.image+"_m.jpg"}}'></image>
+        <image wx:if="{{item.item_tag}}" class="two-lines-promotion-img" mode="widthFix" src='{{item.item_tag.images.mb_square_img}}'></image>
+        <text wx:if="{{!item.item_tag&&item.is_new}}" class='two-lines-tag'>新品</text>
+        <image wx:if='{{item.status==10||item.status==40||item.status==50}}' class="no-goods-count-image" src="/image/mall/sold-out-activity.png"></image>
+        <view class='two-lines-title-wraper'>
+          <view wx:if='{{item.item_alias}}' class="two-lines-item-title">{{item.item_alias}}</view>
+          <view wx:else class="two-lines-item-title">{{item.title}}</view>
+          <view wx:if='{{item.price>0}}' class='two-lines-item-price'>¥{{filters.toFix(item.price)}}
+            <text wx:if='{{item.line_price>0}}' class='two-lines-item-market-price'>¥{{filters.toFix(item.line_price)}} </text>
+          </view>
+          <view wx:if="{{item.promotion_tag}}">
+            <text wx:for='{{item.promotion_tag}}' wx:key='*this' class="two-lines-label-wraper">
+              <text>{{item}}</text>
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

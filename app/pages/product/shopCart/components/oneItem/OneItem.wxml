@@ -1,0 +1,136 @@
+<!--pages/product/shopCart/components/oneItem/OneItem.wxml-->
+<wxs module="filters" src="../../../../../utils/filter.wxs"></wxs>
+<wxs module="shopCartUtil" src="../../shopCart.wxs"></wxs>
+<view
+    class='item-class'
+    capture-bindtap='_touchstart'
+>
+    <swiper-ctrl
+        disMove='{{ disMove }}'
+        class='swiper-ctrl'
+        isOpen='{{isOpen}}'
+        ctrlWidth='230'
+        bindcontrolOpen='controlOpen'
+        bindstartTough='startTough'
+    >
+        <view slot="content">
+            <view class='one-item'>
+                <view class='{{itemData.promotion_single && itemData.promotion_single.type === "SecKill" ? "checkbox seckill-chackbox": "checkbox"}}'>
+                    <check-icon
+                        bindhandleCheck='handleCheck'
+                        invalid='{{itemData.is_deleted}}'
+                        isCheck='{{isCheck}}'
+                        seckill='{{ itemData.promotion_single && itemData.promotion_single.type === "SecKill"}}'
+                        disable='{{ itemData.promotion_single && itemData.promotion_single.type=== "ExchangeBuy"}}'
+                    ></check-icon>
+                </view>
+                <view class='item-info info-class' data-itemid="{{itemData.item_id}}" bindtap='goodetail'>
+                    <view class='item-img'>
+                        <view class='img-click'>
+                            <image class='img-click-iamge' src='{{itemData.image ? shopCartUtil.addImageSuffix(itemData.image, "_m"): "../../../../../image/icon/loading/default-no-item.png"}}'></image>
+                            <image class='img-no-item' src='{{"../../../../../image/shopCart/no-item.png"}}' wx:if='{{store !== null && (itemData.is_deleted || store <= 0)}}'></image>
+                        </view>
+                        <view class='num-info'>
+                            <view class='p' wx:if='{{itemData.promotion_single && itemData.promotion_single.type != "SecKill" && itemData.promotion_single.user_buy_limit && itemData.promotion_single.user_buy_limit > 0 }}'>限购{{itemData.promotion_single.user_buy_limit}}件</view>
+                            <view class='p'
+                                  wx:elif='{{(store !== null && store < 6 && itemData.promotion_single && itemData.promotion_single.type != "SecKill") || (store !== null &&store < 6 && !itemData.promotion_single)}}'>仅剩{{store}}件</view>
+                            <view wx:if='{{store !== null && store <= 0}}'><text>库存不足</text></view>
+                        </view>
+                    </view>
+                    <view class='item-detail'>
+                        <view hidden='{{!edit}}'>
+                            <view class='item-ctrl'>
+                                <num-widget
+                                    disable='{{itemData.promotion_single &&  (itemData.promotion_single.type=== "ExchangeBuy")}}'
+                                    buyLimit='{{shopCartUtil.initBuyLimit(itemData)}}'
+                                    quantity='{{quantity}}'
+                                    bindhandleNum='handleNum'
+                                    bindhandleInputNum='handleInputNum'
+                                    bindhandleReduce='handleReduce'
+                                    bindhandlePlus='handlePlus'
+                                ></num-widget>
+                                <view hidden='{{!edit || isOpen}}' class='delete-btn' bindtap='handleDelete'>
+                                    <image
+                                        src='{{"../../../../../image/icon/delete-box-icon.png"}}'
+                                        style='width:18px;height:20px'
+                                    ></image>
+                                </view>
+                            </view>
+                        </view>
+                        <view hidden='{{edit}}'>
+                            <view class='title'>
+                                <template
+                                    is="RedLabel"
+                                    data='{{className:"c-mr3", text:shopCartUtil.tagName(itemData.promotion_single.type)}}'
+                                    wx:if='{{itemData.promotion_single && itemData.promotion_single.type !== "SecKill" && itemData.promotion_single.type !== "GiftBuy"}}'
+                                ></template>
+                                {{itemData.title}}
+                            </view>
+                        </view>
+                        <view wx:if='{{itemData.spec_text}}' class='{{edit? "props-click props": "props"}}' bindtap='popupSaleAttr'>
+                            <text class='{{edit? "props-text": ""}}'>{{itemData.spec_text}}</text>
+                            <image class='props-icon' src='/image/icon/arrow/arrow-mi-down-icon.png' wx:if='{{!isOpen}}'></image>
+                        </view>
+                        <view class='{{edit? "c-vh tax": "tax"}}' wx:if='{{itemData.tax_rate > 0}}'>
+                            <text>预计税费：¥{{shopCartUtil._toFixed(itemData.tax_rate * (shopCartUtil.getOneItemPrice(itemData)) * quantity)}}</text>
+                        </view>
+                        <view class='{{edit? "c-vh tax": "reduce"}}' wx:if='{{(itemData.cart_price - shopCartUtil.getOneItemPrice(itemData)) > 0}}'>
+                            <text>已降¥{{shopCartUtil._toFixed(itemData.cart_price - shopCartUtil.getOneItemPrice(itemData))}}</text>
+                        </view>
+                        <!-- 特卖时间 -->
+                        <view wx:if='{{itemData.promotion_single && itemData.promotion_single.type === "FlashSale"}}' class='{{edit? "c-vh activity": "activity"}}'>
+                            {{shopCartUtil.activityTime("特卖", itemData)}}
+                        </view>
+                        <!-- 秒杀时间 -->
+                        <view
+                            wx:if='{{itemData.promotion_single && itemData.promotion_single.type === "SecKill" && !isEnd}}'
+                            class='{{edit? "c-vh activity": "activity"}}'
+                            style='-webkit-line-clamp:2;'>
+                            <view wx:if='{{shopCartUtil.getsecKillActivityTime(itemData).isStart}}'>
+                                <text>{{shopCartUtil.getsecKillActivityTime(itemData).end_time + '秒杀结束'}}</text>
+                                <view>
+                                    <text>商品仅支持详情页购买</text>
+                                    <image src='/image/icon/arrow/arrow-right-red-icon.png'
+                                           style="width: 7px; height: 12px; vertical-align:-1px;"
+                                    ></image>
+                                </view>
+                            </view>
+                            <view wx:else>
+                                <text>{{shopCartUtil.getsecKillActivityTime(itemData).start_time + '秒杀开始'}}</text>
+                                <view>
+                                    <text>商品仅支持详情页购买</text>
+                                    <image src='/image/icon/arrow/arrow-right-red-icon.png'
+                                           style="width: 7px; height: 12px; vertical-align:-1px;"
+                                    ></image>
+                                </view>
+                            </view>
+                        </view>
+                        <view wx:if='{{!edit}}' class='{{(itemData.spec_text || (itemData.tax_rate > 0 && itemData.tax > 0) || itemData.promotion_single && itemData.promotion_single.type === "FlashSale")?"numprice":"numprice numprice-top"}}'>
+                            <text class='span price'>¥{{shopCartUtil.getOneItemPrice(itemData)}}</text>
+                            <text class='span num'>×{{quantity}}</text>
+                        </view>
+                        <view class='item-bottom' wx:if='{{edit}}'></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view slot="ctrl" class='ctrl-btn' style='width:230rpx;'>
+            <view class='collect' bindtap='handleCollect'>
+                <view class='text-wrap'>
+                    <view>移入</view>
+                    <view>收藏</view>
+                </view>
+            </view>
+            <view class='delete' bindtap='handleDelete'>
+                <view class='text-wrap'>删除</view>
+            </view>
+        </view>
+    </swiper-ctrl>
+</view>
+
+<!-- RedLabel -->
+<template name="RedLabel">
+    <view class='{{ className? className + " red-label" : "red-label"}}'>
+        {{text}}
+    </view>
+</template>

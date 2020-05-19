@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "check-icon": "../checkIcon/CheckIcon",
+    "store-market": "../storeMarket/StoreMarket"
+  }
+}

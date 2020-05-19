@@ -1,0 +1,33 @@
+<!--pages/pa ge/page.wxml-->
+<view class="card-code">
+    <view class="code-box">
+        <view class="code-position">
+            <view class="code-content">
+                <view class="code-content-top">
+                    <view class="code-content-name" wx:if="{{info.name}}">{{info.name}}</view>
+                    <view class="code-content-attr" wx:if="{{info.job}}">{{info.job}}</view>
+                </view>
+                <view class="code-content-bottom">
+                    <view class="code-user-phone" wx:if="{{info.mobile}}">
+                        <image class="user-phone-image" mode='widthFix' src="/image/myCard/dianhua3@2x.png"></image>
+                        <view class="user-phone-text">{{info.mobile}}</view>
+                    </view>
+                    <view class="code-user-email" wx:if="{{info.email}}">
+                        <image class="user-email-image" mode='widthFix' src="/image/myCard/youxiang3@2x.png"></image>
+                        <view class="user-email-text">{{info.email}}</view>
+                    </view>
+                </view>
+                <image src="{{info.portrait || '/image/nameCard/moren@2x.png'}}" class="card-content-header"></image>
+            </view>
+            <view class="code-image-box" wx:if="{{codeImage}}">
+                <image src="{{codeImage}}" class="code-image"></image>
+                <view class="code-image-text">请扫码，收下我的名片</view>
+            </view>
+        </view>
+    </view>
+    <canvas class="img-canvas" canvas-id="firstCanvas"></canvas>
+    <view class="bottom-click" bindtap="onSaveQrImage">
+        <image src="/image/shareMiddlePage/download.png" class="bottom-image"></image>
+        <view class="bottom-text">保存此图</view>
+    </view>
+</view>

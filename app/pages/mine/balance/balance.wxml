@@ -1,0 +1,78 @@
+<!--pages/mine/balance/balance.wxml-->
+<wxs module="balanceUtil" src="./balance.wxs"></wxs>
+<view class='page-container'>
+    <image class='header-image-bg' src="/image/mine/balance-header-image-bg.png"></image>
+    <view class='header-position-view-bg'>
+        <view class='balance-view'>
+            <view class='title-view'>
+                <text class='title-text'>账户余额(元)</text>
+                <!--tips-image-bg是固定相对位置的-->
+                <view class='tips-image-bg'>
+                    <!--position-image-view是为了使用绝对布局，加大点击区域-->
+                    <view class='position-image-view' bindtap='tipsBtnClick'>
+                        <image class='tips-image' src="/image/mine/tips_icon.png"></image>
+                    </view>
+                </view>
+            </view>
+            <text class='balance-text'>{{balanceCount}}</text>
+        </view>
+        <view class='cash-btn' bindtap='cashOutBtnClick'>
+            <text class='cash-btn-title'>提现</text>
+        </view>
+    </view>
+
+    <view class='list-view' wx:if="{{flowList && flowList.length > 0}}">
+        <view class="section-view">
+            <text class="section-title">收支记录</text>
+        </view>
+
+        <view class="cell-bg" wx:for="{{flowList}}" wx:for-item="item" wx:for-index="idx" wx:key="idx">
+            <view class="cell-left-view">
+                <text class="item-title-text">{{item.type}}</text>
+                <text class="item-time-text">{{item.created_at}}</text>
+            </view>
+            <view class="cell-right-view">
+                <text class="item-amount-text" style="color: {{item.flow_type==1?'#E60A30':'#999999'}}">{{balanceUtil.getAmountText(item.flow_type, item.amount)}}</text>
+                <text class="item-tax-text" wx:if="{{item.tax>0}}">已扣税¥{{item.tax}}</text>
+            </view>
+        </view>
+
+    </view>
+
+    <view class='empty-view' wx:else>
+        <text class="empty-text">您还没有收支记录</text>
+    </view>
+
+    <!--余额提示 模态视图-->
+    <view wx:if="{{showTipsModalView}}" class='model-view'>
+        <view class='mode-sub-view'>
+            <text class='model-title'>余额说明</text>
+            <text class='model-content'>· 每月1日审核上月已入账的佣金，审核通过后才会结算到余额账户。</text>
+            <text class='model-content'>· 每月结算的金额需按国家规定代扣个人所得税。</text>
+            <view class='model-btn' bindtap='iSeeBtnClick'>
+                <text class='model-btn-title'>知道了</text>
+            </view>
+
+        </view>
+    </view>
+
+    <!--实名认证 模态视图-->
+    <view wx:if="{{showModelView}}" class='v-model-view'>
+        <view class='v-mode-sub-view'>
+            <view class='v-top-close-bg-view'>
+                <view class='v-close-btn' bindtap='closeBtnClick'>
+                    <image class='v-close-image' src='/image/mine/close_btn_icon.png'></image>
+                </view>
+            </view>
+            <text class='v-model-title'>实名认证</text>
+            <text class='v-model-content'>为确保您的预计收入能正常结算，请先添加身份证信息！</text>
+            <view class='v-model-btn' bindtap='gotoAuthBtnClick'>
+                <text class='v-model-btn-title'>立即认证</text>
+            </view>
+
+        </view>
+    </view>
+
+</view>
+
+

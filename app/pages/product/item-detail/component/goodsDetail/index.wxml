@@ -1,0 +1,58 @@
+<wxs module="sku" src="../../sku.wxs"></wxs>
+
+
+<view class="goods-detail">
+    <block wx:if="{{fixed}}">
+        <view class="detail-nav"></view>
+    </block>
+    <view class="detail-nav {{fixed?'detail-nav-fixed':''}}">
+        <block wx:for="{{nav}}" wx:key="{{index}}">
+            <view
+                class="{{active == index ? 'active' : ''}}"
+                data-active="{{index}}"
+                bindtap="checkedTag"
+            >{{item}}</view>
+        </block>
+    </view>
+    <view class="detail-content">
+        <block wx:if="{{active == 0}}">
+            <view class="detail-content-l">
+                <block wx:if="{{detail.trade_type == 'Direct' || detail.trade_type == 'Overseas'}}">
+                    <image class="img" mode="widthFix" src="../../images/zhiyou.jpg" />
+                </block>
+                <import src="../../wxParse/wxParse.wxml" />
+                <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}" />
+                <block wx:if="{{data.trade_type == 'Direct' || data.trade_type == 'Bonded' || data.trade_type == 'Overseas'}}">
+                    <image class="img" mode="widthFix" src="../../images/goods_text.jpg" />
+                </block>
+                <block>
+                    <image class="img" mode="widthFix" src="../../images/price_text.jpg" />
+                </block>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="detail-content-r" style="height:{{_height}}px">
+                <view class="detail-content-list">
+                    <text>商品编号:</text>
+                    <text>{{detail.art_no}}</text>
+                </view>
+                <block wx:if="{{detail.shelved_at}}">
+                    <view class="detail-content-list">
+                        <text>上架时间:</text>
+                        <text>{{sku.timeTransform(detail.shelved_at)}}</text>
+                    </view>
+                </block>
+                <view class="detail-content-list">
+                    <text>商品毛重:</text>
+                    <text>{{detail.weight}}kg</text>
+                </view>
+                <block wx:for="{{detail.properties}}" wx:key="{{index}}">
+                    <view class="detail-content-list">
+                        <text>{{item.name}}:</text>
+                        <text>{{item.text}}</text>
+                    </view>
+                </block>
+            </view>
+        </block>
+    </view>
+</view>

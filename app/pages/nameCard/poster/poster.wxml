@@ -1,0 +1,41 @@
+<!--pages/product/shareMiddlePage/shareMiddlePage.wxml-->
+<view class='root'>
+  <view class='header-bg'></view>
+  <view class="{{hideView?'shade_hide':'shade_show'}}"></view>
+  <view class='canvas_pre'>
+    <block wx:for="{{posterList}}">
+      <canvas style="width:100vw; height:100vh;" canvas-id='{{item.id}}' />
+    </block>
+  </view>
+  <view class='header_des_pre'>
+    <text class='header_des_title'>【海报推荐】</text>
+    <text class='header_des_text'>{{depict}}</text>
+  </view>
+  <swiper previous-margin='120rpx' next-margin='120rpx' current="{{currentSwiper}}" circular='true' bindchange="swiperChange">
+    <block wx:for="{{posterList}}">
+      <swiper-item>
+        <view class='poster_pre {{currentSwiper==index?"le-active":""}}' style='height:{{ht}};margin-top:{{marginTop}};top:{{top}}'>
+          <view class='poster_pre2'>
+            <view class='view_num'>
+              <span class="item-num">{{currentSwiper+1}} / {{posterList.length}}</span>
+            </view>
+            <image class='poster' mode='widthFix' src='{{item.img_path}}'></image>
+            <view class='poster_bottom'>
+              <image class='poster_portrait' src='{{item.portrait}}'></image>
+              <text class='poster_text_name'>{{item.phone}}</text>
+              <view class='poster_line' />
+              <view class='poster_bottom_qrcode'>
+                <image class='poster_bottom_qrcode_img' src='{{item.qrCode}}'></image>
+                <text class='poster_bottom_qrcode_text'>长按识别二维码</text>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='bottom' bindtap='saveImg'>
+    <text class='bottom-text'>点击预览并长按分享</text>
+  </view>
+</view>

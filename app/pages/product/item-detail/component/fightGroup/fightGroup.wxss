@@ -1,0 +1,126 @@
+.free-postage-tag {
+    padding: 0 6rpx;
+    line-height: 30rpx;
+    height: 30rpx;
+    font-size: 20rpx;
+    background: #fff;
+    color: #e60a30;
+    margin: 20rpx 20rpx 10rpx;
+    border: solid #e60a30;
+    border-radius: 4rpx;
+    vertical-align: -4rpx;
+}
+.icon-forward {
+    top: 50%;
+    position: absolute;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    right: 24rpx;
+}
+.icon-forward > .img {
+    width: 20rpx;
+    vertical-align: middle;
+}
+.c-dpib {
+    display: inline-block;
+}
+.c-mr6 {
+    margin-right: 6rpx;
+}
+.c-mr15 {
+    margin-right: 30rpx;
+}
+.c-mb5 {
+    margin-bottom: 10rpx;
+}
+.c-pb50 {
+    padding-bottom: 50rpx;
+}
+.c-fl {
+    float: left;
+}
+.c-fr {
+    float: right;
+}
+.c-fs12 {
+    font-size: 24rpx;
+}
+.c-fs10 {
+    font-size: 20rpx;
+}
+.c-fs13 {
+    font-size: 26rpx;
+}
+.c-fs15 {
+    font-size: 30rpx;
+}
+.c-fs20 {
+    font-size: 40rpx;
+}
+.c-c666 {
+    color: #666;
+}
+.c-cfff {
+    color: #fff;
+}
+.c-cf55 {
+    color: #f55;
+}
+.c-tc {
+    text-align: center;
+}
+.clearfix:after {
+    display: block;
+    width: 100%;
+    height: 0;
+    clear: both;
+    content: "";
+    visibility: hidden;
+}
+.fight-group-active{
+    background: #ffff;
+    margin-top: 20rpx;
+}
+.fight-group-active .fight-group-top {
+    padding: 0 30rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+.fight-group-active .fight-group-rules {
+    background-color: #ffefef;
+    padding: 26rpx 30rpx 30rpx;
+    display: block;
+    position: relative;
+}
+.fight-group-active .fight-group-rules .rule-img {
+    width: 100%;
+}
+.fight-group-active .fight-group-rules .direction-right-icon {
+    position: absolute;
+    top: 26rpx;
+    right: 30rpx;
+    width: 16rpx;
+    height: 32rpx;
+}
+.fight-group-detail {
+    padding: 0 30rpx 6rpx;
+    background: #fff;
+    border-bottom:1rpx solid #f4f4f4;
+}
+.fight-group-detail .group-title {
+    padding: 18rpx 0;
+    line-height: 30rpx;
+    font-size: 24rpx;
+    color: grey;
+}
+.fight-group-detail .group-title .img {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 10rpx;
+    vertical-align: -2rpx;
+}
+.fight-group-detail .participants {
+    padding-top: 12rpx;
+    background: #fff;
+}

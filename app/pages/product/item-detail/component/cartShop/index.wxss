@@ -1,0 +1,33 @@
+
+.shop-cart{
+    position: fixed;
+    bottom: 160rpx;
+    right: 20rpx;
+    width: 80rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background: #fff;
+    border-radius: 50%;
+}
+.shop-cart>image{
+    width:60rpx;
+    height:60rpx
+}
+.cart-count-badge{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 26rpx;
+    padding: 0 8rpx;
+    border-radius: 13rpx;
+    background: white;
+    border: solid 1rpx #e60a30;
+    color: #e60a30;
+    font-size: 18rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}

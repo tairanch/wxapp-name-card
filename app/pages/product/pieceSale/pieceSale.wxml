@@ -1,0 +1,59 @@
+<!--pages/product/pieceSale/pieceSale.wxml-->
+<!-- tab导航栏 -->
+<!-- scroll-left属性可以控制滚动条位置 -->
+<!-- scroll-with-animation滚动添加动画过渡 -->
+<scroll-view scroll-x="true" class="nav" scroll-with-animation="{{true}}" xmlns:wx="http://java.sun.com/JSP/Page">
+  <block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+    <view class="nav-item {{currentTab == idx ?'active':''}}" data-current="{{idx}}" bindtap="onSwitchNav">
+      <text>{{navItem.text}}</text>
+    </view>
+  </block>
+</scroll-view>
+
+<!-- 页面内容 -->
+<swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="onSwitchTab">
+  <swiper-item class="tab-content" wx:for="{{navData}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx">
+    <scroll-view style="height: 100%;" scroll-y scroll-top="{{scrollTop}}" bindscrolltolower="reactBottom" bindscrolltoupper='refreshTop'>
+      <block wx:for='{{shopLists}}' wx:key='{{shopLists}}'>
+        <view class='shop-content'>
+          <view class='head'>
+            <text class='head-shop'>下单时间 {{item.created_at}}</text>
+            <text class='head-status' wx:if='{{item.group_status==1}}'>拼团中，差{{item.required_person}}人</text>
+            <text class='head-status' wx:if='{{item.group_status==2}}'>拼团成功</text>
+            <text class='head-status' wx:if='{{item.group_status==0}}'>拼团失败</text>
+          </view>
+          <navigator url="/pages/wxpage/wxpage?type=groupDetail&object_id={{item.object_id}}">
+            <view class='content' bindtap='clickToTradeDetail'>
+              <image class='content-img' src='{{item.pic_path}}' />
+              <view class='content-des'>
+                <view class='content-txt1'>
+                  <text class='content-title'>{{item.title}}</text>
+                  <text class='content-price'>￥{{item.price}}</text>
+                </view>
+                <view class='content-txt2'>
+                  <text class='content-title2'>{{item.spec_nature_info}}</text>
+                  <text class='content-price2'>X{{item.num}}</text>
+                </view>
+                <view class='lable-view'>
+                  <view class='content-lable-view'>
+                    <text class='content-lable'>拼团</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </navigator>
+          <view class='bottom'>
+            <text class='bottom-des'>共{{item.num}}件商品 合计￥{{item.payment}}元</text>
+          </view>
+          <view class='bottom-invate' wx:if='{{item.group_status==1}}'>
+            <navigator url="/pages/product/pieceSaleShare/pieceSaleShare?object_id={{item.object_id}}">
+              <view class='bottom-invate-view'>
+                <text class='bottom-invate-des'>邀请好友参团</text>
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </swiper-item>
+</swiper>

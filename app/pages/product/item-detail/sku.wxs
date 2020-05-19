@@ -1,0 +1,133 @@
+
+ //判断库存
+var isHasStore = function(spec,index, data, selectArr) {
+    return data && data.some(function(list) {
+        if (list.ids[index] == spec) {
+            var newSelect = selectArr.slice();
+            if (newSelect[index]) {
+                delete newSelect[index];
+            }
+            if (newSelect.every(function(item, j) {
+                return !!!item ? true : selectArr[j]  == list.ids[j]
+            })) {
+
+                return list.skus.store > 0
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    });
+}
+
+ // 判断是否是单规格(无规格)
+var judgeSingleSku = function(specArr) {
+
+    var skusArr = specArr.filter(function (item) {
+        return item.store*1 !== 0
+    });
+    return  (specArr.length === 1 || skusArr.length === 1)
+}
+
+//判断规格选中状态
+var judgeClass=function(index,spec,retState,specArr){
+    var hasStore = isHasStore(spec,index,retState.newData,retState.selectArr);
+    var singleSku = judgeSingleSku(specArr);
+    return hasStore?(singleSku || retState.selectArr[index]===spec ?'selected':'normal'):'disabled';
+};
+
+
+
+//sku  是否 还有机会 按钮判断
+var isNonPayment = function(promotion){
+    if (promotion.activity_type) {
+        if (!promotion.realStore) {
+            return promotion.promotion[0].activity_sales !== promotion.promotion[0].activity_store;
+        }
+    }
+};
+
+
+
+
+var chooseAssignArea = function(free_conf, areaCode){
+    return free_conf.filter(function (val,index) {
+        var rowArea = val.area && val.area.split(",");
+        return rowArea && rowArea.some(function (v) {
+            if (v === areaCode[0] || v === areaCode[1]) {
+                return free_conf[index]
+            }
+        })
+    })
+
+}
+
+
+
+//取时间年月日
+var timeTransform = function(time){
+    return time?time.split(" ")[0]:''
+};
+
+var CouponType = {
+    text:function(data) {
+        return data.apply_text;
+    },
+    title:function(data) {
+        return data.type === "0" ? "店铺券" : (data.type === "1" ? "跨店券" : (data.type === "2" ? "平台券" : (data.type === "3" ? "红包抵用券" : "免单券")))
+    }
+};
+
+var timeCtrl = {
+    format1 : function(T) {
+        var dateAndTime = T.split(' ');
+        var data = dateAndTime[0].split('-').join('/').substring(2),
+            time = dateAndTime[1].substring(0, 5);
+        return data + ' ' + time;
+    },
+    formatTime: function (time) {
+		var hour = timeCtrl.formatOneNum(parseInt(time / 3600));
+		var minute = timeCtrl.formatOneNum(parseInt((time - 3600 * hour) / 60));
+		var second = timeCtrl.formatOneNum(time % 60);
+		return hour + ":" + minute + ":" + second;
+	},
+	formatOneNum: function (num) {
+	    num=parseInt(num);
+		return num < 10 ? "0" + num : num;
+    },
+    formatTextTime: function (time) {
+		var day = parseInt(time / 3600 / 24);
+		day = day < 10 ? "0" + day : day;
+		var hour = timeCtrl.formatOneNum(parseInt(time / 3600 % 24));
+		var minute = timeCtrl.formatOneNum(parseInt(time / 60 % 60));
+		var second = timeCtrl.formatOneNum(time % 60);
+		return day + "天" + hour + "时" + minute + "分" + second + "秒";
+	},
+}
+var getName=function(name, phone) {
+    if (name) {
+        return name.length > 2 ? name.substring(0, 1) + "**" + name.substring(name.length - 1) : name
+    }
+    return phone && phone.substring(0, 3) + "*****" + phone.substring(phone.length - 3)
+}
+
+var addImageSuffix = function(url,size){
+    return url = url.indexOf('image.tairanmall.com')!=-1 ? url + size + ".jpg" : url
+}
+var EvaluateGrade={
+    "Good": "好评!",
+	"Bad": "差评!",
+	"Neutral": "中评!"
+}
+module.exports ={
+    judgeClass:judgeClass,
+    isNonPayment:isNonPayment,
+    chooseAssignArea:chooseAssignArea,
+    timeTransform:timeTransform,
+    CouponType:CouponType,
+    timeCtrl:timeCtrl,
+    getName:getName,
+    addImageSuffix:addImageSuffix,
+    EvaluateGrade:EvaluateGrade,
+}

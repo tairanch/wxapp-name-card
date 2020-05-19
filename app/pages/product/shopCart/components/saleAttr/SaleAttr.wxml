@@ -1,0 +1,45 @@
+<!--pages/product/shopCart/components/saleAttr/SaleAttr.wxml-->
+<wxs module="shopCartUtils" src="../../shopCart.wxs"></wxs>
+<view>
+  <view class='shady'></view>
+  <view class='{{show ? "popup-sale-attr active":"popup-sale-attr"}}'>
+    <view class='sale-modal-content'>
+      <view class='sale-table-view'>
+        <view class='sale-table-view-cell'>
+          <image class='sale-close-btn' bindtap='onSure' src='../../../../../image/icon/close/close-nobg-icon.png'></image>
+          <view class='sale-posit-img'>
+            <image src='{{ shopCartUtils.addImageSuffix(image,"_m")}}' class='sale-media-object'></image>
+          </view>
+          <view class='sale-window-head'>
+            <view class='sale-price-tag'>
+              <view class='p sale-text-price'>
+                {{price}}
+              </view>
+              <view class='p sale-text-price-sel'>
+                已选
+                <text wx:for='{{selectSaleAttr}}' wx:key='{{index}}'>{{item}} </text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='sale-list-view'>
+        <!-- attrItemList -->
+        <attr-item
+          wx:for='{{attrItemList}}'
+          wx:key='{{index}}'
+          attrData='{{item}}'
+          bindsaleAttrSelect='attrSelect'
+          bindselectSingleAttr='selectSingleAttr'
+          skus='{{skus}}'
+          specs='{{specs}}'
+          allAttr='{{allAttr}}'
+          selectedSpecs='{{selectedSpecs}}'
+        ></attr-item>
+      </view>
+      <view class='sale-modal-bottom' bindtap='submitSku'>
+        <view class='div'>确定</view>
+      </view>
+    </view>
+  </view>
+</view>

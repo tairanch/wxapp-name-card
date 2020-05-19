@@ -1,0 +1,178 @@
+<!--pages/myCardEdit/myCardEdit.wxml-->
+<view class='person-container' wx:if="{{!showInvalidView}}">
+    <view class='scroll-view-container'>
+
+        <!-- 模板1 -->
+        <view class='tmp1-card-background-view' wx:if="{{currentSelectTemplateType == '2'}}">
+
+            <!-- 黑白相间底色 -->
+            <view class="tmp1-card-bg"></view>
+
+            <!-- 名片背景图 -->
+            <image class="card-bg-image" style='width:{{(clientWidth-20)+"px"}};' mode='scaleToFill' src="/image/myCard/template_bg@2x.png" />
+
+            <!-- 名片信息 -->
+            <view class="card-bg-view">
+
+                <!-- 卡片头像 -->
+                <view class='tmp1-header-view'>
+                    <view class='tmp1-header-title-view'>
+                        <text class='tmp1-card-title'>{{userName && userName.length > 0 ? userName :'姓名'}}</text>
+                        <text class='tmp1-staff-text'>{{userStaff && userStaff.length > 0 ? userStaff :'当前职位'}}</text>
+                    </view>
+                    <view style='flex:1' />
+                    <image src="{{headerImageUrl && headerImageUrl.length > 0 ? headerImageUrl: '/image/nameCard/moren@2x.png'}}" class="header-image" />
+                </view>
+
+                <!-- 手机号 -->
+                <view class='tmp1-phone-view'>
+                    <image class="info-image-icon" mode='widthFix' src="/image/myCard/phone_white@2x.png"></image>
+                    <view class="user-phone-text">{{userPhone}}</view>
+                </view>
+
+                <!-- 邮箱 -->
+                <view class='tmp1-emil-view'>
+                    <image class="info-image-icon" mode='widthFix' src="/image/myCard/emil_icon_white@2x.png"></image>
+                    <view class="user-email-text">{{userEmail}}</view>
+                </view>
+
+                <!-- 二维码 -->
+                <image class="tmp1-erweima" src="/image/myCard/qr_code_white@2x.png" bindtap="turnCode"></image>
+            </view>
+        </view>
+
+        <!-- 默认模板 -->
+        <view class='default-temp-card-background-view' wx:else>
+
+            <!-- 黑白相间底色 -->
+            <view class="header-bg-top"></view>
+            <view class="header-bg-middle"></view>
+            <view class="header-bg-bottom"></view>
+
+            <!-- 名片背景图 -->
+            <image class="card-bg-image" style='width:{{(clientWidth-20)+"px"}};' mode='scaleToFill' src="/image/myCard/template_default@2x.png" />
+
+            <!-- 名片信息 -->
+            <view class="card-bg-view">
+
+                <!-- 头像  -->
+                <view class='default-tmp-header-view'>
+                    <image src="{{headerImageUrl && headerImageUrl.length > 0 ? headerImageUrl: '/image/nameCard/moren@2x.png'}}" class="header-image" />
+                    <view class='default-tmp-header-title-view'>
+                        <text class='card-title'>{{userName && userName.length > 0 ? userName :'姓名'}}</text>
+                        <text class='staff-text'>{{userStaff && userStaff.length > 0 ? userStaff :'当前职位'}}</text>
+                    </view>
+                    <view style='flex:1' />
+                    <image class="erweima" src="/image/myCard/erweima@2x.png" bindtap="turnCode"></image>
+                </view>
+
+                <!-- 手机号 -->
+                <view class='phone-view'>
+                    <image class="info-image-icon" mode='widthFix' src="/image/myCard/dianhua@2x.png"></image>
+                    <view class="user-phone-text">{{userPhone}}</view>
+                </view>
+
+                <!-- 邮箱 -->
+                <view class='emil-view'>
+                    <image class="info-image-icon" mode='widthFix' src="/image/myCard/youxiang@2x.png"></image>
+                    <view class="user-email-text">{{userEmail}}</view>
+                </view>
+            </view>
+        </view>
+
+        <!-- 选择模板 -->
+        <view class='select-template'>
+            <text class='item-title'>选择模板</text>
+            <view class='template-list'>
+                <!-- 第1个模板缩略图 -->
+                <view class='template-item' bindtap='selectTemplateClick' data-type='1'>
+                    <image class="select-item-bg-image" src="/image/myCard/card_template_default@2x.png" />
+                    <view class='select-item-cover-view' wx:if="{{currentSelectTemplateType == '1'}}">
+                        <image class="select-item-image" src="/image/myCard/select_sure_icon@2x.png" />
+                    </view>
+                </view>
+                <!-- 第2个模板缩略图 -->
+                <view class='template-item' bindtap='selectTemplateClick' data-type='2'>
+                    <image class="select-item-bg-image" src="/image/myCard/card_template_1@2x.png" />
+                    <view class='select-item-cover-view' wx:if="{{currentSelectTemplateType == '2'}}">
+                        <image class="select-item-image" src="/image/myCard/select_sure_icon@2x.png" />
+                    </view>
+                </view>
+            </view>
+            <view class='separate-line'></view>
+        </view>
+
+        <!-- 选择头像 -->
+        <view class='row-item'>
+            <text class='item-title'>头像</text>
+            <view class='selcte-header-bg' bindtap='selectHeaderButtonClick'>
+                <image src="{{headerImageUrl && headerImageUrl.length > 0 ? headerImageUrl: '/image/nameCard/moren@2x.png'}}" class="selcte-header-image" />
+                <image src='/image/icon/arrow-right-icon.png' class="selcte-header-arrow" />
+            </view>
+            <view class='separate-line'></view>
+        </view>
+
+        <!-- 填写姓名 -->
+        <view class='row-item'>
+            <text class='item-title'>姓名<text class='require-star'> *</text></text>
+            <input class='text-input' value='{{userName}}' placeholder='请输入您的姓名' maxlength='5' type='text' placeholder-class='text-placeholder' bindblur='textInputBlurCallback' data-inputtype='name' />
+            <view class='separate-line'></view>
+        </view>
+
+        <!-- 填写手机号 -->
+        <view class='row-item'>
+            <text class='item-title'>手机号<text class='require-star'> *</text></text>
+            <input class='text-input' value='{{userPhone}}' maxlength='11' placeholder='请输入手机号码' type='number' placeholder-class='text-placeholder' bindblur='textInputBlurCallback' data-inputtype='phone' />
+            <view class='separate-line'></view>
+        </view>
+
+        <!-- 填写邮箱 -->
+        <view class='row-item'>
+            <text class='item-title'>邮箱</text>
+            <input class='text-input' value='{{userEmail}}' placeholder='请输入邮箱(选填)' type='text' placeholder-class='text-placeholder' bindblur='textInputBlurCallback' maxlength='40' data-inputtype='email' />
+            <view class='separate-line'></view>
+        </view>
+
+        <!-- 店铺名称 -->
+        <view class='row-item'>
+            <text class='item-title'>店铺名称</text>
+            <input class='text-input' value='{{shop_name}}' placeholder='请输入店铺名称' type='text' placeholder-class='text-placeholder' bindblur='textInputBlurCallback' maxlength='10' data-inputtype='shop_name' />
+            <view class='separate-line'></view>
+        </view>
+
+        <!-- 填写职务 -->
+        <view class='row-item'>
+            <text class='item-title'>职务<text class='require-star'> *</text></text>
+            <input class='text-input' value='{{userStaff}}' placeholder='请输入职务' type='text' placeholder-class='text-placeholder' bindblur='textInputBlurCallback' maxlength='10' data-inputtype='staff' />
+            <view class='separate-line'></view>
+        </view>
+
+        <!-- 个人介绍 -->
+        <view class='row-item'>
+            <text class='item-title'>个人介绍</text>
+            <view class='person-textarea-bg'>
+                <textarea
+                    class='person-textarea'
+                    maxlength='128'
+                    value='{{userDescText}}'
+                    placeholder="输入自我介绍，在个人名片页展示"
+                    placeholder-class="text-placeholder"
+                    bindinput='textareaInputCallback'
+                    bindblur='textareaBlurCallback'/>
+                <view class='word-count-view'>
+                    <text class='word-count-text'>{{userDescWordsCount}}/128</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 底部保存按钮 -->
+    <cover-view class='save-btton-bg-view'>
+        <cover-view class='save-button' bindtap='saveButtonClick'>
+            <button class='save-title' >保存</button>
+        </cover-view>
+    </cover-view>
+</view>
+<view class='invalid-view' wx:else>
+    <text>请联系商户开启权限</text>
+</view>

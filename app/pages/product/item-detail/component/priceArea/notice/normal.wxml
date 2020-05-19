@@ -1,0 +1,10 @@
+<wxs module="sku" src="../../../sku.wxs"></wxs>
+<view class="flashsale-price">
+    <text class="sell-price">¥{{sellPrice}}</text>
+    <text class="market-price" wx:if="{{marketPrice && marketPrice !== sellPrice}}">¥{{marketPrice}}</text>
+    <text class="flashsale-tag">限时特卖</text>
+    <view class="sell-time">
+        <view class="time-notice">距结束仅剩</view>
+        <view class="time-notice">{{sku.timeCtrl.formatTextTime(time)}}</view>
+    </view>
+</view>

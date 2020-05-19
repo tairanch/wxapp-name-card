@@ -1,0 +1,106 @@
+@import '../componentCss.wxss';
+
+/* 拼团楼层 */
+
+.group {
+  padding: 0 20rpx 0 20rpx;
+  position: relative;
+  background: #ffffff;
+  margin-bottom:20rpx
+}
+
+.group-title {
+  padding-left: 10rpx;
+}
+
+.group-title-text {
+  float: left;
+}
+
+.group-more-wraper {
+  right: 10rpx;
+}
+
+.group-swiper {
+  width: 100%;
+  height: 355rpx;
+}
+
+.swiper-item {
+  width: 33.333% !important;
+}
+
+.group-item {
+  width: 216.666rpx;
+  margin: 0 10rpx;
+  float: left;
+  position: relative;
+}
+
+.group-item-img {
+  width: 216.666rpx;
+  height: 216.666rpx;
+}
+
+.no-goods-count-image {
+  position: absolute;
+  width: 180rpx;
+  height: 156rpx;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%,-50%)
+}
+
+.group-item-label {
+  width: 80rpx;
+  height: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+  color: #fff;
+  font-size: 20rpx;
+  background-color: #f88;
+  border-radius: 0 30rpx 30rpx 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.group-detail {
+  width: 100%;
+  font-size: 24rpx;
+  text-align: center;
+  padding: 15rpx 0 20rpx 0;
+}
+
+.group-detail-price {
+  color: #e60a30;
+  font-weight:600;
+}
+
+.group-detail-market-price {
+  color: #c9c9c9;
+  text-decoration: line-through;
+}
+
+.group-swiper-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.group-swiper-dots .dot {
+  width: 10rpx;
+  height: 6rpx;
+  background: #c9c9c9;
+  /* border-radius: 4rpx; */
+  transition: all 0.6s;
+}
+
+.group-swiper-dots .dot.active {
+  background: #e60a30;
+  width: 13rpx;
+  /* width: 40rpx; */
+}

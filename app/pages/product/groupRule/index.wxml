@@ -1,0 +1,35 @@
+<view class="group-rule">
+    <image class="step-img" src="/image/pintuan/pintuan-rule-step-bg.png"></image>
+    <view class="group-rule-content">
+        <view class="group-purchase-title">
+            <image src="/image/pintuan/itdct-icon.png"></image>
+            <text>玩法说明</text>
+        </view>
+        <view>
+            <view class="group-purchase-li">
+                <view class="rule-tip">1. 选择商品开团</view>
+                <view class="rule-detail"> 选择拼团商品下单，团长完成支付后，团即刻开启。在活动期间内，参团人数需在规定时间内达到规定人数，此团方能成功，否则超过活动期，或者超过拼团时间，此团均为失败，系统自动退款。</view>
+            </view>
+            <view class="group-purchase-li">
+                <view class="rule-tip">2. 团长</view>
+                <view class="rule-detail">
+                    开团且该团第一位支付成功的人。
+                </view>
+            </view>
+            <view class="group-purchase-li">
+                <view class="rule-tip">3. 参团成员</view>
+                <view class="rule-detail">
+                    通过团长邀请购买该商品的成员即为参团人员，参团人员也可
+                    通过分享团链接给微信好友邀请更多的成员参加。
+                </view>
+            </view>
+            <view class="group-purchase-li">
+                <view class="rule-tip">4. 拼团有效期</view>
+                <view class="rule-detail">
+                    拼团有效期是自开团时刻起至规定的时间内，均以商品的结束
+                    时间为准。
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

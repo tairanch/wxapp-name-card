@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="mall">
+  <wxs module="filters" src="../../utils/filter.wxs"></wxs>  
+  <view class='loading' wx:if='{{!update}}'>
+  <loading/>
+  </view>
+  <view class='no-data' wx:if='{{update&&homePageData.length<=0}}'>
+    <image class='no-data-img' src='/image/mall/sell-out.png' mode='widthFix'></image>
+    <view class='no-data-tip'>上架中，活动即将开始~</view>
+  </view>
+  
+  <view wx:if='{{homePageData.length>0}}' wx:for='{{homePageData}}' wx:key="unique">
+    <!-- 搜索 -->
+    <search-component wx:if='{{item.type=="10"}}' data='{{searchData}}'></search-component>
+    <!-- banner -->
+    <banner-component wx:elif='{{item.type=="20"&&item.data.img_list.length}}' data='{{item.data}}' circular='true' current='0'></banner-component>
+    <!-- 广告位 -->
+    <advertising-component wx:elif='{{item.type=="30"&&item.data.url}}' data='{{item.data}}' bindmyEvent="advertisingClick" data-data='{{item.data}}'></advertising-component>
+    <!-- 拼团楼层 -->
+    <group-component wx:elif='{{item.type=="40"&&item.data.item_list.length}}' data="{{item.data}}"></group-component>
+    <!-- 新品首发 -->
+    <two-lines-component wx:elif='{{item.type=="50"&&item.data.item_list.length}}' data='{{item.data}}'></two-lines-component>
+    <!-- 类目楼层 -->
+    <three-lines-component wx:elif='{{item.type=="60"&&item.data.item_list.length}}' data='{{item.data}}'></three-lines-component>
+  </view>
+  <view wx:if='{{update&&homePageData.length>0}}' class='footer'>别拉了，我是有底线的~</view>
+</view>

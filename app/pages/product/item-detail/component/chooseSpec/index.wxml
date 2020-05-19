@@ -1,0 +1,12 @@
+<view class="choose-spec" bindtap="selectSku">
+    <text>
+        <block wx:if="{{retState.selectTag}}">已选择</block>
+        <block wx:else>选择</block>
+    </text>
+    <view class="choose-spec-list">
+        <block wx:if="{{retState.selectTag}}">
+            <text>{{retState.selectTag}}</text>
+        </block>
+    </view>
+    <image src="/image/icon/arrow-right-icon.png"></image>
+</view>

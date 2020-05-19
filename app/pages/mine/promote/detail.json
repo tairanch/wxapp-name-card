@@ -1,0 +1,7 @@
+{
+  "usingComponents": {    
+    "promote-list":"./promote-list",
+    "promote-list-component":"./components/promote-list-component"
+  },
+  "navigationBarTitleText": "佣金明细"
+}

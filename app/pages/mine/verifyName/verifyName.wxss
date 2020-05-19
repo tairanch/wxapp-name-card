@@ -1,0 +1,222 @@
+/* pages/mine/verifyName/verifyName.wxss */
+
+.page-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.top-header-bg-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 220px;
+    background-color: #fff9fa;
+}
+
+.id-card-image {
+    margin-top: 15px;
+    width: 117px;
+    height: 92px;
+}
+
+.decs-bg-view {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.input-part-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.input-bg-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+}
+
+.input-title {
+    margin-left: 15px;
+    font-size: 12pt;
+    color: #353535;
+}
+
+.desc-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: #f3f4f5;
+}
+
+.desc-text {
+    font-size: 10pt;
+    color: #353535;
+}
+
+
+.input-class {
+    flex: 1;
+    margin-left: 15px;
+    font-size: 12pt;
+    color: #666666;
+}
+
+.placeholder {
+    font-size: 12pt;
+    color: #c9c9c9;
+}
+
+.line-view {
+    display: flex;
+    flex: 1;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 0.5px;
+    background-color: #E4E4E4
+}
+
+.demo-btn-bg-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.demo-image {
+    margin-right: 5px;
+    width: 14px;
+    height: 14px;
+}
+
+.white-bg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+}
+
+.soft-tips {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 30px);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #e7f5fd;
+}
+
+.soft-tips-text {
+    font-size: 8pt;
+    color: #666666;
+    margin: 5px 10px;
+    text-align: center;
+}
+
+.card-bg-view {
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 20px);
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.front-bg-view {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.back-bg-view {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.add-default-bg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 88px;
+    border-radius: 5px;
+    border: 0.5px solid #C9C9C9;
+}
+
+.up-loading-view {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 88px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.have-image {
+    width: 140px;
+    height: 88px;
+}
+
+.delete-btn {
+    position: absolute;
+    right: 10px;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+}
+
+.add-image {
+    width: 40px;
+    height: 40px;
+}
+
+.add-text-tips {
+    margin-top: 6px;
+    font-size: 10pt;
+    color: #C9C9C9;
+}
+
+.demo-tips-text {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 8pt;
+    color: #999999;
+}
+
+.demo-idCard-image {
+    width: 83px;
+    height: 52px;
+}
+
+.bottom-btn {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    height: 44px;
+    background-color: #E60A30;
+    z-index: 100;
+}

@@ -1,0 +1,4 @@
+<view>
+    <view bindtap="jumpAddress">address</view>
+    <view>{{address.a}}</view>
+</view>

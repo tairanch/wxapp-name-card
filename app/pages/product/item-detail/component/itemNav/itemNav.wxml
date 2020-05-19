@@ -1,0 +1,15 @@
+<block wx:if="{{opacity}}">
+    <view class="item-nav" style="background:rgba(255,255,255,{{opacity}})">
+        <view class="nav-ul">
+            <block  wx:for="{{nav}}" wx:key="index">
+                <view class="nav-li" data-index="{{index}}" bindtap="navClickEvent">
+                    <text
+                        class="{{navIndex==index?'active':''}}"
+                    >{{item}}</text>
+                </view>
+            </block>
+        </view>
+    </view>
+</block>
+
+

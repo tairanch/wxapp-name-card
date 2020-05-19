@@ -1,0 +1,3 @@
+<view class="advertising" bindtap="onTap" data-data='{{data}}'>
+  <image class="advertising-img" src="{{data.url}}" mode="widthFix"></image>
+</view>

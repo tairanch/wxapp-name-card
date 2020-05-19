@@ -1,0 +1,61 @@
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100rpx;
+    background: #fff;
+    display: flex;
+    border-top: 1rpx solid #E5E5E5;
+}
+.footer-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #6b6969;
+    width: 110rpx;
+    line-height: 1;
+}
+.footer-icon>image{
+    width: 40rpx;
+    height: 40rpx;
+    margin-bottom: 6rpx;
+}
+.footer-btn{
+    flex: 1;
+    display: flex;
+}
+.footer-btn>view{
+    flex: 1;
+    font-size: 28rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 100rpx;
+}
+.footer-btn .group-btn{
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.group-btn>text:nth-of-type(1){
+    margin-bottom: 6rpx;
+}
+
+.color1{/**/
+    background: #c9c9c9;
+    pointer-events: none;
+}
+.color2{/*加入购物袋*/
+    background: #f88;
+}
+.color3{/*立即购买/立即秒杀*/
+    background: #e60a30;
+}
+.color4{/*即将开始*/
+    background: #FFC515;
+}

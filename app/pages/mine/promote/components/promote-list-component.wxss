@@ -1,0 +1,30 @@
+
+/* 分组头部 */
+.section-header {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 110rpx;
+}
+
+
+/* 分组时间 */
+.section-header-date {
+
+ color: #353535;
+ font-size: 30rpx;
+ font-weight: 700;
+ margin-left: 30rpx;
+}
+
+.setion-header-amount {
+  color:#999999;
+  font-size:26rpx;
+  margin-right:30rpx;
+  display:flex;
+  flex-direction: column;
+  align-items:flex-end;
+  justify-content: flex-end
+}

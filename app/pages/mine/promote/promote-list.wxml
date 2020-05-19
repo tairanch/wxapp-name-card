@@ -1,0 +1,24 @@
+<!--pages/mine/promote/promote-list.wxml-->
+<scroll-view style='width:100%;height:100vh' bindscrolltolower="onBindscrolltolower" bindscrolltoupper="onBindscrollupper" scroll-y>
+
+  <block wx:for="{{dataList}}" wx:key="section-key" wx:for-item="sectionItem">
+
+    <!-- section-header -->
+    <view class='section-header'>
+      <text class='section-header-date'>2019年2月</text>
+      <view class='setion-header-amount'>
+        <view>+22.1</view>
+        <view>待入账</view>
+      </view>
+    </view>
+
+    <!-- 每组行项目 -->
+    <view wx:for="{{sectionItem.list}}" wx:key="item-key" wx:for-item="item">
+
+      <!--  佣金cell -->
+      <promote-cell-component />
+
+    </view>
+  </block>
+
+</scroll-view>

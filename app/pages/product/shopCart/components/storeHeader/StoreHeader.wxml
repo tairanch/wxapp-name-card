@@ -1,0 +1,21 @@
+<!--购物车store 头部-->
+<view class='store-header'>
+  <view class='checkbox'>
+    <check-icon isCheck='{{shopInfo.storeCheck}}' bindhandleCheck='handleCheck'></check-icon>
+  </view>
+  <navigator class='store-name' url='{{shopInfo.shop_id}}'>
+    <view class='store-name-text'>
+      <image src='../../../../../image/icon/store/trc-self-icon.png' wx:if='{{ shopInfo.icon === "icon_self"}}' class='image-self'></image>
+      <image src='../../../../../image/icon/store/xt-shop-icon.png' wx:elif='{{ shopInfo.icon === "icon_good"}}' class='image-good'></image>
+      <image src='../../../../../image/icon/store/common-shop-icon.png' wx:else class='image-default'></image>
+      {{shopInfo.alias || shopInfo.name}}
+    </view>
+    <view class='open-icon' wx:if='{{shopInfo.is_open == 1 && !edit}}'>
+      <image class='arrow-right-icon' src='../../../../../image/icon/arrow-right-s-icon.png'></image>
+    </view>
+  </navigator>
+  <view class='store-edit'>
+    <text class='one text' wx:if='{{shopInfo.show_coupons && !edit}}'>领券</text>
+    <text class='two text' bindtap='toggle'>{{edit ? "完成" : "编辑"}}</text>
+  </view>
+</view>

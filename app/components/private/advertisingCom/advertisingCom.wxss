@@ -1,0 +1,11 @@
+/* 广告位 */
+
+.advertising {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+.advertising-img {
+  width: 100%;
+  vertical-align:top;
+}

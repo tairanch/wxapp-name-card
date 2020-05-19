@@ -1,0 +1,35 @@
+.search-com {
+  width: 100%;
+  background: #fff;
+  position: relative;
+  height: 90rpx;
+}
+
+.search {
+  border: 1rpx solid #c9c9c9;
+  border-radius: 58rpx;
+  font-size: 28rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  position: absolute;
+  width: 690rpx;
+  left: 50%;
+  top: 16rpx;
+  transform: translate(-50%, 0);
+}
+
+.search-content {
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  color: #666;
+  text-align: center;
+}
+
+.search-icon {
+  vertical-align:-3rpx;
+  width: 26rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}

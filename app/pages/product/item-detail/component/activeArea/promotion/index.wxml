@@ -1,0 +1,8 @@
+<view class="promotion-list" bindtap="getPromotion">
+    <text>促销</text>
+    <view class="promotion-list-text">
+        <text class="promotion-list-tag">{{tab}}</text>
+        <text class="promotion-list-explain">{{text}}</text>
+    </view>
+    <image wx:if="{{hideFlag}}" src="/image/icon/arrow-right-icon.png"></image>
+</view>

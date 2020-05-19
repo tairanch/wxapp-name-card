@@ -1,0 +1,7 @@
+<!--pages/component/returnTop/returnTop.wxml-->
+<view>
+  <view class='return-top' style='{{style}}' wx:if='{{show}}'>
+    <image src='./img/return-top-icon.png' style='width: 40rpx; height: 40rpx;vertical-align: middle;' bindtap='returnTop'></image>
+  </view>
+</view>
+

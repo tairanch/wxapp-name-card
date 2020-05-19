@@ -1,0 +1,41 @@
+<!--pages/product/pieceSaleShare/pieceSaleShare.wxml-->
+<view class='root'>
+  <view class='header-bg'></view>
+  <view class='canvas_pre'>
+    <canvas style="width:100vw; height:100vh;" canvas-id="myShareCanvas" />
+  </view>
+  <view class='content'>
+    <view class='content-pre' style='top:{{top}}'>
+      <image class='content-bg' style='height:{{height}}' src='../../../image/shareMiddlePage/bg_pre.png'></image>
+      <view class='content-text'>
+        <text class='content-text-title'>有温度的好物</text>
+        <text class='content-text-from'>来自{{phone}}的分享</text>
+        <image class='content-text-img' style='width:{{imageRealW}};height:{{imageRealH}}' src='{{goodImg}}'></image>
+      </view>
+      <view class='content-bottom'>
+        <view class='content-bottom-left'>
+          <text class='content-bottom-left-title'>{{goodTitle}}</text>
+          <text class='content-text-from'>商品价格以实际为准</text>
+          <view class='content-bottom-left-other'>
+            <text class='content-bottom-left-person'>{{requiredPerson}}人团：</text>
+            <text class='content-bottom-left-price'>￥{{goodPrice}}</text>
+          </view>
+        </view>
+        <view class='content-bottom-right'>
+          <image class='content-bottom-right-img' src='{{qrCode}}'></image>
+          <text class='content-bottom-right-des'>扫描或长按二维码</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='bottom'>
+    <button class='bottom-item' open-type="share" hover-class='none'>
+      <image class='weixin' src='../../../image/shareMiddlePage/weixin.png'></image>
+      <text class='bottom-text'>分享好友</text>
+    </button>
+    <view class='bottom-item' bindtap='saveImg'>
+      <image class='weixin' src='../../../image/shareMiddlePage/qr_code.png'></image>
+      <text class='bottom-text'>保存图片</text>
+    </view>
+  </view>
+</view>

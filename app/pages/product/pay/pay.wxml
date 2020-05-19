@@ -1,0 +1,30 @@
+<!--pages/product/pay/pay.wxml-->
+<wxs module="filters" src="../../../utils/filter.wxs"></wxs>
+<view class="pay">
+  <view class="item">
+    <text class="fs-32">订单名称</text>
+    <text class="fs-28">{{filters.maxLength(orderDetail.merchantDesc.desc, 15)}}</text>
+  </view>
+  <view class="item">
+    <text class="fs-32">实付款</text>
+    <text class="fs-28">{{filters.currency(orderDetail.restAmount, '￥')}}</text>
+  </view>
+  <view class="select-way">
+    <text class="fs-28">选择支付方式</text>
+  </view>
+  <view class="pay-item">
+    <view class="pay-item-label">
+      <image src="./images/wx.png" class="item-icon"></image>
+      <view>
+        <view class="item-text name">
+          <text class="fs-32 ">微信支付</text>
+        </view>
+        <view class="item-text des">
+          <text class="fs-24 ">推荐有微信账号的用户使用</text>
+        </view>
+      </view>
+    </view>
+    <image src="./images/select.png" class="select-icon"></image>
+  </view>
+  <button class="pay-btn" bindtap="payBtnClick">确认支付</button>
+</view>

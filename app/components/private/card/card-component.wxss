@@ -1,0 +1,93 @@
+.container {
+  height: 350rpx;
+  border-radius: 30rpx;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  margin: 30rpx 20rpx;
+  padding: 50rpx 50rpx 10rpx 50rpx;
+  box-shadow: 0 0 30rpx #eee9e9;
+  position: relative
+}
+
+.user-name {
+
+  color: #353535;
+  font: 36rpx;
+  font-weight: 700
+}
+
+
+/* 职位 */
+.user-professional {
+  
+  color: #666666;
+  font-size: 26rpx;
+  margin-top: 20rpx
+} 
+
+/* 用户头像 */
+.user-head {
+
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  right: 30rpx;
+  top: 30rpx;
+  border-radius: 50%
+}
+
+/* 用户电话 */
+.user-phone-email {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+
+/* 电话 */
+.user-phone-email-image {
+
+  width:20rpx;
+  height:20rpx;
+}
+
+
+.user-phone-email-text {
+
+  color: #999999;
+  font-size: 24rpx;  
+  margin-left: 20rpx;  
+}
+
+
+/* 编辑分享 */
+.share-edit-container {
+
+  position: absolute;
+  bottom: 30rpx;
+  display: flex;
+  flex-direction: row;
+  left: 20rpx;
+}
+
+.share-button {
+
+  height: 80rpx;  
+  background: white
+}
+
+.share-button::after {
+  border: none
+}
+
+
+
+/* .button[class="share-button"]::after {
+  border: 0;
+} */
+
+.share-image {
+  width: 34rpx;
+  height: 34rpx;
+}

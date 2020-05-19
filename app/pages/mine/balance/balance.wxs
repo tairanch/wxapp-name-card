@@ -1,0 +1,21 @@
+// split
+var getAmountText = function (flow_type, amount) {
+
+    var str = '';
+
+    if (flow_type == 1) {
+        // 资金流入
+
+        str = '+¥'+amount;
+
+    } else if (flow_type == 2) {
+        // 资金流出
+        str = '-¥'+amount;
+    }
+
+    return str;
+};
+
+module.exports = {
+    getAmountText: getAmountText
+}

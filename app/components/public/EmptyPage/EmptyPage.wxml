@@ -1,0 +1,6 @@
+<!--pages/component/empty/EmptyPage/EmptyPage.wxml-->
+<view class='empty-page'>
+  <image src='{{imgUrl}}' style='{{"width: " + imgWidth + "; height: " + imgHeight + ";" }}'></image>
+  <view class='p c-fs12 c-cc9'>{{msg}}</view>
+  <view class='redbtn' bindtap='turnLink' wx:if='{{!noBtn}}'>{{btnText}}</view>
+</view>

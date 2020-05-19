@@ -1,0 +1,161 @@
+<wxs module="sku" src="../../sku.wxs"></wxs>
+
+<view class="area-area">
+    <view class="area" wx:if="{{hideFlag}}" data-key="area" bindtap="showTag">
+        <text>配送</text>
+        <view class="area-content">
+            <text>{{mix.storehouse.name}}</text>
+            <image src="/image/icon/orientation-icon.png"></image>
+            <view>{{areaData.text}}</view>
+        </view>
+        <image src="/image/icon/arrow-right-icon.png"></image>
+    </view>
+    <view class="charge" wx:if="{{hideFlag}}">
+        <text>运费</text>
+        <block wx:if="{{detail.is_free}}">
+            <view>该商品已包邮 <text>包邮</text></view>
+        </block>
+        <!--计算运费【重量1 件数2 金额3】-->
+        <block wx:else>
+            <view>{{text}}</view>
+        </block>
+    </view>
+    <view class="support">
+        <view class="support-content" data-key="tag" bindtap="showTag">
+            <view class="support-content-list">
+                <image src="/image/common/{{!detail.support_ecard?'point-notice-icon':'detail-serve-icon'}}.png"></image>
+                <text><block wx:if="{{!detail.support_ecard}}">不</block>支持活动e卡</text>
+            </view>
+            <view class="support-content-list" wx:if='{{detail.tax_rate != 0 && detail.trade_type !== "DOMESTIC"}}'>
+                <image src="/image/common/detail-serve-icon.png"></image>
+                <text>商品税费</text>
+            </view>
+            <view class="support-content-list">
+                <image src="/image/common/{{!mix.tags.free_refund?'point-notice-icon':'detail-serve-icon'}}.png"></image>
+                <text><block wx:if="{{!mix.tags.free_refund}}">不</block>支持七天无理由退换货</text>
+            </view>
+            <view class="support-content-list" wx:if="{{detail.is_free}}">
+                <image src="/image/common/detail-serve-icon.png"></image>
+                <text>包邮</text>
+            </view>
+            <view class="support-content-list">
+                <image src="/image/common/detail-serve-icon.png"></image>
+                <text>正品保证</text>
+            </view>
+            <view class="support-content-list" wx:if="{{mix.storehouse.name&&hideFlag}}">
+                <image src="/image/common/detail-serve-icon.png"></image>
+                <text>{{mix.storehouse.name}}</text>
+            </view>
+            <view class="support-content-list">
+                <image src="/image/common/detail-serve-icon.png"></image>
+                <text>担保交易</text>
+            </view>
+            <view class="support-content-list" wx:if='{{typeof (mix.delivery_regions) !== "boolean"}}'>
+                <image src="/image/common/detail-serve-icon.png"></image>
+                <text>部分区域配送</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+<block>
+    <popup
+        show="{{showPop}}"
+        bindclose="popClose"
+    >
+        <block wx:if="{{showType=='tag'}}">
+            <view class="tag-modal">
+                <view class="tag-modal-title">
+                    <text>服务说明</text>
+                    <view class="title-icon" bindtap="popClose" >
+                        <image src="/image/icon/close/black-close-icon.png"></image>
+                    </view>
+                </view>
+                <scroll-view scroll-y class="tag-modal-content">
+                    <view class="tag-modal-list">
+                        <view class="tag-modal-list-icon">
+                            <image src="/image/common/{{!detail.support_ecard?'point-notice-icon':'detail-serve-icon'}}.png"></image>
+                            <block wx:if="{{!detail.support_ecard}}">不</block>支持活动e卡
+                        </view>
+                        <view class="tag-modal-list-text"><block wx:if="{{detail.support_ecard}}">店铺为支持活动e卡，商品贸易类型为一般贸易的商品</block>
+                            <block wx:else>不支持活动e卡</block></view>
+                    </view>
+                    <view class="tag-modal-list" wx:if='{{detail.tax_rate != 0 && detail.trade_type !== "DOMESTIC"}}'>
+                        <view class="tag-modal-list-icon">
+                            <image src="/image/common/detail-serve-icon.png"></image>
+                            商品税费
+                        </view>
+                        <view class="tag-modal-list-text">按照国家规定，本商品适用于跨境综合税，税率为{{rate}}%， 实际结算税费请以提交订单时的应付总额明细为准。</view>
+                    </view>
+                    <view class="tag-modal-list">
+                        <view class="tag-modal-list-icon">
+                            <image src="/image/common/{{!mix.tags.free_refund?'point-notice-icon':'detail-serve-icon'}}.png"></image>
+                            <block wx:if="{{!mix.tags.free_refund}}">不</block>支持七天无理由退换货
+                        </view>
+                        <view class="tag-modal-list-text">
+                            <block wx:if="{{mix.tags.free_refund}}">此商品支持7天无理由退换货，在商品签收之日起7天内可发起退换货申请，退回商品应不影响第二次销售</block>
+                            <block wx:else>此商品不支持七天无理由退换货</block>
+                        </view>
+                    </view>
+                    <view class="tag-modal-list" wx:if="{{detail.is_free}}">
+                        <view class="tag-modal-list-icon">
+                            <image src="/image/common/detail-serve-icon.png"></image>
+                            包邮
+                        </view>
+                        <view class="tag-modal-list-text">此商品全国地区包邮。</view>
+                    </view>
+                    <view class="tag-modal-list">
+                        <view class="tag-modal-list-icon">
+                            <image src="/image/common/detail-serve-icon.png"></image>
+                            正品保证
+                        </view>
+                        <view class="tag-modal-list-text">泰然城每件商品都经过严苛的质量把关，保障正品、保障品质，杜绝一切假货，让您购物无忧。</view>
+                    </view>
+                    <view class="tag-modal-list" wx:if="{{mix.storehouse.name&&hideFlag}}">
+                        <view class="tag-modal-list-icon">
+                            <image src="/image/common/detail-serve-icon.png"></image>
+                            {{mix.storehouse.name}}
+                        </view>
+                        <view class="tag-modal-list-text">本商品由{{mix.storehouse.name}}发货。</view>
+                    </view>
+                    <view class="tag-modal-list" >
+                        <view class="tag-modal-list-icon">
+                            <image src="/image/common/detail-serve-icon.png"></image>
+                            担保交易
+                        </view>
+                        <view class="tag-modal-list-text">担保交易，放心购买。</view>
+                    </view>
+                    <view class="tag-modal-list" wx:if='{{typeof (mix.delivery_regions) !== "boolean"}}'>
+                        <view class="tag-modal-list-icon">
+                            <image src="/image/common/detail-serve-icon.png"></image>
+                            部分区域配送
+                        </view>
+                        <view class="tag-modal-list-text">本商品只支持部分配送区域。</view>
+                    </view>
+                </scroll-view>
+            </view>
+        </block>
+        <block wx:if="{{showType=='area'}}">
+            <view class="list-modal-title">
+                <text>配送至</text>
+                <view class="title-icon" bindtap="popClose" >
+                    <image src="/image/icon/close/black-close-icon.png"></image>
+                </view>
+            </view>
+            <scroll-view scroll-y class="list-modal-content">
+                <block wx:for="{{areaData.recent_addr}}" wx:key="{{index}}">
+                    <view class="area-list {{item.checked ? 'checked':''}}" data-index="{{index}}" bindtap="selected">
+                        <image src="/image/icon/orientation-icon{{item.checked?'-red':''}}.png"></image>
+                        <text>{{item.detail_address}}</text>
+                    </view>
+                </block>
+                <view class="area-list last checked" bindtap="selectArea">
+                    <image src="/image/icon/choose-add.png"></image>
+                    <area
+                        bindsetArea="setArea"
+                    />
+                </view>
+            </scroll-view>
+        </block>
+    </popup>
+</block>

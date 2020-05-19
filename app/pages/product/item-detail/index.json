@@ -1,0 +1,25 @@
+{
+    "navigationBarTitleText": "商品详情页",
+    "usingComponents": {
+        "loading": "../../../components/public/loading/loading",
+        "empty-page": "../../../components/public/EmptyPage/EmptyPage",
+        "popup": "../../../components/public/popup/index",
+        "share-earn": "./component/shareEarn/index",
+        "cart-shop": "./component/cartShop/index",
+        "barrage-strip": "./component/barrageStrip/barrageStrip",
+        "item-nav": "./component/itemNav/itemNav",
+        "scroll-image-state": "./component/scrollImageState/scrollImageState",
+        "price-area": "./component/priceArea/index",
+        "fight-group": "./component/fightGroup/fightGroup",
+        "active-area":"./component/activeArea/index",
+        "choose-spec": "./component/chooseSpec/index",
+        "buy-modal": "./component/buyModal/index",
+        "area-area": "./component/areaArea/index",
+        "evaluate": "./component/evaluate/index",
+        "recommend": "./component/recommend/index",
+        "shop": "./component/shop/index",
+        "goods-detail": "./component/goodsDetail/index",
+        "footer": "./component/footer/index",
+        "captcha": "plugin://myPlugin/captcha"
+    }
+}

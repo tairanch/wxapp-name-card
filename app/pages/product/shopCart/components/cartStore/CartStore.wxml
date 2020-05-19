@@ -1,0 +1,56 @@
+<!--pages/product/shopCart/components/cartStore/CartStore.wxml-->
+<view class='cart-store'>
+  <!-- 购物车Store-header -->
+  <!--<view class='header-wrap'>-->
+    <!--<view class='header' style='{{scrollTopObj === shopid ? "position:fixed;z-index:3;top:0;" : "position:relative;top:0;"}}'>-->
+      <!--<view class='store-header'>-->
+        <!--<view class='checkbox'>-->
+          <!--<check-icon isCheck='{{checkObj.check}}' bindhandleCheck='handleCheck'></check-icon>-->
+        <!--</view>-->
+        <!--<view class='store-name' bindtap='turnLink' data-shopid='{{shopInfo.shop_id}}'>-->
+          <!--<view class='store-name-text'>-->
+            <!--<image src='../../../../image/icon/store/qyg-shop-icon.png' wx:if='{{ shopInfo.shop_icon === "icon_biz"}}' class='image-biz'></image>-->
+            <!--<image src='../../../../image/icon/store/trc-self-icon.png' wx:elif='{{ shopInfo.shop_icon === "icon_self"}}' class='image-self'></image>-->
+            <!--<image src='../../../../image/icon/store/xt-shop-icon.png' wx:elif='{{ shopInfo.shop_icon === "icon_good"}}' class='image-good'></image>-->
+            <!--<image src='../../../../image/icon/store/common-shop-icon.png' wx:else class='image-default'></image>-->
+            <!--{{shopInfo.alias || shopInfo.name}}-->
+          <!--</view>-->
+          <!--<view class='open-icon' wx:if='{{shopInfo.is_open == 1 && !edit}}'>-->
+            <!--<image class='arrow-right-icon' src='../../../../image/icon/arrow-right-s-icon.png'></image>-->
+          <!--</view>-->
+        <!--</view>-->
+        <!--<view class='store-edit'>-->
+          <!--<text class='one text' hidden='{{!shopInfo.show_coupons || edit}}'-->
+            <!--bindtap='popupCoupon'-->
+            <!--data-shopid='{{shopInfo.shop_id}}'-->
+            <!--data-shopname='{{shopInfo.alias || shopInfo.name}}'-->
+          <!--&gt;领券</text>-->
+          <!--<text class='two text' bindtap='toggleEdit'>{{edit ? "完成" : "编辑"}}</text>-->
+        <!--</view>-->
+      <!--</view>-->
+    <!--</view>-->
+  <!--</view>-->
+   <!-- store-body -->
+  <view class='store-body'>
+    <view wx:for='{{promotionList}}' wx:key="group_promotion_id">
+      <store-market
+        promotionInfo='{{item}}'
+        edit='{{edit}}'
+        exchangeItem='{{exchangeItem}}'
+        checkObj='{{checkObj["promotionObj"]}}'
+        binddeleteExchangeItem='deleteExchangeItem'
+        bindoneNumUpdate='oneNumUpdate'
+        bindhandleCheck='handleCheck'
+        bindoneHandleCheck='oneHandleCheck'
+        bindhandleItemNum='handleItemNum'
+        bindhandleItemCollect='handleItemCollect'
+        bindhandleItemDelete='handleItemDelete'
+        bindhandleSecItemCollect='handleSecItemCollect'
+        bindhandleSpecItemDelete='handleSpecItemDelete'
+        bindpopupSaleAttr='popupSaleAttr'
+        bindscrollCtrl='scrollCtrl'
+        scrollOpen='{{scrollOpen}}'
+      ></store-market>
+    </view>
+  </view>
+</view>

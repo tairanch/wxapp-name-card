@@ -1,0 +1,32 @@
+.flashsale-price {
+    height: 90rpx;
+    background-color: #e60a30;
+    padding: 0 30rpx;
+    color:#fff;
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+}
+.sell-price{
+    font-size: 50rpx;
+}
+.market-price {
+    text-decoration: line-through;
+    padding-top: 16rpx;
+}
+.flashsale-tag {
+    width: 120rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    border-radius: 16rpx;
+    background-color: #ffcfcf;
+    color: #e60a30;
+    display: inline-block;
+    margin-left: 10rpx;
+    font-size: 20rpx;
+}
+.sell-time{
+    flex: 1;
+    text-align: right;
+}

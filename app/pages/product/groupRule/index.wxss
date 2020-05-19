@@ -1,0 +1,36 @@
+
+.group-rule{
+    padding-top: 50rpx;
+    color: #353535;
+    font-size: 24rpx;
+}
+.step-img {
+    width: 100%;
+    height: 526rpx;
+}
+
+.group-rule-content{
+    padding: 30rpx;
+}
+.group-purchase-title{
+    display: flex;
+    align-items: center;
+}
+.group-purchase-title>image{
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 14rpx;
+}
+.group-purchase-title>text{
+    font-size: 28rpx;
+    font-weight: 800;
+}
+
+.group-purchase-li .rule-tip {
+    line-height: 36rpx;
+    padding: 15rpx 0;
+}
+.group-purchase-li .rule-detail {
+    line-height: 36rpx;
+    color: #808080;
+}

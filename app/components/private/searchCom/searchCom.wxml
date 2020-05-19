@@ -1,0 +1,9 @@
+<view class='search-com'>
+  <view class='search' bindtap='searchResult' data-data='{{data}}'>
+  <view class="search-content">
+  <image class='search-icon' src='/image/icon/search-icon.png'></image>
+    <!-- <icon class='search-icon' type="search" size="15" /> -->
+    <text>{{data.text}}</text>
+    </view>
+  </view>
+</view>

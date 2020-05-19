@@ -1,0 +1,13 @@
+cache
+dist
+.DS_Store
+node_modules/
+miniprogram_npm/
+dist/
+miniprogram_npm/
+npm-debug.log
+build-debugger.js
+.idea
+dist/*
+
+.history

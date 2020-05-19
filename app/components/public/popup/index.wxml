@@ -1,0 +1,14 @@
+<view
+    catchtouchmove='true'
+    class="popup-mask {{show?'popup-mask-enter':'popup-mask-leave'}}"
+    wx:if="{{display}}"
+    bindtap="closeMask"
+    bind:animationend="onAnimationEnd"
+></view>
+<view
+    catchtouchmove='true'
+    class="popup-{{position}}  popup-{{position}}-{{show?'enter':'leave'}}"
+    wx:if="{{display}}"
+>
+  <slot />
+</view>

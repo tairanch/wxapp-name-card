@@ -1,0 +1,8 @@
+<view class="barrage-strip">
+    <view class='one-strip {{show ? "active" : "" }}'>
+        <image class="user-avatar" src="/image/common/default-avatar.png"/>
+        <view class="content">
+            最新订单来自{{ list.receiver_state }}的{{ list.user_name}}
+        </view>
+    </view>
+</view>

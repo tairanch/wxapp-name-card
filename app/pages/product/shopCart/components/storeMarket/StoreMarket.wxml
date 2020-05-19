@@ -1,0 +1,92 @@
+<!--pages/product/shopCart/components/storeMarket/StoreMarket.wxml-->
+<view class='{{promotionInfo.type === "ExchangeBuy" ? "exchange" : promotionInfo.type !== "Common" ? "activity store-market" : "common store-market" }}'>
+  <market-header wx:if='{{promotionInfo.type !== "Common"}}'
+   type='{{promotionInfo.type}}'
+   rules='{{promotionInfo.rules}}'
+   group_promotion_id='{{promotionInfo.group_promotion_id}}'
+   cartList='{{promotionInfo.cart_list}}'
+   exchangeDataLength='{{exchangeList.length}}'
+   edit='{{edit}}'
+   Price='{{price}}'
+   Num='{{num}}'
+   checkObj='{{checkObj}}'
+   ></market-header>
+  <!-- itemList -->
+  <view class='common-list'>
+    <view wx:for='{{promotionInfo.cart_list}}' wx:key='cart_id' class='one-item-grid-box'>
+      <view class='gift-list' wx:if='{{item.promotion_gift_buy && item.promotion_gift_buy.gifts && item.promotion_gift_buy.gifts.length > 0}}'>
+        <one-item
+          item-class='one-item-grid'
+          info-class='one-item-info'
+          edit='{{edit}}'
+          isCheck='{{checkObj[item.cart_id]}}'
+          type='{{promotionInfo.type}}'
+          promotionId='{{promotionInfo.group_promotion_id}}'
+          itemData='{{item}}'
+          bindoneNumUpdate='oneNumUpdate'
+          bindhandleCheck='oneHandleCheck'
+          bindhandleItemNum='handleItemNum'
+          bindhandleItemCollect='handleItemCollect'
+          bindhandleItemDelete='handleItemDelete'
+          bindpopupSaleAttr='popupSaleAttr'
+          bindscrollCtrl='scrollCtrl'
+          scrollOpen='{{scrollOpen}}'
+        ></one-item>
+        <!-- 赠品 -->
+        <view wx:for='{{item.promotion_gift_buy.gifts}}' wx:for-item="gift" wx:for-index="idx" wx:key='idx' class='data-spec-item-box'>
+          <spec-item
+            spec-class='data-spec-item'
+            spec-content='data-item-info'
+            itemData='{{gift}}'
+            give='{{true}}'
+            disMove='{{true}}'
+            type='{{item.type}}'
+            edit='{{edit}}'
+            mainQuantity='{{item.quantity}}'
+          ></spec-item>
+        </view>
+      </view>
+      <one-item
+        wx:else
+        item-class='one-item-grid'
+        info-class='one-item-info'
+        edit='{{edit}}'
+        isCheck='{{checkObj[item.cart_id]}}'
+        type='{{promotionInfo.type}}'
+        promotionId='{{promotionInfo.group_promotion_id}}'
+        itemData='{{item}}'
+        bindoneNumUpdate='oneNumUpdate'
+        bindhandleCheck='oneHandleCheck'
+        bindhandleItemNum='handleItemNum'
+        bindhandleItemCollect='handleItemCollect'
+        bindhandleItemDelete='handleItemDelete'
+        bindpopupSaleAttr='popupSaleAttr'
+        bindscrollCtrl='scrollCtrl'
+        scrollOpen='{{scrollOpen}}'
+      ></one-item>
+    </view>
+  </view>
+  <!-- specList 换购商品列表-->
+  <view class='spec-list' wx:if='{{exchangeList.length > 0}}'>
+    <view wx:for='{{exchangeList}}' wx:key='item_id'>
+      <spec-item
+        spec-class='data-spec-item'
+        spec-content='data-item-info'
+        itemData='{{item}}'
+        disMove='{{true}}'
+        promotionId='{{promotionId}}'
+        type='ExchangeBuy'
+        edit='{{edit}}'
+        bindhandleItemCollect='handleSecItemCollect'
+        bindhandleItemDelete='handleSpecItemDelete'
+      ></spec-item>
+    </view>
+  </view>
+  <!-- 换购商品文案 -->
+  <view wx:if='{{promotionInfo.type === "ExchangeBuy" && !edit}}' class='active-row c-tr'>
+    <view bindtap='turnLink' wx:if='{{ price >= promotionInfo.rules["ExchangeBuy"]["exchange_full"]}}' class='red-btn c-dpib c-tc' bindtap='turnSetItem'>
+      {{ exchangeList.length > 0 ? "重新换购" : "立即换购"}}
+    </view>
+    <view bindtap='turnExchangeItem' class='red-btn c-tc c-dpib' wx:else >查看换购</view>
+  </view>
+</view>

@@ -1,0 +1,43 @@
+.nav {
+  height: 80rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 76rpx;
+  background: white;
+  font-size: 28rpx;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between
+}
+
+.nav-item {
+  /* width: 20%; */
+  margin: 0 30rpx;
+  display: inline-block;
+  text-align: center;
+  color: #353535;  
+  flex: 1
+}
+
+.nav-item.active {
+  color: #e60a30;  
+  border-bottom-color: red;
+  border-bottom-width: 4rpx;
+  border-bottom-style: solid
+}
+
+.tab-box {
+  background: #F4F4F4;
+  padding-top: 80rpx;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.tab-content {
+  overflow-y: scroll;
+}

@@ -1,0 +1,19 @@
+<!--pages/product/shopCart/components/saleAttr/component/AttrItem.wxml-->
+<wxs module="shopCartUtils" src="../../../shopCart.wxs"></wxs>
+<view class='sale-parameter'>
+  <text>{{attrData['name']}}</text> 
+  <view class='sale-size-ul'>
+    <view 
+        wx:for='{{ret}}' wx:key='spec_value_id'
+        class='{{"li " + item.className}}'
+        data-onclick='{{item.onClick}}'
+        data-specvalueid='{{item.spec_value_id}}' 
+        data-specid='{{item.spec_id}}' 
+        data-classname='{{item.className}}' 
+        bindtap='selectSingleAttr'
+      > 
+        <image src='{{shopCartUtils.addImageSuffix(item.image,"_m")}}' class='attr-image' wx:if='{{item.image}}'></image>
+        <view class='attr-image-text'>{{item.text}}</view>
+      </view>
+  </view> 
+</view>

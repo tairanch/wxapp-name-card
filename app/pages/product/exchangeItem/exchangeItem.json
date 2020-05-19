@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "换购商品",
+  "usingComponents": {
+    "check-icon": "../shopCart/components/checkIcon/CheckIcon"
+  }
+}

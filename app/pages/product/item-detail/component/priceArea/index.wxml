@@ -1,0 +1,52 @@
+<block>
+    <block wx:if="{{detail.item_type=='GroupBuy'}}">
+        <group
+            detail="{{detail}}"
+            groupSellPrice="{{groupSellPrice}}"
+            groupPerson="{{groupPerson}}"
+            groupMarketPrice="{{groupMarketPrice}}"
+            now_time="{{promotion.promotion[0].now_time}}"
+            start_time="{{promotion.promotion[0].start_time}}"
+            end_time="{{promotion.promotion[0].end_time}}"
+            bindonload="onload"
+        />
+    </block>
+    <block wx:elif="{{detail.item_type=='SecKill'}}">
+        <seckill
+            detail="{{detail}}"
+            marketPrice="{{marketPrice}}"
+            sellPrice="{{sellPrice}}"
+            state="{{state}}"
+            now_time="{{promotion.promotion[0].now_time}}"
+            start_time="{{promotion.promotion[0].start_time}}"
+            end_time="{{promotion.promotion[0].end_time}}"
+            bindonload="onload"
+        />
+    </block>
+    <block wx:else>
+        <normal
+            wx:if="{{flashsaleFlag}}"
+            marketPrice="{{marketPrice}}"
+            sellPrice="{{sellPrice}}"
+            end_time="{{promotion.promotion[0].end_time}}"
+            now_time="{{promotion.promotion[0].now_time}}"
+            bindonload="onload"
+        />
+
+    </block>
+    <view class="price-area">
+        <good-price
+            wx:if="{{(!flashsaleFlag && detail.item_type=='NORMAL')||(!state && detail.item_type=='SecKill')}}"
+            detail="{{detail}}"
+            marketPrice="{{marketPrice}}"
+            sellPrice="{{sellPrice}}"
+        />
+        <good-title
+            detail="{{detail}}"
+            promotion="{{promotion}}"
+        />
+        <good-tag
+            detail="{{detail}}"
+        />
+    </view>
+</block>

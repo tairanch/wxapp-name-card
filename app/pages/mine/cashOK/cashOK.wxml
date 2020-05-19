@@ -1,0 +1,30 @@
+<!--pages/mine/cashOK/cashOK.wxml-->
+<view class='page-container'>
+
+    <view class='cash-out-bg'>
+
+        <image class='success-image' src="/image/general/success_icon.png"></image>
+
+        <text class='title-text'>申请提交成功</text>
+
+        <view class='row-view'>
+            <text class='sub-title'>提交金额</text>
+            <text class='yue-text'>¥{{moneyCount}}</text>
+        </view>
+
+        <view class='row-view'>
+            <text class='sub-title'>提交账户</text>
+            <view class='channel-bg-view'>
+                <image class='wx-logo' src='/image/mine/wx_logo.png'></image>
+                <text class='right-text'>默认微信零钱包</text>
+            </view>
+        </view>
+
+        <view class='row-view'>
+            <text class='sub-title'>当前余额</text>
+            <text class='right-text'>¥{{balanceCount}}</text>
+        </view>
+
+    </view>
+
+</view>

@@ -1,0 +1,158 @@
+
+
+<!--购物车数量-->
+<block wx:if="{{isLogin}}">
+    <cart-shop
+        count="{{count}}"
+    />
+</block>
+
+<!--立即分享-->
+<block wx:if="{{promotion.commission_income>0&&commissionUcenterLoginType}}">
+    <share-earn
+        detail="{{detail}}"
+        promotion="{{promotion}}"
+        commissionUcenterLoginType="{{commissionUcenterLoginType}}"
+    />
+</block>
+<block>
+    <block wx:if='{{loading}}'>
+            <loading/>
+    </block>
+    <block wx:elif="{{!status&&!loading}}">
+        <empty-page
+            msg="商品过期不存在~"
+            noBtn="false"
+            style="position:absolute;left:50%;top:25%;transform: translate(-50%)"
+            imgWidth="57px"
+            imgHeight="57px"
+        />
+    </block>
+    <block wx:else>
+        <view class="item-details">
+            <barrage-strip/>
+            <!--头部导航  #item-nav高度和<item-nav/>高度一致  便于获取组件高度-->
+            <div id="item-nav"></div>
+            <item-nav
+                opacity="{{opacity}}"
+                navIndex="{{navIndex}}"
+                bindnavClickEvent="navClickEvent"
+            />
+            <!--轮播图-->
+            <scroll-image-state
+                data="{{detail}}"
+                promotion="{{promotion}}"
+            />
+            <!--价格区域  到选择规格之前  判断是为了保证组件能拿到加载之后的数据-->
+            <price-area
+                wx:if="{{promotion.info}}"
+                detail="{{detail}}"
+                promotion="{{promotion}}"
+                bindonload="onLoad"
+            />
+            <!--拼团玩法-->
+            <fight-group
+                wx:if="{{detail.item_type=='GroupBuy'}}"
+                user_id="{{user_id}}"
+                promotion="{{promotion}}"
+            />
+            <!--活动区域-->
+            <active-area
+                hideFlag="{{hideFlag}}"
+                promotion="{{promotion}}"
+                detail="{{detail}}"
+                itemId="{{itemId}}"
+            />
+            <!--规格选择-->
+            <choose-spec
+                wx:if="{{!single}}"
+                retState="{{retState}}"
+                bindskuShow="skuChange"
+            />
+            <!--配送地址与运费-->
+            <area-area
+                wx:if="{{mix.addrList}}"
+                hideFlag="{{hideFlag}}"
+                detail="{{detail}}"
+                mix="{{mix}}"
+                areaData="{{areaData}}"
+                retState="{{retState}}"
+                bindsetArea="setArea"
+            />
+            <!--商品评价-->
+            <view class="evaluate-top"></view>
+            <evaluate
+                id="evaluate"
+                rate="{{rate}}"
+                itemId="{{itemId}}"
+            />
+            <view class="evaluate-bottom"></view>
+            <!--为您推荐-->
+            <recommend
+                wx:if="{{hideFlag}}"
+                itemId="{{itemId}}"
+            />
+            <!--店铺-->
+            <shop
+                wx:if="{{hideFlag && detail.shop.is_open}}"
+                shop="{{detail.shop}}"
+            />
+            <!--图文详情-->
+            <goods-detail
+                id="goods-detail"
+                detail="{{detail}}"
+                fixed="{{fixed}}"
+                height="{{height}}"
+                bindscrollDetail="navClickEvent"
+            />
+            <footer
+                detail="{{detail}}"
+                mix="{{mix}}"
+                promotion="{{promotion}}"
+                retState="{{retState}}"
+                bindbtnClick="btnClick"
+            />
+        </view>
+    </block>
+</block>
+
+<view
+    wx:if="{{loadCaptcha}}"
+    class="captcha-view"
+>
+    <captcha 
+        id="captcha" 
+        gt="{{gt}}" 
+        challenge="{{challenge}}" 
+        offline="{{offline}}" 
+        bindonSuccess="captchaSuccess" 
+        bindonReady="captchaReady" 
+        bindonClose="captchaClose" 
+        bindonError="captchaError" 
+    />
+</view>
+
+
+<block>
+    <popup
+        show="{{skuPop}}"
+        bindclose="skuChange"
+    >
+        <!--promotion.info&&detail.item_id  有数据时开始挂载组件-->
+        <buy-modal
+            wx:if="{{promotion.info&&detail.item_id}}"
+            detail="{{detail}}"
+            promotion="{{promotion}}"
+            retState="{{retState}}"
+            areaData="{{areaData}}"
+            single="{{single}}"
+            buyActive="{{buyActive}}"
+            user_id="{{user_id}}"
+            loadCaptcha="{{loadCaptcha}}"
+            bindclose="skuChange"
+            bindsetRetState="setRetState"
+            bindaddCount="addCount"
+            bindloadCaptchas="loadCaptchas"
+        />
+    </popup>
+</block>

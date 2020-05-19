@@ -1,0 +1,125 @@
+<!--logs.wxml-->
+<view class='cardlist'>
+  <canvas class='share-canvas' canvas-id="shareCanvas"></canvas>
+  <!-- <swiper
+    indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    circular="{{circular}}"
+  >
+    <block wx:for="{{imgUrls}}" wx:for-item="item">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" width="355" height="150" mode="widthFix" />
+        <image class="head-banner" src="{{item}}" ></image>
+      </swiper-item>
+    </block>
+  </swiper> -->
+  <!-- <image class="head-banner" src="{{headbar}}" mode="widthFix"></image> -->
+  <view class='card-name'>
+    <!-- <view class='card-slide'></view> -->
+    <text class='card-text'>{{mycardtext}}({{mycardlist.length || 0}})</text>
+  </view>
+  <view class="card-list" wx:if="{{showBtnType === 2}}">
+    <block wx:for="{{mycardlist}}" wx:for-item="item" wx:key="*this">
+      <view class='card'>
+        <view class='name-img' bindtap='goInfo' data-id="{{item.id}}">
+          <view class='name-position'>
+            <text class='item-name'>{{item.name}}</text>
+            <text class='item-position'>{{item.job}}</text>
+          </view>
+          <view class='usephone'>
+            <image class='usephone-img' src="{{item.portrait  || '/image/nameCard/moren@2x.png'}}"></image>
+          </view>
+        </view>
+        <view class='phone-mail' bindtap='goInfo' data-id="{{item.id}}">
+          <view class='phone-mail-img'>
+            <image src='{{smallphoneimg}}' class='phone-small-icon'></image>
+            <text class='item-phone'>{{item.mobile}}</text>
+          </view>
+          <view class='phone-mail-img' wx:if="{{item.email.length > 0}}">
+            <image src='{{smallemailimg}}' class='phone-small-icon'></image>
+            <text class='item-email'>{{item.email}}</text>
+          </view>
+        </view>
+        <view class='phone-share'>
+          <button class='share-btn'
+            bindtap='makePhoneCall' 
+            data-phonenum="{{item.mobile}}">
+            <cover-image src='{{phonecall}}'></cover-image>
+          </button>
+          <button open-type='share' class='share-btn' data-item="{{item}}" data-index="{{index}}">
+            <cover-image src='{{fenxiangimg}}'></cover-image>
+          </button>
+          <view class='card-download' 
+          bindtap='goPoster' 
+          data-shopid="{{item.shop_id}}"
+          data-id="{{item.id}}">
+            <image class='card-down' src='{{download}}'></image>
+            <text class='card-down-world'>下载海报</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="card-nodatabtn" wx:elif="{{showBtnType === 1}}">
+      <button 
+        class='card-applybtn'
+        bindtap='goLogin'
+        > 立即登录 </button>
+  </view>
+   <view class="card-nodatabtn" wx:else>
+      <button 
+        class='card-applybtn'
+        bindtap='applyNewCard'
+        > 申请名片 </button>
+  </view>
+  <view class='card-name'>
+    <!-- <view class='card-slide'></view> -->
+    <text class='card-text'>{{cardtext}}({{list.length || 0}})</text>
+  </view>
+  <view class="card-list {{list.length > 0 ? '' : 'hid'}}">
+    <block wx:for="{{list}}" wx:for-item="item" wx:key="*this">
+      <view class='card'>
+        <view class='name-img' bindtap='goInfo' data-id="{{item.id}}">
+          <view class='name-position'>
+            <text class='item-name'>{{item.name}}</text>
+            <text class='item-position'>{{item.job}}</text>
+          </view>
+          <view class='usephone'>
+            <image class='usephone-img' src="{{item.portrait  || '/image/nameCard/moren@2x.png'}}"></image>
+          </view>
+        </view>
+        <view class='phone-mail' bindtap='goInfo' data-id="{{item.id}}">
+          <view class='phone-mail-img'>
+            <image src='{{smallphoneimg}}' class='phone-small-icon'></image>
+            <text class='item-phone'>{{item.mobile}}</text>
+          </view>
+          <view class='phone-mail-img' wx:if="{{item.email.length > 0}}">
+            <image src='{{smallemailimg}}' class='phone-small-icon'></image>
+            <text class='item-email'>{{item.email}}</text>
+          </view>
+        </view>
+        <view class='phone-share'>
+          <button class='share-btn'
+            bindtap='makePhoneCall' 
+            data-phonenum="{{item.mobile}}">
+            <!-- <image class='phone-call' 
+            src='{{phonecall}}' 
+            ></image> -->
+            <cover-image src='{{phonecall}}'></cover-image>
+          </button>
+          <button open-type='share' class='share-btn' data-item="{{item}}" data-index="{{index}}">
+            <!-- <image class='phone-call' 
+            src='{{phonecall}}'></image> -->
+            <cover-image src='{{fenxiangimg}}'></cover-image>
+          </button>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="card-nodata {{list.length < 1 ? '' : 'hid'}}" wx:if="{{refresh}}">
+      <image class='nocard-img' src="{{noCardImg}}" mode='aspectFit'></image>
+  </view>
+</view>
+

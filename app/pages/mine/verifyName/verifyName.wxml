@@ -1,0 +1,46 @@
+<!--pages/mine/verifyName/verifyName.wxml-->
+
+<view class='page-container'>
+
+
+    <view class="top-header-bg-view">
+        <image class="id-card-image" src="/image/mine/id_card_icon.png"></image>
+
+        <view class="decs-bg-view">
+            <text style="margin: 15px 15px 3px 20px; font-size: 12pt; color: #353535">为什么要上传身份证信息？</text>
+            <text style="margin: 5px 15px 3px 20px; font-size: 10pt; color: #999999">按照国家相关规定，您的资金结算时，需要平台统一申报个人所得税。</text>
+        </view>
+    </view>
+
+
+    <view class="input-part-view">
+        <!--姓名-->
+        <view class='input-bg-view'>
+            <text class='input-title'>真实姓名</text>
+            <input class='input-class' type="text" maxlength='12' value="{{nameText}}" bindinput="onNameTextInput" placeholder-class='placeholder' placeholder="请填写真实姓名" />
+        </view>
+
+        <!--分割线-->
+        <view class='line-view'></view>
+
+        <!--身份证号-->
+        <view class='input-bg-view'>
+            <text class='input-title'>身份证号</text>
+            <input class='input-class'
+                   type="idcard"
+                   maxlength='18'
+                   value="{{cardIdText}}"
+                   bindinput="onCardTextInput"
+                   placeholder-class='placeholder'
+                   placeholder="请填写您的身份证号(将加密处理)" />
+        </view>
+
+        <!--分割线-->
+        <view class='line-view'></view>
+    </view>
+
+    <view class='bottom-btn' bindtap="saveBtnClick">
+        <text style="font-size: 12pt; color: white">保存</text>
+    </view>
+
+</view>

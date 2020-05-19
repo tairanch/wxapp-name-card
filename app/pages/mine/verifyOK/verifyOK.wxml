@@ -1,0 +1,25 @@
+<!--pages/mine/verifyOK/verifyOK.wxml-->
+<view class="page-container">
+
+    <view class="logo-title-view">
+        <image class="logo-image" src="/image/logo.png"/>
+        <text class="title-text">泰然城名片</text>
+    </view>
+
+    <view class="big-text-view">
+        <text class="big-text">您已完成实名认证！</text>
+    </view>
+
+
+    <view class="verify-info-view">
+        <view class="cell-view">
+            <text class="name-text">真实姓名</text>
+            <text class="info-text">{{nameText}}</text>
+        </view>
+        <view class="cell-view">
+            <text class="name-text">身份证号</text>
+            <text class="info-text">{{cardIdText}}</text>
+        </view>
+    </view>
+
+</view>

@@ -1,0 +1,80 @@
+<!--pages/product/shopCart/components/marketHeader/MarketHeader.wxml-->
+<wxs module="shopCartUtil" src="../../shopCart.wxs"></wxs>
+<view class='market-header'>
+  <!-- 满减 -->
+  <view wx:if='{{type === "FullMinus"}}' bindtap='turnLink' class='activityLink'>
+    <template is="RedLabel" data='{{className:"tag", text:"满减"}}' />
+    <view class='activity-text' wx:if='{{is_satisfied}}'>
+       已购满{{fullMinus['fullMinusMoney']}}元, 已减{{fullMinus['perDeductTmp']}}元
+    </view>
+    <view wx:else class='activity-text'>
+      {{fullMinus['fullMinusText']}}
+    </view>
+     <!--<view class='link-right'>-->
+      <!--{{is_satisfied? "再逛逛":"去凑单"}}-->
+    <!--</view>-->
+    <!--<image src='../../../../../image/icon/arrow/arrow-right-red-icon.png' -->
+       <!--style="width: 7px; height: 12px; vertical-align:-1px;"-->
+      <!--&gt;</image>-->
+  </view>
+  <!-- 满折 -->
+  <view wx:elif='{{type === "FullDiscount"}}' bindtap='turnLink' class='activityLink'>
+    <template is="RedLabel" data='{{className:"tag", text:"满折"}}' />
+    <view class='activity-text' wx:if='{{is_satisfied}}'>
+      已购满{{fullDiscount['fullDiscount']}}件，已减{{shopCartUtil._toFixed(perPrice)}}元
+    </view>
+    <view class='activity-text' wx:else>
+      {{fullDiscount['fullDiscountText']}}
+    </view>
+    <!--<view class='link-right'>-->
+      <!--{{is_satisfied? "再逛逛":"去凑单"}}-->
+    <!--</view>-->
+    <!--<image src='/image/icon/arrow/arrow-right-red-icon.png' -->
+       <!--style="width: 7px; height: 12px; vertical-align:-1px;"-->
+    <!--&gt;</image>-->
+  </view>
+   <!-- N元 -->
+  <view wx:elif='{{type === "OptionBuy"}}' bindtap='turnLink' class='activityLink'>
+    <template is="RedLabel" data='{{className:"tag", text:"N元任选"}}' />
+    <view class='activity-text' wx:if='{{is_satisfied}}'>
+      已购满{{rules['OptionBuy']['quantity']}}件，已减{{shopCartUtil._toFixed(perPrice)}}元
+    </view>
+    <view class='activity-text' wx:else>
+      {{rules['OptionBuy']['amount']}}元任选{{rules['OptionBuy']['quantity']}}件
+    </view>
+    <!--<view class='link-right'>-->
+      <!--{{is_satisfied? "再逛逛":"去凑单"}}-->
+    <!--</view>-->
+    <!--<image src='../../../../image/icon/arrow/arrow-right-red-icon.png' -->
+       <!--style="width: 7px; height: 12px; vertical-align:-1px;"-->
+    <!--&gt;</image>-->
+  </view>
+  <!-- 换购 -->
+  <view wx:elif='{{type === "ExchangeBuy"}}' bindtap='turnLink' class='activityLink'>
+    <template is="RedLabel" data='{{className:"tag", text:"换购"}}' />
+    <view class='activity-text' wx:if='{{is_satisfied && exchangeDataLength}}'>
+      已购满{{rules['ExchangeBuy']['exchange_full']}}元，已换购{{exchangeDataLength}}件热销商品
+    </view>
+    <view class='activity-text' wx:elif='{{is_satisfied && !exchangeDataLength}}'>
+      已购满{{rules['ExchangeBuy']['exchange_full']}}元，可换购{{rules['ExchangeBuy']['exchange_count']}}件热销商品
+    </view>
+    <view class='activity-text' wx:else>
+      满{{rules['ExchangeBuy']['exchange_full']}}加价可换购{{rules['ExchangeBuy']['exchange_count']}}件热销商品
+    </view>
+    <!--<view class='link-right'>-->
+      <!--{{is_satisfied? "再逛逛":"去凑单"}}-->
+    <!--</view>-->
+    <!--<image src='../../../../image/icon/arrow/arrow-right-red-icon.png' -->
+       <!--style="width: 7px; height: 12px; vertical-align:-1px;"-->
+    <!--&gt;</image>-->
+  </view>
+</view>
+
+<!-- RedLabel -->
+<template name="RedLabel">
+  <view class='{{ className? className + " red-label" : "red-label"}}'>
+    {{text}}
+  </view>
+</template>
+
+

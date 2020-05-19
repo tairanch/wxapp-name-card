@@ -1,0 +1,21 @@
+<view class="fight-group-active">
+    <view class="c-fs12 fight-group-top">
+        支付开团并邀请
+        <text class="c-cf55">{{promotion.promotion[0].rules.group_person - 1}}</text>
+        人参团，人数不足退款
+    </view>
+    <view class="fight-group-rules" bindtap="onGroupRuleTap">
+        <view class="c-fs15 c-cf55 c-mb5">拼团玩法</view>
+        <image class="rule-img" mode="widthFix" src="../../images/group-rules.png" />
+        <image mode="widthFix" class="direction-right-icon" src="../../images/black-direction-right.png" />
+    </view>
+    <view wx:if="{{promotion.groupBuy.group_info}}" class="fight-group-detail">
+        <view class="group-title" wx:if="{{promotion.groupBuy.group_info.length}}">
+            <image class="img" src="../../images/red-current-icon.png" />
+            以下小伙伴正在发起团购，您可以直接参与
+        </view>
+        <view class="participants" wx:for="{{promotion.groupBuy.group_info}}" wx:key="unique">
+            <fight-group-detail item="{{item}}" user_id="{{user_id}}"></fight-group-detail>
+        </view>
+    </view>
+</view>

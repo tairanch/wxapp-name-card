@@ -1,0 +1,76 @@
+<view class='page'>
+  <view class='getuserinfo' wx:if="{{showhasgetinfo}}">
+    <view class='content-img'>
+      <image class="tairan-img" src="{{tarranimg}}" mode="cover"></image>
+    </view>
+    <view class='content-world'>
+      <text class='blod-world'>泰然城申请获得以下权限：</text>
+      <text class='small-world'>获得你的公开信息(昵称，头像等)</text>
+    </view>
+     <view class='content-btn'>
+        <button open-type="getUserInfo" 
+                bindgetuserinfo="getUserInfo" 
+                type="primary"
+                class='land_buttons'> 确认授权 </button>
+     </view>
+  </view>
+  <view class="userinfo" wx:else>
+    <view class='content'>
+      <!--手机号码  -->
+      <view class='section'>
+        <image class='left' src='../../../image/icon/phone-shape-icon.png'></image>
+        <input class='input-grid' 
+                placeholder='请输入手机号码' 
+                type='number' 
+                placeholder-class='placeholder_class' 
+                value='{{phone}}' 
+                maxlength='11'
+                bindinput="getPhone"></input>
+        <image class='cancel' 
+                src='../../../image/icon/close-x-icon.png'
+                bindtap='clearPhone'></image>
+      </view>
+      <!--验证码  -->
+      <view class='section' wx:if="{{!loadCaptcha}}">
+        <image class='left' src='../../../image/icon/key-shape-icon.png'></image>
+        <input class='input-grid-mes' 
+              placeholder='短信验证码' 
+              placeholder-class='placeholder_class' 
+              type='number'
+              maxlength='4' 
+              bindinput='getMobileCode'></input>
+        <text class='{{canGetIdentify?"get":"get_not"}}' 
+              bindtap='sendMobileCode'>{{getText}}</text>
+      </view>
+      <captcha id="captcha" 
+                class='input-grid-slide' 
+                wx:else gt="{{gt}}" 
+                challenge="{{challenge}}" 
+                offline="{{offline}}" 
+                bindonSuccess="captchaSuccess" 
+                bindonReady="captchaReady" 
+                bindonClose="captchaClose" 
+                bindonError="captchaError" 
+                styleConfig="{{styleConfig}}"
+      />
+      <button 
+              class='land_button'
+              bindtap='getCode'
+              disabled='{{enterBtnClick}}'
+              > 登录 </button>
+            <!-- <button open-type="getUserInfo" 
+              bindgetuserinfo="getUserInfo" 
+              class='land_button'> 登录 </button> -->
+      <!-- <text class='land_button' bindtap='newUserOrNot'>登录</text> -->
+    </view>
+  </view>
+
+  <view class="receive-gift" wx:if="{{showGiftAlert}}">
+    <view class="receive-content">
+      <image class="receive-img" src="{{giftimg}}" lazy-load="false" binderror="" bindload=""></image>
+      <view class="receive-close-btn" bindtap="goBackWeb"></view>
+      <view class="receive-num">新人礼包</view>
+      <view class="receive-look-btn" bindtap="goSeeCouponList"></view>
+    </view>
+  </view>
+</view>

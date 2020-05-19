@@ -1,0 +1,76 @@
+<!--
+活动部分
+    普通 由优惠券和促销活动构成
+    秒杀 由促销活动构成
+    团购 由优惠券组成
+-->
+
+<wxs module="sku" src="../../sku.wxs"></wxs>
+<block wx:if="{{hideFlag&&promotion.coupon&&promotion.coupon.length>0&&detail.item_type!='SecKill'}}">
+    <coupon
+        coupon="{{promotion.coupon}}"
+        bindgetCoupon="getCoupon"
+    />
+</block>
+<block wx:if="{{promotion.promotion.length>0&&detail.item_type!='GroupBuy'}}">
+    <promotion
+        tab="{{tab}}"
+        text="{{text}}"
+        list="{{list}}"
+        hideFlag="{{hideFlag}}"
+        bindgetPromotion="getPromotion"
+    />
+</block>
+<popup
+    show="{{popShow}}"
+    bindclose="popClose"
+>
+    <view class="title">
+        <text>{{title}}</text>
+        <view class="title-icon" bindtap="popClose" >
+            <image src="/image/icon/close/black-close-icon.png"></image>
+        </view>
+    </view>
+    <block wx:if="{{type=='coupon'}}">
+        <view class="coupon-list">
+            <block wx:for="{{couponList}}" wx:key="{{index}}">
+                <image src="/image/evaluate/coupon-list-{{item.isset_limit_money?'shop':'plat'}}-bg.png">
+                    <view class="coupon-list-content {{item.isset_limit_money?'red':'yellow'}}">
+                        <view class="list-l">
+                            <view class="list-l-price {{item.deduct_money*1<1000?'price-size-l':'price-size-s'}}"><text>¥</text>{{item.deduct_money}}</view>
+                            <view>满{{item.limit_money}}使用</view>
+                        </view>
+                        <view class="list-r">
+                            <view class="list-r-title">{{sku.CouponType.title(item)}}</view>
+                            <view class="list-r-btn" data-coupon_id="{{item.id}}" bindtap="receiveCoupon">立即领取</view>
+                            <view class="list-r-text">{{item.apply_text}}</view>
+                            <view>{{sku.timeCtrl.format1(item.use_start_time)}}至{{sku.timeCtrl.format1(item.use_end_time)}}</view>
+                        </view>
+                    </view>
+                </image>
+            </block>
+        </view>
+    </block>
+    <block wx:if="{{type=='promotion'}}">
+        <view class="promotion-content">
+            <view class="content-title" bindtap="jumpSearch">
+                <text>{{tab}}</text>
+                <text>{{text}}</text>
+                <image src="/image/icon/arrow-right-icon.png"></image>
+            </view>
+            <view class="promotion-content-list" wx:if="{{list.length>0}}">
+                <block wx:for="{{list}}" wx:key="{{index}}">
+                    <view data-item="{{item}}" bindtap="jumpDetail">
+                        <view>赠品{{index + 1}}</view>
+                        <view class="promotion-content-good">
+                            <image src="{{item.subItemStatus === 'open' ? item.primary_image : '../../images/no-item.png'}}"></image>
+                            <text>×{{item.giftNum}}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </block>
+</popup>
+
+

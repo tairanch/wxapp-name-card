@@ -1,0 +1,23 @@
+.check-box .label{
+  display:inline-block;
+	height:16px;
+	line-height:16px;
+	font-size:10px;
+	color:#fff;
+	border-radius:8px;
+  padding: 0 2px;
+}
+
+.check-box .red-label{
+  background:#e60a30;
+}
+
+.check-box .grey-label{
+  background:#c9c9c9;
+}
+
+.check-box .check-icon{
+  vertical-align:-6px;
+  width:20px;
+	height:20px;
+}

@@ -1,0 +1,17 @@
+.choose-spec{
+    margin-top: 20rpx;
+    background: #fff;
+    padding: 0 30rpx;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+}
+.choose-spec>image{
+    width: 16rpx;
+    height: 26rpx;
+}
+.choose-spec-list{
+    flex: 1;
+    padding: 0 30rpx;
+}

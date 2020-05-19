@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "swiper-ctrl": "/components/private/swiperCtrlWidgetCom/swiperCtrlWidget",
+    "check-icon": "../checkIcon/CheckIcon"
+  }
+}

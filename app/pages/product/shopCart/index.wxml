@@ -1,0 +1,193 @@
+<!--pages/product/shopCart/index.wxml-->
+<!-- hidden="true" hidden="{{hiddenn}}" wx:if 需要频繁切换的情景下，用 hidden 更好 -->
+<wxs module="shopCartUtils" src="./shopCart.wxs"></wxs>
+<wxs module="filters" src="../../../utils/filter.wxs"></wxs>
+<view class='p-shop-cart'>
+    <!-- <template is='MaskWait' wx:if='{{!load && loadMask}}'/> -->
+    <template is='Loading' wx:if='{{load}}'/>
+    <error-page wx:elif='{{error}}' text="加载失败,点击重试~" imgUrl='/image/shopCart/face-cry.png' bindbtnClick='errorPageClick' />
+    <error-page wx:elif='{{netError}}' bindbtnClick='errorPageClick'></error-page>
+    <view wx:elif='{{(shopCartData.shop_cart && shopCartData.shop_cart.length > 0) || (unable && unable.length > 0)}}'>
+        <!-- 购物车body -->
+        <view>
+            <view class='bag-top-titleview'>
+                <text class="top-title-text">您有{{shopCartData.count_cart}}件宝贝待结算</text>
+                <view class="top-right-btn-view" wx:if='{{shopCartData.shop_cart && shopCartData.shop_cart.length > 0}}' bindtap="computeEdit">
+                    <text class="top-right-btn-title">{{storeEdit ? "完成" : "编辑"}}</text>
+                </view>
+            </view>
+            <view class="top-blank-view"></view>
+            <view wx:for='{{shopCartData.shop_cart}}' wx:key='shop_level_group_id'>
+                <!-- 购物车Store -->
+                <cart-store
+                    class='cart-store-component'
+                    data-shopid='{{item["shop_info"]["shop_id"]}}'
+                    scrollTopObj='{{scrollTopObj}}'
+                    shopid='{{item["shop_info"]["shop_id"]}}'
+                    storeEdit='{{storeEdit}}'
+                    shopInfo='{{item.shop_info}}'
+                    checkObj='{{shopCheckObj[item["shop_info"]["shop_id"]]}}'
+                    promotionList='{{item.promotion_list}}'
+                    exchangeItem='{{exchangeItem}}'
+                    shopLevelGroupId='{{item.shop_level_group_id}}'
+                    bindcomputeEditNum='computeEditNum'
+                    bindhandleCheck='handleCheck'
+                    bindcomputeStoreEdit='computeStoreEdit'
+                    bindpopupCoupon='popupCoupon'
+                    binddeleteExchangeItem='_exchangeItemDelete'
+                    bindoneHandleCheck='oneHandleCheck'
+                    bindoneNumUpdate='oneNumUpdate'
+                    bindhandleItemNum='handleItemNum'
+                    bindhandleItemCollect='handleItemCollect'
+                    bindhandleItemDelete='handleItemDelete'
+                    bindhandleSecItemCollect='handleSecItemCollect'
+                    bindhandleSpecItemDelete='handleSpecItemDelete'
+                    bindpopupSaleAttr='popupSaleAttr'
+                    bindscrollCtrl='scrollCtrl'
+                    scrollOpen='{{scrollOpen}}'
+                ></cart-store>
+            </view>
+            <!-- 失效商品列表 -->
+            <view class='cart-inv' wx:if='{{unable && unable.length > 0}}'>
+                <view class='invalid-list'>
+                    <view
+                        class='header-wrap cart-store-component'
+                        data-shopid='invalid'
+                        style='{{scrollTopObj === "invalid" ? "position:fixed;z-index:3;top:0;" : "position:relative;top:0;"}}'
+                    >
+                        <view class='header'>
+                            <view class='bl'>
+                                <text>失效商品{{unable.length}}件</text>
+                            </view>
+                            <view class='br'>
+                                <text class='span text' bindtap='clearInvItem'>清空失效商品</text>
+                                <text class='span ctrl' bindtap='toggleInvalidEdit'>{{invalidEdit ? '完成':'编辑'}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class='list'>
+                        <view wx:for='{{unable}}' wx:key='item_id' class='data-item-box'>
+                            <invalid-item
+                                info-class='data-item-info'
+                                itemData='{{item}}'
+                                edit='{{invalidEdit}}'
+                                bindhandleCollect='handleItemCollect'
+                                bindhandleDelete='handleItemDelete'
+                            ></invalid-item>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 购物车总和 -->
+        <view>
+            <view class='cart-total' style="height: {{isIPhoneX ? '84px' : '50px'}}">
+                <view class='select-all' bindtap='handleCheck'>
+                    <check-icon isCheck='{{cartCheck}}'></check-icon>
+                    <text class='span'>全选</text>
+                </view>
+                <view  class='cart-collect' bindtap='handleCollects' hidden='{{!editNum}}'>
+                    <view class='black-btn btn'>移入收藏夹</view>
+                </view>
+                <view  class='cart-delete' bindtap='handleRemoves' hidden='{{!editNum}}'>
+                    <view class='red-btn btn'>删除商品</view>
+                </view>
+                <view class='cart-total-dtl' hidden='{{editNum}}'>
+                    <view class='p c-fs12'>
+                        合计(不含税)：<text class='c-fs15 c-cf00'><text class='i'>¥</text>{{shopCartUtils._toFixed(cartTotal.disPrice)}}</text>
+                    </view>
+                    <view class='p c-fs10 c-c999' hidden='{{shopCartUtils._toFixed(cartTotal.discount) <= 0}}'>
+                        <text>总额：¥{{shopCartUtils._toFixed(cartTotal.price)}} 优惠：<text class='i'>¥</text>{{shopCartUtils._toFixed(cartTotal.discount)}}</text>
+                    </view>
+                </view>
+                <view wx:if='{{ !editNum && cartTotal.num}}' class='cart-submit btn c-bgdred' bindtap='cartSubmit'>
+                    <text>结算({{cartTotal.num}})</text>
+                </view>
+                <view wx:if='{{ !editNum && !cartTotal.num}}' class='cart-submit btn c-bgc9'>
+                    <text>结算</text>
+                </view>
+            </view>
+        </view>
+        <!-- 优惠券弹窗 -->
+        <coupon-popup
+            wx:if='{{coupon.show}}'
+            shopName='{{coupon.shopName}}'
+            couponData='{{coupon.data}}'
+            bindreceiveCoupon='receiveCoupon'
+            bindclose='closeCoupon'
+        ></coupon-popup>
+        <!-- 销售属性弹窗 -->
+        <sale-attr
+            wx:if='{{saleAttr.show}}'
+            data='{{saleAttr.data}}'
+            cart_id='{{saleAttr.cart_id}}'
+            img='{{saleAttr.img}}'
+            select='{{saleAttr.select}}'
+            sku_id='{{saleAttr.sku_id}}'
+            bindclose='closeSaleAttr'
+            bindreplaceSku='replaceSku'
+            bindsaleAttrSelect='attrSelect'
+        >
+        </sale-attr>
+        <!-- return top -->
+        <return-top id='returnTop'></return-top>
+    </view>
+    <empty-page
+        wx:else
+        msg="购物袋空荡荡，快去商城逛逛吧~"
+        btnText="去首页"
+        link="/pages/mall/index"
+        turnTab='{{true}}'
+        imgUrl="/image/shopCart/face-said.png"
+        imgWidth="137px"
+        imgHeight="137px"
+    ></empty-page>
+    <!--<view wx:if='{{ !load && !error && !netError &&recommendList && recommendList.length > 0}}' class='item-recom'>-->
+    <!--<view class='item-swipe'>-->
+    <!--<view class='swipe-header'>-->
+    <!--<view class='h-text'>大家都在买</view>-->
+    <!--<view class='h-ctrl' bindtap='initRecommend'>换一批-->
+    <!--<image class='{{recommendLoad ? "red-cycle cycle-active" : "red-cycle"}}' src='/image/icon/red-cycle-icon.png' style='width:16px;height: 16px'></image>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--<view class='swipe-wrapper'>-->
+    <!--<scroll-view-->
+    <!--scroll-left='{{recommendScrollLeft}}'-->
+    <!--scroll-x-->
+    <!--scroll-with-animation-->
+    <!--&gt;-->
+    <!--<view class='swipe-box'>-->
+    <!--<view class='swipe-content' style='{{"width: " + (134*recommendList.length+6)*2 + "rpx;" }}'>-->
+    <!--<view wx:for='{{recommendList}}' wx:key='item_id' bindtap='goodstail' data-itemid='{{item.item_id}}' class='item'>-->
+    <!--<image class='img' src='{{item.primary_image ? shopCartUtils.addImageSuffix(item.primary_image, "_m"): "/image/icon/loading/default-no-item.png"}}'></image>-->
+    <!--<view class='title'>{{item.title}}</view>-->
+    <!--<view class='price'>-->
+    <!--<text>¥{{shopCartUtils._toFixed((item.promotion_info && item.promotion_info.promotion_price) ? item.promotion_info.promotion_price : item.sell_price)}}</text>-->
+    <!--<text wx:if='{{item.free_shipping}}' class='label'>包邮</text>-->
+    <!--<text wx:if='{{item.free_tax}}' class='label'>包税</text>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>  -->
+    <!--</scroll-view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+</view>
+
+
+<!-- 加载组件 -->
+<template name="Loading">
+    <view class="loading-round c-tc" style='padding: 80px 0;width: 100%;'>
+        <image src="/image/icon/loading/load-animate.gif" style='width:154rpx;height: 160rpx;'></image>
+        <view class="c-fs10 c-c999">加载中...</view>
+    </view>
+</template>
+
+<!-- MaskWait -->
+<template name="MaskWait">
+    <view class="mask">
+        <image src="/image/icon/loading/loading-round-red.gif" class='mask-load'></image>
+    </view>
+</template>
+

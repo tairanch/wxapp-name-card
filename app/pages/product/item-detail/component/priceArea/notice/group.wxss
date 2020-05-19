@@ -1,0 +1,37 @@
+.group-notice{
+    display: flex;
+    font-size: 24rpx;
+    color: #fff;
+    background: #e60a30;
+    align-items: center;
+    height: 90rpx;
+    padding: 0 30rpx;
+}
+.group-notice-l{
+    flex: 1;
+}
+.group-notice-l>text{
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+}
+.group-notice-l>text:nth-of-type(1){
+    padding: 0 8rpx;
+    border: 2rpx solid #fff;
+    height: 30rpx;
+    line-height: 30rpx;
+    border-radius:30rpx;
+    font-size: 20rpx;
+}
+
+.group-notice-l>text:nth-of-type(2){
+    font-size: 50rpx;
+    margin: 0 10rpx;
+}
+.group-notice-l>text:nth-of-type(3){
+    text-decoration: line-through;
+    padding-top: 8rpx;
+}
+.group-notice-r{
+    text-align: right;
+}

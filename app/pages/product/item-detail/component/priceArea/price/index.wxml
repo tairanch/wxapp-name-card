@@ -1,0 +1,15 @@
+<!--普通/秒杀商品价格--><!--团购价格在团购的notice中-->
+<block>
+    <text class="standard-price {{state==2?'price-white':''}}">¥{{sellPrice}}</text>
+    <text class="market-price" wx:if="{{marketPrice}}">¥{{marketPrice}}</text>
+    <block
+        wx:if="{{detail.item_type === 'normal' && detail.ctivity_type !== 'FlashSale' && detail.shop.attr !== 3}}"
+    >
+
+        <text class="free-postage-tag" >
+            <block wx:if="{{detail.is_free}}">包邮</block>
+            <block wx:if="{{detail.trade_type !== 'DOMESTIC' && Number(detail.tax_rate) === 0}}">包税</block>
+        </text>
+    </block>
+</block>
+

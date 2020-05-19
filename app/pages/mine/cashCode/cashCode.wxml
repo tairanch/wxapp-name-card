@@ -1,0 +1,49 @@
+<!--pages/mine/cashCode/cashCode.wxml-->
+<view class='page-container'>
+    <view wx:if="{{true}}" class='tips-bg-view'>
+        <text class="tips-text">为了您的账户安全，需要向您手机发送验证码，请注意短信接收。</text>
+    </view>
+
+    <view class='cash-out-bg'>
+
+        <!--提现渠道-->
+        <view class='phone-number-view'>
+            <text class='number-text'>{{userInfo.phone}}</text>
+            <view class='code-btn-view-enable' wx:if="{{canSendCode}}" bindtap="sendCodeBtnClick">
+                <text class='code-text'>获取验证码</text>
+            </view>
+            <view class='code-btn-view-disable' wx:else>
+                <text class='code-text'>{{countDownText}}s<text style="color: #999999 ">后重新发送</text></text>
+            </view>
+        </view>
+
+        <!--分割线-->
+        <view class='line-view'></view>
+
+        <!--输入框-->
+        <view class='cash-input-bg-view'>
+            <view class='input-bg'>
+                <input class='code-input-view'
+                       maxlength="6"
+                       type="number"
+                       bindinput="onTextInput"
+                       bindblur="onBindblur"
+                       bindfocus="onindfocus"
+                       value="{{numberCodeText}}"
+                       placeholder="请输入验证码"
+                       placeholder-style="font-size: 11pt; color: #C9C9C9"/>
+            </view>
+            <image class='close-icon' wx:if="{{showClearBtn}}" src='/image/general/input-clear.png' bindtap='clearBtnClick'></image>
+        </view>
+
+
+        <!--提现按钮-->
+        <view class='bottom-btn-bg'>
+            <view class='bottom-btn' style="background-color: {{buttonEnable ? '#E60A30' : '#999999'}}" bindtap="submitBtnClick">
+                <text class='btn-text'>提交</text>
+            </view>
+        </view>
+
+    </view>
+
+</view>

@@ -1,0 +1,18 @@
+<wxs module='sku' src='../../sku.wxs'></wxs>
+<view class="scroll-banner">
+    <!-- 活动图片 -->
+    <image wx:if='{{promotion.groupBuy&&promotion.groupBuy.group_data.group_type === "Rookie"}}' mode="widthFix" class="tag2" src="../../images/new-group.png" />
+    <image wx:if='{{data.item_tag&&data.item_tag.images.mb_square_img}}' mode="widthFix" class="tag1" src="{{data.item_tag.images.mb_square_img}}" />
+    <view class='banner-wraper'>
+        <swiper autoplay duration='500' current="{{current}}" bindchange="swiperChange" circular class="banner-swiper">
+            <block wx:for="{{data.images}}" wx:key="unique">
+                <swiper-item>
+                    <image src="{{sku.addImageSuffix(item,'_l')}}" class="banner-img" bindtap="bannerClick" data-url="{{sku.addImageSuffix(item,'_l')}}" lazy-load></image>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="item-num banner-dots" wx:if="{{data.images.length>1}}">
+            {{index+1}}/{{data.images.length}}
+        </view>
+    </view>
+</view>

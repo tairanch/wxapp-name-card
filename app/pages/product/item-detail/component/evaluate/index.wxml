@@ -1,0 +1,45 @@
+<wxs module='sku' src='../../sku.wxs'></wxs>
+<view class="evaluate" bindtap="_evaluate">
+    <text>商品评价({{rate.total}})</text>
+    <text>好评{{rate.good_rate_ratio}}%</text>
+    <image src="/image/icon/arrow-right-icon.png"></image>
+</view>
+<block wx:if="{{rate.rates.length===7}}" >
+    <swiper 
+        class="evaluate-lists"
+        previous-margin="30rpx"
+        next-margin="110rpx"
+        bindtap="_evaluate"
+    >
+        <block wx:for="{{rate.rates}}" wx:key="{{index}}">
+            <swiper-item>
+                <view class="evaluate-list">
+                    <view class="evaluate-list-l">
+                        <view class="imgAName">
+                            <view class="head">
+                                <image class="img" src='{{item.head_portrait ? item.head_portrait : "/image/common/default-avatar.png"}}' />
+                            </view>
+                            <view class="name">{{item.user_name}}</view>
+                        </view>
+                        <view class='evaluate-content'>
+                            {{item.content || sku.EvaluateGrade[item.experience]}}
+                        </view>
+                    </view>
+                    <view class="evaluate-list-r" wx:if="{{item.images.length}}">
+                        <image src="{{sku.addImageSuffix(item.images[0],'_s')}}" class="img-rate">
+                            <view class="img-num">{{item.images.length}}张</view>
+                        </image>
+                    </view>
+                </view>
+            </swiper-item>
+        </block>
+        <swiper-item>
+            <view class="evaluate-list-more">
+                <view class="evaluate-list-more-c">
+                    <view class="evaluate-list-more-text">查看更多</view>
+                    <view>See more</view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>  
+</block>

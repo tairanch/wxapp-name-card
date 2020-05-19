@@ -1,0 +1,43 @@
+/* pages/product/shopCart/components/numWidget/NumWidget.wxss */
+.c-bgf4{background:#f4f4f4;}
+.num-ctrl{
+  display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+  width:124px;
+	border:1px solid #c9c9c9;
+	height:38px;
+	font-size:18px;
+	text-align:center;
+	line-height:38px;
+	border-radius:3px;
+	overflow:hidden;
+  font: 12px/1.5 PingFangSC-Regular,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,\5FAE\8F6F\96C5\9ED1,tahoma,simsun,sans-serif;
+  box-sizing: border-box;
+}
+.num-ctrl .input{
+  width:46px;
+	border:none;
+	padding:5px 0;
+	overflow:hidden;
+	text-align:center;
+	background:transparent;
+}
+.num-ctrl .input:focus{
+  box-shadow:0 0 2px #1e63ff inset;
+}
+/* .num-ctrl .input[disabled]{
+  background:#fff;
+} */
+.num-ctrl .link{
+  display:block;
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+}
+.num-ctrl .link:first-child{
+	border-right:1px solid #c9c9c9;
+}
+.num-ctrl .link:last-child{
+	border-left:1px solid #c9c9c9;
+}

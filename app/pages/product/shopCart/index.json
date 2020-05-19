@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "购物袋",
+  "usingComponents": {
+    "check-icon": "./components/checkIcon/CheckIcon",
+    "cart-store": "./components/cartStore/CartStore",
+    "invalid-item": "./components/invalidItem/InvalidItem",
+    "coupon-popup": "./components/couponPopup/CouponPopup",
+    "sale-attr": "./components/saleAttr/SaleAttr",
+    "empty-page": "/components/public/EmptyPage/EmptyPage",
+    "error-page": "/components/public/ErrorPage/ErrorPage",
+    "return-top": "/components/public/returnTop/returnTop"
+  },
+  "enablePullDownRefresh": true
+}

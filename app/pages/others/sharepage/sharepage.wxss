@@ -1,0 +1,179 @@
+.nav-header{
+  position:fixed;
+  z-index:99;
+  width:100%;
+  height: 58px;
+  background-color: white;
+  top: 0px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.search
+{
+  width: 524rpx;
+  height: 30px;
+  border-radius: 15px;
+  background: #f6f6f9;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #37393e;
+  font-size: 12px;
+  
+}
+.search image
+{
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+.message_body
+{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.message
+{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 28rpx;
+  top: 15rpx;
+
+}
+.message image
+{
+  width: 21px;
+  height:20px;
+}
+.message text
+{
+  font-size: 10px;
+  color: #343434;
+  text-align: center;
+  margin-top: 3px;
+}
+.message_mount
+{
+  position: absolute;
+  top: 6rpx;
+  right: 20rpx;
+  font-size: 11px;
+  border-radius: 8px;
+  width: 16px;
+  height: 16px;
+  background: red;
+  color: #ffffff;
+  text-align: center;
+}
+.page__bd{
+  margin-top: 58px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.left
+{
+  width: 224rpx;
+  background: #eeeff3;
+  height: 100%;
+
+}
+.right
+{
+  width: 526rpx;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+}
+.scroll
+{
+  background: #eeeff3;
+  height: 500px;
+
+}
+::-webkit-scrollbar
+{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.left_item
+{
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 15px;
+}
+.left_item_normal
+{
+  background: #eeeff3;
+  color: #606060;
+}
+.left_item_select
+{
+  background: white;
+  color: #09bb07;
+}
+.selectImage
+{
+  width: 7px;
+  height: 56px;
+}
+.allImage
+{
+  width: 18px;
+  height: 18px;
+}
+.banner{
+    width: 486rpx;
+    height: 260rpx;
+    margin: 0 20rpx;
+}
+.banner_swiper{
+  width: 100%;
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+}
+.banner_image{
+  width: 100%;  
+}
+.goods_body
+{
+  margin-left: 20rpx;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  width: 486rpx;
+  flex-wrap: wrap;
+}
+.goods_item
+{
+  display: flex;
+  flex-direction: column;
+  width:33.33%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #4d4d4d;
+}
+.goods_item image
+{
+  margin-top: 10px;
+  width: 130rpx;
+  height: 130rpx;
+}
+.goods_text
+{
+  margin-top: 9px;
+  margin-bottom: 10px;
+}

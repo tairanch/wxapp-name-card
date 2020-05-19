@@ -1,0 +1,14 @@
+<!-- 分享赚佣金 -->
+<view
+    class="share-earn"
+    bindtap="onShareEarnTap"
+    data-price="{{promotion.commission_min_price}}"
+>
+    <view>分享赚{{promotion.commission_income}}元</view>
+    <text>|</text>
+    <view>
+        <view>立即</view>
+        <view>分享</view>
+    </view>
+    <image src="/image/item/item-detail-triangle.png"/>
+</view>

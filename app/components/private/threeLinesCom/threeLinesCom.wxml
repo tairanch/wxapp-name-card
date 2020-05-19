@@ -1,0 +1,49 @@
+<wxs module="filters" src="./threeLinesCom.wxs"></wxs>
+<view class="category-item">
+  <view class="common-title">
+    <text class="common-title-text">{{data.title}}</text>
+    <view wx:if='{{data.more_link}}' 
+          bindtap='goMore' 
+          class="common-more-wraper" 
+          data-more_link='{{data.more_link}}'>
+      <image class="common-arrow-right" src="/image/icon/arrow-right-icon.png"></image>
+      <text class='common-more'>更多</text>
+    </view>
+  </view>
+  <image 
+        wx:if="{{data.img_top_url}}"
+        class="three-lines-advertising" 
+        src='{{data.img_top_url}}' 
+        bindtap='imgTopLink' 
+        data-link='{{data.img_top_link}}' 
+        mode="widthFix"></image>
+  <view class="three-lines-wraper">
+    <view class="three-lines-item" wx:for='{{data.item_list}}' wx:key='unique'>
+      <view wx:if='{{item.insertImg}}' 
+            bindtap='goItemPage' 
+            data-link='{{item.link}}' 
+            data-insertImg='{{item.insertImg}}'>
+        <image class="three-lines-item-img insert-img" wx:if="{{item.image}}" src='{{item.image}}'></image>
+      </view>
+      <view wx:else bindtap='goItemPage' data-item='{{item}}'>
+        <image class="three-lines-item-img" src='{{item.image+"_m.jpg"}}'></image>
+        <image wx:if="{{item.item_tag}}" 
+              class="three-lines-promotion-img" 
+              mode="widthFix" 
+              src='{{item.item_tag.images.mb_square_img}}'></image>
+        <text wx:if="{{!item.item_tag&&item.is_new}}" class='three-lines-is-new'>新品</text>
+        <text wx:if='{{item.promotion_tag}}' class='three-lines-tag'>{{item.promotion_tag}}</text>
+        <image wx:if='{{item.status==10||item.status==40||item.status==50}}' 
+                class="no-goods-count-image" 
+                src="/image/mall/sold-out-activity.png"></image>
+        <view class='three-lines-title-wraper'>
+          <view wx:if='{{item.item_alias}}' class="three-lines-item-title">{{item.item_alias}}</view>
+          <view wx:else class="three-lines-item-title">{{item.title}}</view>
+          <view wx:if='{{item.price>0}}' class='three-lines-item-price'>¥{{filters.toFix(item.price)}}
+            <text wx:if='{{item.line_price>0}}' class='three-lines-item-market-price'>¥{{filters.toFix(item.line_price)}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

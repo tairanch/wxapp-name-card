@@ -1,0 +1,103 @@
+/* pages/product/pay/pay.wxss */
+
+.pay {
+  padding-top: 20rpx;
+  /* background: #f4f4f4; */
+  /* height: 100vh; */
+  box-sizing: border-box;
+}
+page{
+  background-color: #f4f4f4;
+}
+
+.item {
+  background: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+  color: #353535;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fs-32 {
+  font-size: 32rpx;
+}
+
+.fs-28 {
+  font-size: 28rpx;
+}
+
+.fs-24 {
+  font-size: 24rpx;
+}
+
+.select-way {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+  color: #666;
+  line-height: 80rpx;
+}
+
+.pay-item {
+  height: 120rpx;
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #e4e4e4;
+  background: #fff;
+}
+
+.pay-item .pay-item-label {
+  display: flex;
+}
+
+.pay-item .item-icon {
+  /* margin-top:22rpx; */
+  margin-right: 30rpx;
+  width: 76rpx;
+  height: 76rpx;
+  align-self: center;
+}
+
+.pay-item .item-text {
+  font-size: 0;
+}
+
+.pay-item .name {
+  margin-top: 28rpx;
+  margin-bottom: 15rpx;
+  line-height: 1;
+  color: #353535;
+}
+
+.pay-item .des {
+  color: #999;
+  line-height: 1;
+}
+
+.pay-item .select-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 30rpx;
+  align-self: center;
+}
+
+.pay-btn {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #e60a30;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx;
+  border: 0 none;
+  border-radius: 5rpx;
+  outline: none;
+}

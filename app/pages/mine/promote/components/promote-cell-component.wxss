@@ -1,0 +1,58 @@
+/* 佣金cell*/
+.cell-container {
+    width: 100%;
+    height: 130rpx;
+    border-bottom-style: solid;
+    border-bottom-color: #f4f4f4;
+    border-bottom-width: 1rpx;
+    display: flex;
+    justify-content: space-between;
+    background: white;
+}
+
+/* 佣金左侧*/
+.left-container {
+
+    flex: 3;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+/* 佣金右侧*/
+.right-container {
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding-right: 20rpx;
+}
+
+
+.left-icon-withDraw {
+
+  width: 60rpx; 
+  height: 60rpx;
+   border-radius: 30rpx;
+   margin-left: 20rpx;
+   background:#FFB12A;
+   color:white;font-size:28rpx;
+   display:flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.left-icon-earn {
+
+  width: 60rpx; 
+  height: 60rpx;
+   border-radius: 30rpx;
+   margin-left: 20rpx;
+   background:#5579FF;
+   color:white;font-size:28rpx;
+   display:flex;
+   align-items: center;
+   justify-content: center;
+}

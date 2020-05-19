@@ -1,0 +1,1 @@
+<web-view wx:if="{{web_src}}" src="{{web_src}}" bindmessage="bindmessage"></web-view>

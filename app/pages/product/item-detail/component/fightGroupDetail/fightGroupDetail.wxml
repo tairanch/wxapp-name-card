@@ -1,0 +1,20 @@
+<wxs module="sku" src="../../sku.wxs"></wxs>
+<view class="li">
+    <view class="list-detail">
+        <view class="list-left">
+            <view class="participants-name">{{sku.getName(item.nickname, item.name)}}</view>
+            <view class="group-info">
+                <view class="group-info-residue">
+                还差{{item.required_person - item.current_person}}人成团
+                </view>
+                <view wx:if="{{unUpdate}}" class="group-info-time">团已过期</view>
+                <view wx:else class="group-info-time">{{sku.timeCtrl.formatTime(time)}}</view>
+            </view>
+        </view>
+        <view class="list-right" bindtap="goGroupDetail">
+            去参团
+            <image src="/image/common/arrow-right-icon-white.png" class="group-direction-right"></image>
+        </view>
+        </view>
+    <image class="participants-avatar" src='{{item.avatar || "/image/common/default-avatar.png"}}'/>
+</view>

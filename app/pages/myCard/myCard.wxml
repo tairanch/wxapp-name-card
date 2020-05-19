@@ -1,0 +1,106 @@
+<!--pages/pa ge/page.wxml-->
+<view class="my-card">
+    <view class="card-absolute" wx:if="{{!onLoad && cardId}}">
+        <view class="{{ (show)? 'my-card-box show-bg': 'my-card-box'}}">
+            <view class="card-header">
+                <view class="header-bg">
+                    <view class="header-bg-top"></view>
+                    <view class="header-bg-bottom"></view>
+                </view>
+                <image class="card-header-image" src="{{info.template_id == 1 || info.template_id == 0 ? '/image/myCard/template_default@2x.png':'/image/myCard/template_bg@2x.png'}}"></image>
+                <view class="card-box">
+                    <view class="card-position">
+                        <image class="erweima" src="{{info.template_id == 1 || info.template_id == 0? '/image/myCard/erweima@2x.png': '/image/myCard/qr_code_white@2x.png'}}" bindtap="turnCode"></image>
+                        <view class="card-image">
+                            <image src="{{info.portrait || '/image/nameCard/moren@2x.png'}}" class="header-image"></image>
+                            <view class="{{info.template_id == 1 || info.template_id == 0? 'card-user':'card-user white'}}">
+                                <view class="card-user-name">{{info.name}}</view>
+                                <view class="card-user-attr"  wx:if="{{info.job}}">{{info.job}}</view>
+                            </view>
+                        </view>
+                        <view class="{{info.template_id == 1 || info.template_id == 0? 'user-info':'user-info white'}}">
+                            <view class="user-phone" wx:if="{{info.mobile}}">
+                                <image class="user-phone-image" mode='widthFix' src="{{info.template_id == 1 || info.template_id == 0? '/image/myCard/dianhua@2x.png':'/image/myCard/phone_white@2x.png'}}"></image>
+                                <view class="user-phone-text" bindtap="makePhoneCall">{{info.mobile}}</view>
+                            </view>
+                            <view class="user-email" wx:if="{{info.email}}">
+                                <image class="user-email-image" mode='widthFix' src="{{info.template_id == 1 || info.template_id == 0? '/image/myCard/youxiang@2x.png':'/image/myCard/emil_icon_white@2x.png'}}"></image>
+                                <view class="user-email-text" bindtap="copyText">{{info.email}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="turn-edit-contain" bindtap="turnList" wx:if="{{commissionUcenterLoginType}}">
+                    <view class="turn-edit-position">
+                        <image src="/image/myCard/bianji@2x.png" class="turn-edit-img"></image>
+                    </view>
+                </view>
+                <view class="turn-edit-box" bindtap="turnList" wx:if="{{commissionUcenterLoginType}}"></view>
+                <view class="card-share-box">
+                    <button class="card-share" open-type="share">
+                        分享名片
+                    </button>
+                    <view class="card-save" wx:if="{{info.mobile}}">
+                        <view class="card-save-text" bindtap="addPhoneContact">存入手机通讯录</view>
+                        <image class='arrow-right-icon' src='/image/icon/arrow-right-s-icon.png' bindtap="addPhoneContact"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="card-middle" wx:if="{{info.introduction}}">
+                <view class="middle-title">
+                    <view class="middle-title-text">我的个人简介</view>
+                </view>
+                <view class="middle-content">
+                    {{info.introduction}}
+                </view>
+            </view>
+            <view class="card-bottom">
+                <view class="bottom-title">
+                    <view class="bottom-title-text">其他信息</view>
+                </view>
+                <view class="bottom-content">
+                    <image class='bottom_image' src='{{info.bottom_image}}' mode='widthFix' style="width: 100%"></image>
+                </view>
+            </view>
+        </view>
+        <image 
+            wx:if="{{commissionUcenterLoginType}}"
+            class='card-downworld-img' src='{{downimg}}'  
+            bindtap='goPoster' 
+            data-shopid="{{info.shop_id}}"></image>
+    </view>
+    <view class="card-shadow" wx:if="{{show}}"></view>
+    <view class="card-modal" wx:if="{{show}}">
+        <view class="modal-box">
+            <view class="modal-position">
+                <view class="modal-tip">您好, 这是我的联系方式, 请添加!</view>
+                <view class="modal-tip-down"></view>
+                <image class="modal-card-image" src="/image/myCard/tanchuang@2x.png"></image>
+                <view class="modal-card">
+                    <view class="code-content-top">
+                        <view class="code-content-name">{{info.name}}</view>
+                        <view class="code-content-attr"  wx:if="{{info.job}}">{{info.job}}</view>
+                    </view>
+                    <view class="code-content-bottom" wx:if="{{info.mobile}}">
+                        <view class="code-user-phone">
+                            <image class="user-phone-image" mode='widthFix' src="/image/myCard/dianhua3@2x.png"></image>
+                            <view class="user-phone-text">{{info.mobile}}</view>
+                        </view>
+                        <view class="code-user-email" wx:if="{{info.email}}">
+                            <image class="user-email-image" mode='widthFix' src="/image/myCard/youxiang3@2x.png"></image>
+                            <view class="user-email-text">{{info.email}}</view>
+                        </view>
+                    </view>
+                    <image src="{{info.portrait || '/image/nameCard/moren@2x.png'}}" class="card-content-header"></image>
+                </view>
+                <view class="modal-button" bindtap="receiveCard" wx:if="{{hasgetinfo}}">收下名片</view>
+                <button
+                    wx:else
+                    open-type="getUserInfo"
+                    bindgetuserinfo="beforeReceiveCard"
+                    type="primary"
+                    class="modal-button">收下名片</button>
+            </view>
+        </view>
+    </view>
+</view>

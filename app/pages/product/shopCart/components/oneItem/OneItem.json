@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "swiper-ctrl": "/components/private/swiperCtrlWidgetCom/swiperCtrlWidget",
+    "num-widget": "../numWidget/NumWidget",
+    "check-icon": "../checkIcon/CheckIcon"
+  }
+}

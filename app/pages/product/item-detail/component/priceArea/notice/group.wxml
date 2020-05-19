@@ -1,0 +1,13 @@
+<wxs module="sku" src="../../../sku.wxs"></wxs>
+<view class="group-notice">
+    <view class="group-notice-l">
+        <text>{{groupPerson}}人团</text>
+        <text>¥{{groupSellPrice}}</text>
+        <text wx:if="{{groupMarketPrice && groupMarketPrice !== groupSellPrice}}">¥{{groupMarketPrice}}</text>
+    </view>
+    <view class="group-notice-r">
+        <view wx:if="{{startFlag}}">距开始仅剩</view>
+        <view wx:else>距结束仅剩</view>
+        <view>{{sku.timeCtrl.formatTextTime(time)}}</view>
+    </view>
+</view>

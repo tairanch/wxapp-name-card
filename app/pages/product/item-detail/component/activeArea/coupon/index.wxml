@@ -1,0 +1,9 @@
+<view class="coupon-list" bindtap="getCoupon">
+    <text>领券：</text>
+    <view class="coupon-list-tags">
+        <block  wx:for="{{couponList}}" wx:key="{{index}}">
+            <text class="coupon-list-tag">满{{item.limit_money}}减{{item.deduct_money}}</text>
+        </block>
+    </view>
+    <image src="/image/icon/arrow-right-icon.png"></image>
+</view>

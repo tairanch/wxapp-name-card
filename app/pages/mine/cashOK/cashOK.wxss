@@ -1,0 +1,72 @@
+/* pages/mine/cashOK/cashOK.wxss */
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.cash-out-bg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    margin-top: 15px;
+    margin-left: 15px;
+    width: calc(100% - 30px);
+    border-radius: 8px;
+    padding-bottom: 30px;
+}
+
+.success-image {
+    margin-top: 35px;
+    width: 50px;
+    height: 50px;
+}
+
+.title-text {
+    margin-top: 20px;
+    font-size: 14pt;
+    color: #353535;
+}
+
+.row-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 50px);
+    height: 40px;
+}
+
+.sub-title {
+    font-size: 11pt;
+    color: #666666;
+}
+
+.yue-text {
+    text-align: right;
+    font-size: 11pt;
+    color: #E60A30;
+}
+
+.channel-bg-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.wx-logo {
+    margin-right: 8px;
+    width: 18px;
+    height: 16px;
+}
+
+.right-text {
+    text-align: right;
+    font-size: 11pt;
+    color: #353535;
+}

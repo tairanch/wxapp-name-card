@@ -1,0 +1,30 @@
+<wxs module="filters" src="./groupCom.wxs"></wxs>
+<view class="group">
+  <view class="common-title group-title">
+    <text class="common-title-text group-title-text">{{data.title}}</text>
+    <view wx:if='{{data.more_link}}' class="common-more-wraper group-more-wraper" bindtap='groupMore' data-more_link='{{data.more_link}}'>
+      <image class="common-arrow-right" src="/image/icon/arrow-right-icon.png"></image>
+      <text class='commmon-group-more' style="color:#666666">更多</text>
+    </view>
+  </view>
+  <swiper duration="500" current='{{current}}' display-multiple-items='{{data.item_list.length>=3 ? 3 : data.item_list.length}}' bindchange="swiperChange" class="group-swiper">
+    <block wx:for="{{data.item_list}}" wx:key="unique">
+      <swiper-item>
+        <view class="group-item" bindtap='goItemPage' data-item='{{item}}'>
+          <image class="group-item-img" src="{{item.image+'_m.jpg'}}"></image>
+          <image wx:if='{{item.status==10||item.status==40||item.status==50}}' class="no-goods-count-image" src="/image/mall/sold-out-activity.png"></image>
+          <text wx:if='{{item.group_tag}}' class='group-item-label'>{{item.group_tag}}</text>
+          <view class="group-detail">
+            <view wx:if='{{item.group_price>0}}' class="group-detail-price">{{'拼团价¥ '+filters.toFix(item.group_price)}}</view>
+            <view wx:if='{{item.line_price>0}}' class="group-detail-market-price">¥{{filters.toFix(item.line_price)}}</view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="group-swiper-dots">
+    <block wx:for="{{data.item_list}}" wx:key="unique">
+      <view class="dot{{index == current ||index == current+1||index == current+2 ? ' active' : ''}}"></view>
+    </block>
+  </view>
+</view>

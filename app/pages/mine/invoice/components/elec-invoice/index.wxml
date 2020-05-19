@@ -1,0 +1,50 @@
+<view class="page">
+    <view class="invoice-title">
+        <view style="margin-top:20rpx;color:#353535;font-size:28rpx">发票抬头</view>
+        <!-- 开票类型 企业还是个人 -->
+        <view class="radio-container">
+            <radio-group class="radio-group" bindchange="onRadioChange">
+                <radio value="{{0}}" checked="{{true}}">个人</radio>
+                <radio style="margin-left:20rpx" value="{{1}}" checked="{{false}}">单位</radio>
+            </radio-group>
+        </view>
+        <!-- 发票抬头 -->
+        <input class="title-input" value="" type="text|number|idcard|digit|time|date" password="false" placeholder="{{selectedIndex==0?'请输入个人名称':'请输入单位名称'}}" placeholder-class="input-placeholder" disabled="false" maxlength="140" focus="false" bindinput="" bindfocus="" bindblur="" bindconfirm=""></input>
+        <!-- 发票内容 -->
+        <view style="margin-top:20rpx;color:#353535;font-size:28rpx">发票内容 明细</view>
+    </view>
+    <view class="seperate-line"></view>
+    <!-- 收票邮箱 -->
+    <view class="cell-container">
+        <text class="cell-container-title">*收票邮箱</text>
+        <input class="cell-container-input" value="" type="text|number|idcard|digit|time|date" password="false" placeholder="用于接收电子发票" placeholder-class="input-placeholder" disabled="false" maxlength="140" focus="false" bindinput="" bindfocus="" bindblur="" bindconfirm=""></input>
+    </view>
+    <view class="seperate-line"></view>
+    <view wx:if="{{selectedIndex==1}}">
+        <!-- 纳税人识别编码 -->
+        <view class="cell-container">
+            <text class="cell-container-title">*纳税人识别编码</text>
+            <input class="cell-container-input" value="" type="text|number|idcard|digit|time|date" password="false" placeholder="请输入纳税人识别码" placeholder-class="input-placeholder" disabled="false" maxlength="140" focus="false" bindinput="" bindfocus="" bindblur="" bindconfirm=""></input>
+        </view>
+        <!-- 注册地址 -->
+        <view class="cell-container">
+            <text class="cell-container-title">注册地址</text>
+            <input class="cell-container-input" value="" type="text|number|idcard|digit|time|date" password="false" placeholder="请输入注册地址" placeholder-class="input-placeholder" disabled="false" maxlength="140" focus="false" bindinput="" bindfocus="" bindblur="" bindconfirm=""></input>
+        </view>
+        <!-- 注册电话 -->
+        <view class="cell-container">
+            <text class="cell-container-title">注册电话</text>
+            <input class="cell-container-input" value="" type="number" password="false" placeholder="请输入注册电话" placeholder-class="input-placeholder" disabled="false" maxlength="140" focus="false" bindinput="" bindfocus="" bindblur="" bindconfirm=""></input>
+        </view>
+        <!-- 开户银行 -->
+        <view class="cell-container">
+            <text class="cell-container-title">开户银行</text>
+            <input class="cell-container-input" value="" type="number" password="false" placeholder="请输入开户银行" placeholder-class="input-placeholder" disabled="false" maxlength="140" focus="false" bindinput="" bindfocus="" bindblur="" bindconfirm=""></input>
+        </view>
+        <!-- 银行账户 -->
+        <view class="cell-container">
+            <text class="cell-container-title">银行账户</text>
+            <input class="cell-container-input" value="" type="text|number|idcard|digit|time|date" password="false" placeholder="请输入银行账户" placeholder-class="input-placeholder" disabled="false" maxlength="140" focus="false" bindinput="" bindfocus="" bindblur="" bindconfirm=""></input>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,1 @@
+<web-view src="{{share_src}}" bindmessage="bindmessage"  ></web-view>

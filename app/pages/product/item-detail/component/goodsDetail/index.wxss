@@ -1,0 +1,52 @@
+.goods-detail{
+    background: #fff;
+}
+
+.detail-nav{
+    display: flex;
+    height: 90rpx;
+    font-size: 28rpx;
+    background: #fff;
+}
+.detail-nav-fixed{
+    position: fixed;
+    top: 88rpx;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+.detail-nav>view{
+    flex: 1;
+    color: #808080;
+    text-align: center;
+    line-height: 90rpx;
+}
+
+.detail-nav>.active{
+    color: #e60a30;
+}
+.detail-content-l{
+    padding-bottom: 100rpx;
+}
+.detail-content-l>image{
+    width: 100%;
+}
+
+.detail-content-r{
+    padding: 0 30rpx;
+    height: 100vh;
+}
+
+.detail-content-list{
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    height: 80rpx;
+    border-bottom: 1rpx solid #f4f4f4;
+}
+.detail-content-list>text:nth-of-type(1){
+    color: #808080;
+    flex: 1;
+}
+
+

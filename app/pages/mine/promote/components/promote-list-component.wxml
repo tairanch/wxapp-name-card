@@ -1,0 +1,23 @@
+<!-- pages/mine/promote/promote-list.wxml -->
+<scroll-view style='width:100%;height:100vh' bindscrolltolower="onBindscrolltolower" scroll-y>
+  <block wx:for="{{dataList}}" wx:key="section-key" wx:for-item="sectionItem">
+    <!-- section-header -->
+    <view class='section-header'>
+      <text class='section-header-date'>{{sectionItem.created_at}}</text>
+      <view class='setion-header-amount'>
+        <view wx:if="{{sectionItem.month_unPocket_settlement}}">
+          待入账 ¥{{sectionItem.month_unPocket_settlement?sectionItem.month_unPocket_settlement:0}}
+        </view>
+        <view wx:if="{{sectionItem.month_Pocket_settlement}}">
+          已入账 ¥{{sectionItem.month_Pocket_settlement?sectionItem.month_Pocket_settlement:0}}
+        </view>
+      </view>
+    </view>
+    <!-- <promote-cell-component item-detail="{{sectionItem}}"/> -->
+    <!-- 每组行项目 -->
+    <view wx:for="{{sectionItem.res}}" wx:key="item-key" wx:for-item="item">
+      <promote-cell-component item-detail="{{item}}" />
+    </view>
+  </block>
+  <view style='width:100%;height:100rpx'></view>
+</scroll-view>

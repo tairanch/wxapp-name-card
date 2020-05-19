@@ -1,0 +1,4 @@
+<!--pages/mine/address/index.wxml-->
+<view>
+    <view bindtap="selectAdd">返回</view>
+</view>

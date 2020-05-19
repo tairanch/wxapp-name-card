@@ -1,0 +1,28 @@
+.item-nav {
+    height: 88rpx;
+    line-height: 88rpx;
+    width: 100%;
+    font-size: 28rpx;
+    color: #666;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 90;
+}
+.nav-ul {
+    padding: 0 25%;
+    box-sizing: border-box;
+    display: flex;
+}
+.nav-li{
+    text-align: center;
+    flex: 1;
+}
+.nav-li>text{
+    display: inline-block;
+    padding: 0 10rpx;
+    height: 84rpx;
+}
+.active{
+    border-bottom: 4rpx solid #353535;
+}

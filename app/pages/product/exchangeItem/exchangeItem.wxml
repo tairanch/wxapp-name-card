@@ -1,0 +1,41 @@
+<!--pages/product/exchangeItem/exchangeItem.wxml-->
+<wxs module="shopCartUtil" src="../shopCart/shopCart.wxs"></wxs>
+<view class='exchange-item' style='{{"min-height:" + windowHeight + "px"}}'>
+  <view class='m-header'>
+    {{look? '购满' + fullPrice + '元可换购' + limit + '件热销商品': '最多可换购' + limit + '件，已选'  + buyNum + '件'}}
+  </view>
+  <view class='m-content'>
+    <view wx:for='{{exchangeData[promotion_id]}}' wx:key='{{index}}' class='{{ (item.store <= 0 || item.shelf_status != 30) ? "one-item g-row-flex inv" : "one-item g-row-flex"}}'>
+      <view class='item-check'>
+        <check-icon
+          isCheck='{{item.check}}'
+          invalid='{{item.store <= 0 || item.shelf_status != 30}}'
+          disable='{{look}}'
+          bindhandleCheck='itemCheck'
+          data-index='{{index}}'
+        ></check-icon>
+      </view>
+      <view class='item-info g-col-1 g-row-flex' bindtap='turnLink' data-itemid='{{item.item_id}}'>
+        <view class='item-img'>
+          <image class='img'src='{{item.image? shopCartUtil.addImageSuffix(item.image, "_t"): "../../../image/icon/loading/default-no-item.png" }}'></image>
+          <image class='img-no-item' src='{{"../../../image/shopCart/no-item.png"}}' wx:if='{{item.store <= 0}}'></image>
+        </view>
+        <view class='item-detail g-col-1'>
+          <view class='title'>{{item.title}}</view>
+          <view class="props">{{item.spec_text}}</view>
+          <view class="item-price g-row-flex">
+            <view class="price">换购价 ¥{{shopCartUtil._toFixed(item.price)}}</view>
+            <view class="origin-price" wx:if='item.market_price'>原价{{shopCartUtil._toFixed(item.sell_price)}}</view>
+            <view class="num g-col-1">×1</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if='{{!look}}' class='total-ctrl c-clrfix'>
+    <view class='c-fl'>已选择{{buyNum}}/{{limit}}</view>
+    <view class='red-btn c-fr' bindtap='submitHandle'>
+      {{ ( look || !hasData ) ? "返回":"确定"}}
+    </view>
+  </view>
+</view>

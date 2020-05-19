@@ -1,0 +1,9 @@
+<picker
+    bindchange="bindRegionChange"
+    bindcolumnchange="bindRegionColumnChange"
+    mode="multiSelector"
+    range="{{AreaArray}}"
+    rangeKey="name"
+    value="{{AreaIndex}}">
+    <view>选择其他区域</view>
+</picker>

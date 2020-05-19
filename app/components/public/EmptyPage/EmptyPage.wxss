@@ -1,0 +1,24 @@
+/* pages/component/empty/EmptyPage/EmptyPage.wxss */
+/* common */
+.c-fs12{  font-size:12px; }
+.c-cc9{ color:#c9c9c9; }
+
+.empty-page{
+  padding:45px 0 40px;
+	background:#fff;
+	text-align:center;
+}
+.empty-page .p{
+	line-height:30px;
+	padding:6px 0 10px;
+}
+.empty-page .redbtn{
+	display:inline-block;
+	height:36px;
+	line-height:36px;
+	width: 150px;
+	background:#e60a30;
+	border-radius:18px;
+	color:#fff;
+	font-size:15px;
+}

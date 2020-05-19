@@ -1,0 +1,8 @@
+<!--pages/component/loading/loading.wxml-->
+<view class='fixedLoad'>
+		<view class='animateArea'>
+			<view class='ball redBall'> </view>
+			<view class='ball blueBall'> </view>
+		</view>
+		<view class='loadText'>努力加载中~</view>
+	</view>

@@ -1,0 +1,149 @@
+/* pages/exchangeItem/exchangeItem.wxss */
+/* common */
+.g-row-flex{
+  display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	width:100%;
+}
+.g-row-flex:before, .g-row-flex:after{
+  content:"";
+	display:table;
+	clear:both;
+}
+.g-col-1{
+	-webkit-box-flex:1;
+	-ms-flex:1;
+	flex:1;
+}
+.c-clrfix:before, .c-clrfix:after{  content:"";  display:table;  clear:both;  }
+.c-fl{  float:left; }
+.c-fr{  float:right;  }
+
+.exchange-item{
+  padding-top:45px;
+	padding-bottom:60px;
+	background:#f4f4f4;
+  font: 12px/1.5 PingFangSC-Regular,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,\5FAE\8F6F\96C5\9ED1,tahoma,simsun,sans-serif;
+  box-sizing: border-box;
+}
+.exchange-item .m-header{
+  color: #e60a30;
+  font-size:13px;
+  line-height:25px;
+  padding:10px 30rpx;
+  background:#ffedef;
+  position: fixed;
+  top:0;
+  width:100%;
+}
+.exchange-item .m-content{
+  background:#fff;
+}
+.exchange-item .one-item.inv{
+  color:#999;
+}
+.exchange-item .one-item.inv .item-price{
+  color:#999;
+}
+.exchange-item .one-item.inv .origin-price{
+	border:1px solid #999;
+}
+.exchange-item .one-item .item-check{
+  padding-left:5px;
+	text-align:center;
+	line-height:90px;
+	width:40px;
+}
+.exchange-item .one-item .item-info{
+	border-bottom:1px solid #e4e4e4;
+	padding:10px 15px 16px 5px;
+}
+.exchange-item .one-item .item-img{
+  position: relative;
+	width:70px;
+	height:70px;
+	margin-right:22rpx;
+}
+.exchange-item .one-item .item-img .img{
+  width:100%;
+	height:100%;
+}
+.exchange-item .one-item .item-img .img-no-item{
+  position: absolute;
+	width: 55px;
+	height: 55px;
+	left: 50%;
+	top: 50%;
+	transform: translate3d(-50%, -50%, 0);
+}
+.exchange-item .one-item .item-detail{
+	padding-left:10px;
+}
+.exchange-item .one-item .title{
+	font-size:14px;
+  height:36px;
+	line-height:18px;
+	display:-webkit-box;
+	word-break: break-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp:2;
+	-webkit-box-orient:vertical;
+}
+.exchange-item .one-item .props{
+	font-size:11px;
+	color:#999;
+	line-height:20px;
+	height:20px;
+	display:-webkit-box;
+	word-break: break-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp:2;
+	-webkit-box-orient:vertical;
+}
+.exchange-item .one-item .item-price{
+	line-height:18px;
+	color:#e60a30;
+}
+.exchange-item .one-item .origin-price{
+	border:1px solid #e60a30;
+	height:18px;
+	margin-left:3px;
+	border-radius:9px;
+	padding:0 9px;
+}
+.exchange-item .one-item .num{
+	text-align: right;
+	color:#999;
+}
+.exchange-item .single-btn{
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	background:#e60a30;
+	color:#fff;
+	font-size:15px;
+}
+.exchange-item .total-ctrl{
+  position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	border-top:1px solid #e4e4e4;
+	padding-left:10px;
+	font-size:15px;
+	line-height:50px;
+	background:#fff;
+}
+.exchange-item .total-ctrl .red-btn{
+	background:#e60a30;
+	color:#fff;
+	width:105px;
+	text-align:center;
+}

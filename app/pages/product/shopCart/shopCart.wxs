@@ -1,0 +1,186 @@
+var util = require('../../../utils/util.wxs')
+
+// 时间格式处理
+var _cnFormat = function (time) {
+    var dateObj = formatDate(time);
+    if (!dateObj) {
+        return "";
+    }
+    var year = dateObj.year
+    var month = dateObj.month
+    var date = dateObj.date
+    var hour = dateObj.hour
+    var minute = dateObj.minute
+    return month + '月' + date + '日' + hour + ':' + minute
+}
+
+var formatDate = function (time) {
+    if (isNaN(+time)) return "";
+    if (time.toString().length == 10) {
+        time = getDate(time * 1000);
+    } else {
+        time = getDate(time);
+    }
+    return {
+        year: time.getFullYear(),
+        month: util.timeUtils.toTwoDigit(time.getMonth() + 1),
+        date: util.timeUtils.toTwoDigit(time.getDate()),
+        hour: util.timeUtils.toTwoDigit(time.getHours()),
+        minute: util.timeUtils.toTwoDigit(time.getMinutes()),
+        second: util.timeUtils.toTwoDigit(time.getSeconds())
+    }
+}
+
+var tagName = function (type) { //翻译tag
+    var name = {
+        FlashSale: '特卖',
+        DirectReduction: '直降',
+        GroupBuy: '拼团',
+        SecKill: '秒杀',
+        GiftBuy: '买赠',
+        FullMinus: '满减',
+        FullDiscount: '满折',
+        OptionBuy: 'N元任选',
+        ExchangeBuy: '加价换购'
+    }[type] || ''
+    return name
+}
+// 图片处理
+var addImageSuffix = function (url, size) {
+    // return url
+    return url = (getRegExp('image.tairanmall.com').test(url)) ? url + size + ".jpg" : url
+};
+
+// 小数处理
+var _toFixed = function (val) {
+    return parseFloat(parseFloat(val).toFixed(2))
+}
+// parseInt
+var _parseInt = function (val) {
+    return parseInt(val)
+}
+var _parseFloat = function (val) {
+    return parseFloat(val)
+}
+// toString
+var _toString = function(val){
+    return Number(val).toString()
+}
+// split
+var _split = function(val, name) {
+    return String(val).split(name)
+}
+
+// 优惠券相关方法
+var getPrice = function (num)  {
+    return parseFloat(num).toString().split(".").length
+}
+
+// 促销时间处理
+var activityTime = function (name, data) {
+    var promotion_single = data.promotion_single;
+    if (!promotion_single) {
+        return "";
+    }
+
+    // 注意：wxs文件中，要把"2019-04-24 11:04:57"格式的时间，改为"2019/04/24 11:05:11"格式，否则iOS系统无法进行格式化
+    // 开始时间
+    var start_time_str = promotion_single.start_time.split('-').join('/');
+    // 结束时间
+    var end_time_str = promotion_single.end_time.split('-').join('/');
+
+    var isStart = getDate().getTime() > getDate(start_time_str).getTime();
+
+    return _cnFormat(isStart ? getDate(end_time_str).getTime() : getDate(start_time_str).getTime()) + (name || promotion_single.name) + (isStart ? "结束" : "开始");
+}
+
+// oneItem
+var getOneItemPrice = function (itemData){
+
+    if (!itemData) {
+        return '';
+    }
+
+    var promotion_single = itemData.promotion_single;
+
+    var price = +itemData.sell_price;
+    if (promotion_single && promotion_single.price && promotion_single.price > 0) {
+        if (promotion_single.type === "SecKill") {
+            if (getDate(promotion_single.start_time.split('-').join('/')).getTime() <= getDate().getTime() < getDate(promotion_single.end_time.split('-').join('/')).getTime()) {
+                price = +promotion_single.price
+            }
+        } else {
+            price = +promotion_single.price
+        }
+    }
+    return price
+}
+var getsecKillActivityTime = function (itemData){
+    var promotion_single = itemData.promotion_single;
+    if (!promotion_single) {
+        return {
+            isEnd: false,
+            isStart: false
+        };
+    }
+    var isEnd = (getDate().getTime() > getDate(promotion_single.end_time.split('-').join('/')).getTime()) ? true : false;
+    var isStart = (getDate().getTime() > getDate(promotion_single.start_time.split('-').join('/')).getTime()) ? true : false;
+    var end_time = ''
+    var start_time = ''
+    if (!isEnd) {
+        if (isStart) {
+            end_time = _cnFormat(getDate(promotion_single.end_time.split('-').join('/')))
+        } else {
+            start_time = _cnFormat(getDate(promotion_single.start_time.split('-').join('/')))
+        }
+    }
+    return {
+        isEnd: isEnd,
+        isStart: isStart,
+        end_time: end_time,
+        start_time: start_time
+    };
+}
+var initBuyLimit = function (itemData) {
+
+    if (!itemData) {
+        return '';
+    }
+
+    var promotion_single= itemData.promotion_single;
+    var store  = itemData.store;
+    if (promotion_single && (promotion_single.type === 'FlashSale' || promotion_single.type === 'SecKill')) {
+        if ((getDate(promotion_single.start_time.split('-').join('/')).getTime() <= getDate().getTime()) && (getDate().getTime() <= getDate(promotion_single.end_time.split('-').join('/')).getTime())) {
+            store = promotion_single.store
+        }
+    }
+    var buyLimit = store;
+    if (promotion_single && promotion_single.user_buy_limit && promotion_single.user_buy_limit > 0) {
+        buyLimit = promotion_single.user_buy_limit
+    }
+    if (buyLimit && parseFloat(buyLimit) > parseFloat(store)) {
+        buyLimit = store
+    }
+    return buyLimit
+}
+
+module.exports = {
+    // 通用方法
+    tagName: tagName,
+    addImageSuffix: addImageSuffix,
+    _toFixed: _toFixed,
+    _parseFloat: _parseFloat,
+    _parseInt: _parseInt,
+    _toString: _toString,
+    _split: _split,
+
+    // CouponPopup
+    getPrice: getPrice,
+    //OneItem
+    getOneItemPrice: getOneItemPrice,
+    getsecKillActivityTime: getsecKillActivityTime,
+    initBuyLimit: initBuyLimit,
+    // 某个组件的方法
+    activityTime: activityTime
+}
+

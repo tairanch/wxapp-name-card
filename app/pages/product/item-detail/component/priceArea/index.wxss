@@ -1,0 +1,5 @@
+.price-area{
+    background: #fff;
+    padding: 30rpx;
+    border: 1px solid #f4f4f4;
+}

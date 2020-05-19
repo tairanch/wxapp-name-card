@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "promote-cell-component": "./components/promote-cell-component"
+  },
+  "enablePullDownRefresh": true
+}

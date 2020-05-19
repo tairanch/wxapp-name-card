@@ -1,0 +1,45 @@
+
+
+.promotion-list{
+    display: flex;
+    font-size: 28rpx;
+    align-items: center;
+    height: 100rpx;
+    background: #fff;
+    padding: 0 30rpx;
+    border-bottom: 1rpx solid #f4f4f4;
+}
+.promotion-list-text{
+    flex: 1;
+    overflow: hidden;
+    padding: 0 30rpx;
+    display: flex;
+    align-items: center;
+}
+.promotion-list-text>text{
+    display: inline-block;
+    font-size: 24rpx;
+    margin-right: 14rpx;
+}
+.promotion-list-tag{
+    padding: 2rpx 4rpx;
+    border: 2rpx solid #ff5555;
+    border-radius: 4rpx;
+    color: #ff5555;
+    flex-shrink: 0;
+}
+.promotion-list-explain{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+
+.promotion-list>text{
+    flex-shrink: 0;
+}
+.promotion-list>image{
+    width: 16rpx;
+    height: 26rpx;
+}

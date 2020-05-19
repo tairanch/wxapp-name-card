@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "营销管理",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "card-component":"/components/private/card/card-component"
+  }
+}

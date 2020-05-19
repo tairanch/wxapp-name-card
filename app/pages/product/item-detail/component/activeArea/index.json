@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+      "promotion": "./promotion/index",
+      "coupon": "./coupon/index",
+      "popup": "../../../../../components/public/popup/index"
+  }
+}

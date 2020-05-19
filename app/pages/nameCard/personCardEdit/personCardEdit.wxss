@@ -1,0 +1,397 @@
+/* pages/myCardEdit/myCardEdit.wxss */
+
+.person-container {
+    flex-direction: column;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
+
+.invalid-view {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-view-container {
+    display: flex;
+    margin-bottom: 160rpx;
+    flex-direction: column;
+    background-color: white;
+}
+
+.top-part-view {
+    display: flex;
+    width: 100%;
+}
+
+.default-temp-card-background-view {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding-bottom: 35rpx;
+    width: 100%;
+}
+
+.tmp1-card-background-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding-bottom: 35rpx;
+    width: 100%;
+}
+
+.header-bg-top {
+    width: 100%;
+    background-color: #2b2314;
+    height: 310rpx;
+}
+
+.header-bg-middle {
+    border-top: 15rpx solid #2b2314;
+    border-right: 30rpx solid #fdfcfa;
+    border-bottom: 0;
+    border-left: 30rpx solid #fdfcfa;
+}
+
+.header-bg-bottom {
+    width: 100%;
+    height: 120rpx;
+}
+
+.tmp1-card-bg {
+    width: 100%;
+    height: 445rpx;
+}
+
+.tmp1-card-view {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card-bg-image {
+    position: absolute;
+    display: flex;
+    left: 20rpx;
+    right: 20rpx;
+    height: 442rpx;
+    top: 30rpx;
+    flex-direction: column;
+}
+
+.card-bg-view {
+    position: absolute;
+    display: flex;
+    top: 30rpx;
+    left: 40rpx;
+    right: 40rpx;
+    height: 442rpx;
+    flex-direction: column;
+}
+
+.default-tmp-header-view {
+    display: flex;
+    flex-direction: row;
+    margin-left: 40rpx;
+    margin-top: 60rpx;
+    align-items: center;
+    margin-right: 30rpx;
+}
+
+.tmp1-header-view {
+    display: flex;
+    flex-direction: row;
+    margin-left: 40rpx;
+    margin-top: 50rpx;
+    align-items: center;
+    margin-right: 30rpx;
+}
+
+.header-image {
+    margin-left: 0rpx;
+    margin-top: 0rpx;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    border: 1px solid #ebe6e2;
+}
+
+.default-tmp-header-title-view {
+    display: flex;
+    margin-left: 40rpx;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tmp1-header-title-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tmp1-card-title {
+    font-size: 16pt;
+    color: #fff;
+}
+
+.card-title {
+    font-size: 16pt;
+    color: #353535;
+}
+
+.tmp1-staff-text {
+    margin-top: 16rpx;
+    font-size: 12pt;
+    color: #cbcbcb;
+}
+
+.staff-text {
+    margin-top: 16rpx;
+    font-size: 12pt;
+    color: #cbcbcb;
+}
+
+.erweima {
+    margin-right: 30rpx;
+    width: 44rpx;
+    height: 44rpx;
+    margin-bottom: 40rpx;
+}
+
+
+.tmp1-phone-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40rpx;
+    margin-top: 40rpx;
+}
+
+.tmp1-emil-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40rpx;
+    margin-top: 30rpx;
+}
+
+.tmp1-erweima {
+    margin-left: 40rpx;
+    margin-top: 30rpx;
+    width: 44rpx;
+    height: 44rpx;
+}
+
+.phone-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40rpx;
+    margin-top: 60rpx;
+}
+
+.emil-view {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 40rpx;
+    margin-top: 30rpx;
+}
+
+.info-image-icon {
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.user-phone-text {
+    margin-left: 20rpx;
+    font-size: 12pt;
+    color: #a59064;
+}
+
+.user-email-text {
+    margin-left: 20rpx;
+    font-size: 12pt;
+    color: #a59064;
+}
+
+/* 选择模板 */
+
+.select-template {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 40rpx;
+    padding-left: 30rpx;
+}
+
+.template-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20rpx;
+}
+
+.template-item {
+    position: relative;
+    display: flex;
+    width: 148rpx;
+    height: 88rpx;
+    margin-right: 30rpx;
+    border-radius: 8rpx;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-item-cover-view {
+    position: absolute;
+    display: flex;
+    left: 3rpx;
+    right: 4rpx;
+    width: 148rpx;
+    height: 88rpx;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8rpx;
+    background-color: rgba(128, 128, 128, 0.6);
+}
+
+.select-item-bg-image {
+    width: 148rpx;
+    height: 88rpx;
+}
+
+.select-item-image {
+    width: 46rpx;
+    height: 46rpx; 
+}
+
+.item-title {
+    font-size: 11pt;
+    color: #6a6a6a;
+}
+
+.require-star {
+    font-size: 11pt;
+    color: #ba9c5d;
+}
+
+/* 头像 */
+.selcte-header-bg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selcte-header-image {
+    margin-left: 0rpx;
+    margin-top: 30rpx;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    border: 1px solid #ebe6e2;
+}
+
+.selcte-header-arrow {
+    margin-right: 30rpx;
+    width: 14rpx;
+    height: 30rpx;
+}
+
+/* 姓名 */
+.row-item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30rpx;
+    padding-left: 30rpx;
+}
+
+.text-input {
+    margin-top: 18rpx;
+    font-size: 14pt;
+}
+
+.text-placeholder {
+    font-size: 14pt;
+    color: #d8d8d8;
+}
+
+.person-textarea-bg {
+    margin-top: 18rpx;
+}
+
+.person-textarea {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 160rpx;
+    font-size: 14pt;
+}
+
+.word-count-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 40rpx;
+}
+
+.word-count-text {
+    margin-right: 30rpx;
+    font-size: 12pt;
+    color: #e4e4e4;
+}
+
+.separate-line {
+    margin-top: 30rpx;
+    height: 1rpx;
+    background-color: #e4e4e4;
+}
+
+.empty-view {
+    width:100%;
+    height:120rpx;
+    background-color: transparent;
+}
+
+.save-btton-bg-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+	bottom: 0;
+    z-index: 1000;
+	width: 100%;
+    height: 160rpx;
+    background-color: white;
+}
+
+.save-button {
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    background-color: #bd9d58;
+    height: 90rpx;
+    margin-left: 40rpx;
+    margin-right: 40rpx;
+    border-radius: 90rpx;
+}
+
+.save-title {
+    font-size: 36rpx;
+    color: white;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.save-title::after {
+  border: none
+}

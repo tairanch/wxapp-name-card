@@ -1,0 +1,45 @@
+/* pages/product/shareMiddlePage/shareMiddlePage.wxss */
+.header-bg{
+   position: absolute;
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+   z-index:-1;
+   background-color: #323232
+}
+.bottom{
+   position:fixed;
+   display:flex;
+   flex-direction: row;
+   bottom:0;
+   width:100%;
+   height:220rpx;
+   background-color: white
+}
+.bottom-item{
+  display:flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 5%;
+  align-items: center
+}
+.weixin{
+   width:100rpx;
+   height:100rpx;
+}
+.bottom-text{
+   margin-top: 7px;
+   font-size: 12px;
+}
+button {
+  font-size: 28rpx;
+  background-color: #fff;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+button::after{
+  border:none;
+}

@@ -1,0 +1,63 @@
+.detail-seckil-state-area{
+    display: flex;
+    height: 90rpx;
+    font-size: 24rpx;
+}
+.seckil-state-area-l{
+    background:#e60a30;
+    height: 90rpx;
+    display: flex;
+    align-items: center;
+    padding:0 30rpx;
+    flex: 1;
+}
+
+.in-seckil {
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius: 40rpx;
+    color: #e60a30;
+    font-size: 28rpx;
+    width: 120rpx;
+    background: #ffeaea;
+    text-align: center;
+    margin-left: 10rpx;
+}
+.former-seckil {
+    color: #fff;
+    font-size: 36rpx;
+}
+.seckil-state-area-r-no{
+    font-size: 28rpx;
+    color: #fff;
+    text-align: right;
+    flex: 1;
+}
+.seckil-state-area-r-in{
+    width: 230rpx;
+    background: #ffeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.seckil-state-area-r-in view{
+    text-align: center;
+    line-height: 1;
+}
+.time-remain{
+    padding-top: 5rpx;
+}
+.time-remain>text{
+    display: inline-block;
+    line-height: 32rpx;
+    font-size: 30rpx;
+}
+.time-remain>text:nth-of-type(2n-1){
+    color: #fff;
+    padding: 4rpx;
+    background: #e60a30;
+    border-radius: 4rpx;
+}
+.time-remain>text:nth-of-type(2n){
+    padding: 0 5rpx;
+}

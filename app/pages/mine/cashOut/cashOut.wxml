@@ -1,0 +1,66 @@
+<!--pages/mine/cashOut/cashOut.wxml-->
+<view class='page-container'>
+    <view wx:if="{{true}}" class='tips-bg-view'>
+        <text class="tips-text">* 每次提现金额不少于20元，每个月最多可以提现3次</text>
+    </view>
+
+    <view class='cash-out-bg'>
+
+        <!--提现渠道-->
+        <view class='card-title-view'>
+            <text class='title-text'>提现到</text>
+            <view class='cash-to-view'>
+                <image class='wx-logo' src='/image/mine/wx_logo.png'></image>
+                <text class='right-title-text'>默认微信钱包</text>
+            </view>
+        </view>
+
+        <!--提现金额标题-->
+        <view class='cash-count-title-vuew'>
+            <text class='cash-title'>提现金额</text>
+        </view>
+
+        <!--输入框   margin-bottom: {{isAndroid ? '-5px' : '0'}}-->
+        <view class='cash-input-bg-view'>
+            <text style="font-size: 14pt; color: black;">¥</text>
+            <view class='input-bg'>
+                <input class='count-input-view'
+                       maxlength="10"
+                       type="digit"
+                       bindinput="onTextInput"
+                       bindfocus="onBindfocus"
+                       value="{{moneyCount}}"
+                       placeholder="提现金额不少于20"
+                       placeholder-style="font-size: 11pt; color: #C9C9C9"/>
+            </view>
+            <view class='close-icon-bg' bindtap='clearBtnClick'>
+                <image class='close-icon' src='/image/general/input-clear.png'></image>
+            </view>
+        </view>
+
+        <!--分割线-->
+        <view class='line-view'></view>
+
+        <!--提现提示-->
+        <view class='bottom-tips-view'>
+            <block wx:if="{{tipsType === '1'}}">
+                <text style="margin-left: 22px; font-size: 10pt; color: #E90028">{{tipsText}}</text>
+            </block>
+            <block wx:else>
+                <text style="margin-left: 22px; font-size: 10pt; color: #999999">可提现金额 ¥{{balanceCount}}</text>
+                <view class='get-all-btn-view' bindtap='getAllBtnClick'>
+                    <text class='get-all-btn-text'>全部提现</text>
+                </view>
+            </block>
+        </view>
+
+        <!--提现按钮-->
+        <view class='bottom-btn-bg'>
+            <view class='bottom-btn' style="background-color: {{buttonEnable ? '#E60A30' : '#999999'}}" bindtap="cashOutBtnClick">
+                <text class='btn-text'>提现</text>
+            </view>
+        </view>
+
+    </view>
+
+</view>

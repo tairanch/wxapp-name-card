@@ -1,0 +1,29 @@
+var filters = {
+  toFix: function (price) {
+    return parseFloat(parseFloat(price).toFixed(2))//最多保留两位小数，去除小数点后多余的0
+  },
+  //工具函数-字符长度处理
+  maxLength: function(val, ml) {
+    if (val && val.length > ml) {
+      return val.slice(0, ml) + '...'
+    } else {
+      return val
+    }
+  },
+  //工具函数-金额处理
+  currency: function(val, type) {
+    if (val >= 0) {
+      return type + Number(val).toFixed(2)
+    }
+  },
+  //工具函数-金额处理
+  imgsmall: function (val) {
+      return val + "_m.jpg"
+  }
+}
+module.exports = {
+  toFix: filters.toFix,
+  maxLength: filters.maxLength,
+  currency: filters.currency,
+  imgsmall: filters.imgsmall
+}

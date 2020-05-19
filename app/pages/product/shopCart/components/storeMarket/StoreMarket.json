@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "market-header": "../marketHeader/MarketHeader",
+    "one-item": "../oneItem/OneItem",
+    "spec-item": "../specItem/SpecItem"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+      "fight-group-detail": "../fightGroupDetail/fightGroupDetail"
+  }
+}

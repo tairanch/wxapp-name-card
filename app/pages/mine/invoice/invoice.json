@@ -1,0 +1,11 @@
+{
+ 
+  "component": false,
+  "navigationBarTitleText": "发票信息",
+  "usingComponents": {
+
+    "elec-invoice":"./components/elec-invoice/index",
+    "normal-invoice":"./components/normal-invoice/index",
+    "vat-invoice":"./components/vat-invoice/index"
+  }
+}

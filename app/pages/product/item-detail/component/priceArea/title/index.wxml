@@ -1,0 +1,8 @@
+<!--商品标题-->
+<view class="goods-tit">{{detail.title}}</view>
+<view class="sub-title" wx:if="{{promotion.promotion[0] && promotion.promotion[0].rules.group_type === 'Rookie'}}">
+    该商品所有用户均可开团，仅限泰然城购物的新用户参团哦！开团后邀请泰然城新朋友参团吧
+</view>
+<block wx:else>
+    <view class="sub-title" wx:if="{{detail.sub_title}}">{{detail.sub_title}}</view>
+</block>

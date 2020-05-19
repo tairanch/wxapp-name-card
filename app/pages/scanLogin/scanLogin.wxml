@@ -1,0 +1,32 @@
+<view class='scan-login-page'>
+    <view class='content-view'>
+        <!-- 手机号码 -->
+        <view class='section'>
+            <view class='section-view'>
+                <input class='input-grid' placeholder='请输入手机号码' type='number' placeholder-class='placeholder_class' value='{{phone}}' maxlength='11' bindinput="getPhone"></input>
+                <image class='cancel' wx:if="{{showInputClearBtn}}" src='/image/icon/close_x@2x.png' bindtap='clearPhone'></image>
+            </view>
+        </view>
+
+        <!-- 极验组件 -->
+        <captcha id="captcha" class='input-grid-slide' wx:if="{{loadCaptcha}}" gt="{{gt}}" challenge="{{challenge}}" offline="{{offline}}" bindonSuccess="captchaSuccess" bindonReady="captchaReady" bindonClose="captchaClose" bindonError="captchaError" styleConfig="{{styleConfig}}"
+        />
+
+        <!-- 验证码 -->
+        <view class='section' wx:else>
+            <view class='section-view'>
+                <input class='input-grid' placeholder='短信验证码' placeholder-class='placeholder_class' type='number' maxlength='4' bindinput='getMobileCode'></input>
+                <text class='{{canGetIdentify?"get":"get_not"}}' bindtap='sendMobileCode'>{{getText}}</text>
+            </view>
+        </view>
+
+        
+
+        <view class='tips-bg'>
+            <text class='tip-text'>获取名片需要先登录账号</text>
+        </view>
+
+        <!-- 登录按钮 -->
+        <button class='land_button' disabled='{{!loginBtnEnable}}' open-type="getUserInfo" bindgetuserinfo="getUserInfoButtonClick"> 登录 </button>
+    </view>
+</view>

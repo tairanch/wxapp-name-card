@@ -1,0 +1,46 @@
+<!-- "status":50,// 20:待入账 50：已入账 60：取消入账 -->
+<wxs module="orderStatus_module">
+  var getOrderStatus = function(status) {
+
+    if (status == 20) {
+      return '待入账'
+    } else if (status == 50) {
+      return '已入账'
+    } else if (status == 60) {
+      return '取消入账'
+    }
+  }
+  module.exports = {
+    getOrderStatus: getOrderStatus
+  }
+</wxs>
+<view class="cell-container">
+  <!-- 显示头像，电话，时间 -->
+  <view class="left-container">
+    <!-- "type":10,//10:佣金 20：提现
+                "status":50,// 20:待入账 50：已入账 60：取消入账 -->
+    <!-- // 提现 -->
+    <view wx:if="{{itemDetail.type==20}}" class='left-icon-withDraw'>提</view>
+    <!-- 佣金 -->
+    <view wx:if="{{itemDetail.type==10}}" class='left-icon-earn'>佣</view>
+    <view style="display: flex; flex-direction: column;justify-content: center;">
+      <text wx:if="{{itemDetail.type==20}}" style="color: #353535; font-size: 30rpx; margin-left: 20rpx">
+        提现
+      </text>
+      <text wx:if="{{itemDetail.type==10}}" style="color: #353535; font-size: 30rpx; margin-left: 20rpx">
+        <text wx:if="{{itemDetail.customer_phone}}">佣金-{{itemDetail.customer_phone}}下单</text>
+        <text wx:else>佣金</text>
+      </text>
+      <text style="color: #999999; font-size: 24rpx; margin-left: 20rpx">
+        {{itemDetail.created_at}}
+      </text>
+    </view>
+  </view>
+  <!-- 显示金额 -->
+  <view class="right-container">
+    <view style="font-size: 32rpx; color: #999999">+{{itemDetail.amount}}</view>
+    <view style="font-size: 24rpx; color: #999999">
+      {{orderStatus_module.getOrderStatus(itemDetail.status)}}
+    </view>
+  </view>
+</view>

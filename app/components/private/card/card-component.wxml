@@ -1,0 +1,34 @@
+<view class='container'>
+  <view class='user-name'>{{name}}</view>
+  <view class='user-professional'>{{professional}}</view>
+
+  <!-- 用户头像 -->
+  <image class='user-head' src='{{portrait}}' mode='aspectFill'></image>
+
+  <!-- 电话号码 -->
+  <view class='user-phone-email' style='margin-top:40rpx'>
+    <image wx:if="{{email}}" class='user-phone-email-image' src='images/email-small_gray@3x.png'></image>
+    <text class='user-phone-email-text'>{{email}}</text>
+  </view>
+
+  <!-- 邮箱 -->
+  <view class='user-phone-email'>
+    <image class='user-phone-email-image' src='images/phone-small_gray@3x.png'></image>
+    <text class='user-phone-email-text'>{{phone}}</text>
+  </view>
+
+  <!-- /* 编辑分享 */ -->
+  <view class='share-edit-container'>
+
+    <button class='share-button' bindtap='onEditCardTap'>
+      <image class='share-image' src='images/card-edit@3x.png' bindtap='onEditCardTap'></image>
+    </button>
+
+    <button class='share-button' open-type='share' data-name="{{name}}" data-professional='{{professional}}' data-portrait='{{portrait}}' data-shareImage='{{shareImage}}' data-cardID="{{cardId}}">
+
+      <image class='share-image' src='images/card-share@3x.png' bindtap='onShareCardTap'></image>
+
+    </button>
+  </view>
+
+</view>

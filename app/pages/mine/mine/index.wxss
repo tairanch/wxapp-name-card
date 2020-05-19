@@ -1,0 +1,329 @@
+.mine_page {
+    background: #fff;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.head_back {
+    width: 100%;
+    height: 230rpx;
+}
+
+.head-image-bg {
+    width: 100%;
+    height: 230rpx;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 10rpx 30rpx 0 30rpx;
+    height: 230rpx;
+    background: #fff;
+}
+
+.header-container {
+    display: flex;
+    position: relative;
+    margin: 10rpx 30rpx 0 30rpx;
+    height: 230rpx;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+.header-image-top-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex:1;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+
+.head-photo-bg {
+    margin-left: 30rpx;
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.headPhoto_body {
+    width: 120rpx;
+    height: 120rpx;
+    position: absolute;
+    top: 24%;
+    left: 9.3%;
+}
+
+.headPhoto {
+    width: 100%;
+    height: 100%;
+    border-radius: 60rpx;
+    border: 2rpx solid white;
+}
+
+.user-name-bg {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-left: 30rpx;
+}
+
+.user-name, .user-word {
+    font-size: 40rpx;
+    font-weight: 600;
+    color: #fff;
+    width: 330rpx;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.user-word {
+    margin-left: 0;
+    font-size: 20rpx;
+}
+
+.name, .user-world {
+    position: absolute;
+
+    top: 32%;
+    left: 30%;
+    display: -webkit-box;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    width: 450rpx;
+}
+
+.user-world {
+    font-size: 20rpx;
+    top: 59%;
+}
+
+.name-card-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 0rpx;
+    height: 62rpx;
+    background-color: #292929;
+
+    border-top-left-radius: 31rpx;
+    border-bottom-left-radius: 31rpx;
+}
+
+.circle-bg {
+    display: flex;
+    margin-left: 12rpx;
+    align-items: center;
+    justify-content: center;
+    width: 46rpx;
+    height: 46rpx;
+    background-color: #3f3f3f;
+    border-radius: 46rpx;
+}
+
+.name-card-icon {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.name-card-btn-text {
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    font-size: 10pt;
+    color: #e4d4af;
+}
+
+.message {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 28rpx;
+    top: 15rpx;
+}
+
+.message image {
+    width: 23px;
+    height: 22px;
+}
+
+.message text {
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.message_mount {
+    position: absolute;
+    top: 6rpx;
+    right: 20rpx;
+    font-size: 11px;
+    border-radius: 8px;
+    width: 16px;
+    height: 16px;
+    background: red;
+    color: #fff;
+    text-align: center;
+}
+
+.body {
+    background: #fff;
+}
+
+.order {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.order_item, .order_item_small {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 45rpx 0 45rpx 0;
+    color: #353535;
+    font-size: 30rpx;
+}
+
+.order_item_small {
+    font-size: 26rpx;
+    color: #666;
+}
+
+.arrow {
+    width: 14rpx;
+    height: 24rpx;
+    margin-left: 10px;
+}
+
+.lock {
+    width: 20px;
+    height: 22px;
+    margin-left: 23px;
+    margin-right: 12px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.line {
+    height: 1px;
+    background: #f4f4f4;
+}
+
+.orderType {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.orderType_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    font-size: 24rpx;
+    color: #666;
+    position: relative;
+}
+
+.orderType_item image {
+    width: 40rpx;
+    height: 36rpx;
+    margin-top: 20rpx;
+}
+
+.orderType_name {
+    margin-top: 25rpx;
+    margin-bottom: 40rpx;
+}
+
+.mount {
+    position: absolute;
+    right: 32rpx;
+    top: -6rpx;
+    font-size: 20rpx;
+    width: 36rpx;
+    height: 25rpx;
+    border-radius: 25rpx;
+    border: 2rpx solid #e60a30;
+    color: #e60a30;
+    text-align: center;
+    line-height: 25rpx;
+    margin-top: 6px;
+    font-weight: 600;
+    background: #fff;
+}
+
+.space {
+    width: 100%;
+    height: 20rpx;
+    background: #f4f4f4;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0 15px;
+}
+
+.list_left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 0;
+    color: #3b3b3b;
+    font-size: 14px;
+}
+
+.list_left  image {
+    width: 18px;
+    height: 18px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.list_right {
+    font-size: 11.25pt;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.contact {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+/*去掉按钮边框*/
+
+button[class="contact"]::after {
+    border: 0;
+}
+
+.cell-title {
+    font-size: 12pt;
+}
+
+.see-all-title {
+    font-size: 11pt;
+}

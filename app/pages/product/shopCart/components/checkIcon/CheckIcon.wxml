@@ -1,0 +1,10 @@
+<!-- check标签 -->
+<view class='check-box'>
+  <text wx:if='{{seckill}}' class='label red-label span'>秒杀</text>
+  <text wx:elif='{{invalid}}' class='label grey-label span'>失效</text>
+  <image wx:elif='{{disable}}' class='check-icon span' src='../../../../../image/icon/inv-check-icon.png'></image>
+  <view wx:else bindtap='checkHandle'>
+    <image hidden="{{!isCheck}}" class='check-icon span' src='../../../../../image/icon/checked-icon.png'></image>
+    <image hidden="{{isCheck}}" class='check-icon span' src='../../../../../image/icon/nocheck-icon.png'></image>
+  </view>
+</view>

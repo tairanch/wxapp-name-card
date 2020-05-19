@@ -1,0 +1,27 @@
+.standard-price {
+    color: #e60a30;
+    font-size: 50rpx;
+}
+.market-price {
+    font-size: 24rpx;
+    color: #c9c9c9;
+    text-decoration: line-through;
+    padding-top: 20rpx;
+    margin-left: 10rpx;
+}
+.free-postage-tag {
+    line-height: 32rpx;
+    height: 32rpx;
+    font-size: 20rpx;
+    background: #fff;
+    color: #e60a30;
+    margin: 20rpx 20rpx 5rpx 20rpx;
+    border: 2rpx solid #e60a30;
+    border-radius: 4rpx;
+    vertical-align: -4rpx;
+    width: 100rpx;
+    text-align: center;
+}
+.price-white{
+    color: #fff;
+}

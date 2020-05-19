@@ -1,0 +1,65 @@
+var filter = {
+  numberToFix: function (value,num) {
+    return parseFloat(value).toFixed(num)
+  }
+}
+var timeUtils = {
+  //获取格式化时间
+  formatDate: function (time) {
+    if (isNaN(+time)) return "";
+    time = new Date(time * 1000);
+    return {
+      year: time.getFullYear(),
+      month: this.toTwoDigit(time.getMonth() + 1),
+      date: this.toTwoDigit(time.getDate()),
+      hour: this.toTwoDigit(time.getHours()),
+      minute: this.toTwoDigit(time.getMinutes()),
+      second: this.toTwoDigit(time.getSeconds())
+    }
+  },
+  toTwoDigit: function(num) {
+    return num < 10 ? "0" + num : num;
+  },
+  //时间格式化
+  timeFormat: function(time) {
+    let dateObj = this.formatDate(time);
+    if (!dateObj) {
+      return "";
+    }
+    var year = dateObj.yaer;
+    var month = dateObj.month;
+    var date = dateObj.date;
+    return year + "." + month + "." + date;
+  },
+  //具体时间格式化
+  detailFormat: function(time) {
+    var dateObj = this.formatDate(time);
+    if (!dateObj) {
+      return "";
+    }
+    var year = dateObj.yaer;
+    var month = dateObj.month;
+    var date = dateObj.date;
+    var hour = dateObj.hour;
+    var minute = dateObj.minute;
+    var second = dateObj.second;
+    return year + '-' + month + '-' + date + ' ' + hour + ':' + minute + ':' + second;
+  },
+  //格式化中文时间
+  cnFormat: function(time) {
+    let dateObj = this.formatDate(time);
+    if (!dateObj) {
+      return "";
+    }
+    var month = dateObj.month;
+    var date = dateObj.date;
+    var hour = dateObj.hour;
+    var minute = dateObj.minute;
+    return month + '月' + date + '日' + hour + ':' + minute
+  },
+
+};
+module.exports = {
+  numberToFix: filter.numberToFix,
+  timeUtils: timeUtils
+}

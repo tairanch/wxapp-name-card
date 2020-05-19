@@ -1,0 +1,45 @@
+<!--pages/product/shopCart/components/invalidItem/InvalidItem.wxml-->
+<wxs module="filters" src="../../../../../utils/filter.wxs"></wxs>
+<view class='one-item-grid'>
+  <swiper-ctrl
+  class='swiper-ctrl'
+  isOpen='{{isOpen}}'
+  ctrlWidth='115'
+  bindcontrolOpen='getIsOpen'>
+    <view slot="content">
+      <view class='invalid-item'>
+        <view class='checkbox'>
+          <check-icon invalid='{{true}}'></check-icon>
+        </view>
+        <view class='item-info info-class'>
+          <view class='item-img' bindtouchend='turnLink' data-itemid='{{itemData.item_id}}'>
+             <image class='img-iamge' src='{{itemData.image ? filters.imgsmall(itemData.image): "../../../../../image/icon/loading/default-no-item.png"}}'></image>
+          </view>
+          <view class='item-detail'>
+            <view class='title'>
+              <text>{{itemData.title}}</text>
+            </view>
+            <view class='item-ctrl'>
+              <view class='text'>
+                <view class='text-detail'>{{itemData.unable_text}}</view>
+              </view>
+              <view>
+                <view hidden='{{!edit || isOpen}}'>
+                  <view class='delete' bindtouchend='handleDelete' data-cartid='{{itemData.cart_id}}'>
+                    <image class='delete-image' src='../../../../../image/icon/delete-box-icon.png'></image>
+                  </view>
+                </view>
+                <view hidden='{{edit || isOpen}}' class='collect' bindtouchend='handleCollect' data-cartid='{{itemData.cart_id}}'><text>移入收藏</text></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view slot="ctrl" class='ctrl-btn'>
+      <view class='delete' bindtap='handleDelete' data-cartid='{{itemData.cart_id}}'>
+        <view class='text-wrap'>删除</view>
+      </view>
+    </view>
+  </swiper-ctrl>
+</view>

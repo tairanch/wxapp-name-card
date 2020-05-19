@@ -1,0 +1,19 @@
+<!--pages/component/swiperCtrlWidgetCom/swiperCtrlWidget.wxml-->
+  <!-- catch 阻止冒泡（tap） bind -->
+<view class="swiper-wrap">
+  <view 
+  class="swiper-box" 
+  style='{{"width: " + (750 + ctrlWidth) + "rpx;transform: translateX(" + scrollLeft +");"}}' 
+  bindtouchstart="_touchStart" 
+  bindtouchmove="_touchmove"
+  bindtouchend="_touchEnd" 
+  >
+    <view class="swiper-content">
+      <slot name='content'></slot>
+    </view>
+    <view class='swiper-ctrl' style='{{"width: " + (ctrlWidth) + "rpx"}}'>
+      <slot name='ctrl'></slot>
+    </view>
+  </view>
+</view>
+

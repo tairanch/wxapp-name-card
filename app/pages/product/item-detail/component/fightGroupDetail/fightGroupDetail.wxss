@@ -1,0 +1,155 @@
+.free-postage-tag {
+    padding: 0 6rpx;
+    line-height: 30rpx;
+    height: 30rpx;
+    font-size: 20rpx;
+    background: #fff;
+    color: #e60a30;
+    margin: 20rpx 20rpx 10rpx;
+    border: solid #e60a30;
+    border-radius: 4rpx;
+    vertical-align: -4rpx;
+}
+.icon-forward {
+    top: 50%;
+    position: absolute;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    right: 24rpx;
+}
+.icon-forward > .img {
+    width: 20rpx;
+    vertical-align: middle;
+}
+.c-dpib {
+    display: inline-block;
+}
+.c-mr6 {
+    margin-right: 6rpx;
+}
+.c-mr15 {
+    margin-right: 30rpx;
+}
+.c-mb5 {
+    margin-bottom: 10rpx;
+}
+.c-pb50 {
+    padding-bottom: 50rpx;
+}
+.c-fl {
+    float: left;
+}
+.c-fr {
+    float: right;
+}
+.c-fs12 {
+    font-size: 24rpx;
+}
+.c-fs10 {
+    font-size: 20rpx;
+}
+.c-fs13 {
+    font-size: 26rpx;
+}
+.c-fs15 {
+    font-size: 30rpx;
+}
+.c-fs20 {
+    font-size: 40rpx;
+}
+.c-c666 {
+    color: #666;
+}
+.c-cfff {
+    color: #fff;
+}
+.c-cf55 {
+    color: #f55;
+}
+.c-tc {
+    text-align: center;
+}
+.clearfix:after {
+    display: block;
+    width: 100%;
+    height: 0;
+    clear: both;
+    content: "";
+    visibility: hidden;
+}
+.li {
+    background: #fee;
+    margin-bottom: 24rpx;
+    border-radius: 46rpx;
+    padding: 8rpx;
+    position: relative;
+}
+.li .list-detail {
+    border: 1px solid #f55;
+    height: 100%;
+    border-radius: 72rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    overflow: hidden;
+}
+.li .list-detail .list-left {
+    width: 77%;
+    padding: 0 10rpx 0 80rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    background: #fff;
+}
+.li .participants-avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+    overflow: hidden;
+}
+.list-left .participants-name {
+    font-size: 28rpx;
+    color: #353535;
+    line-height: 80rpx;
+    width: 55%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 20rpx;
+}
+.list-left .group-info {
+    padding: 6rpx 0;
+    width: 45%;
+    text-align: right;
+}
+.list-left .group-info .group-info-residue {
+    overflow: hidden;
+    line-height: 40rpx;
+    height: 40rpx;
+    font-size: 24rpx;
+    color: #f55;
+}
+.list-left .group-info .group-info-time {
+    overflow: hidden;
+    line-height: 28rpx;
+    height: 28rpx;
+    font-size: 20rpx;
+    color: grey;
+}
+.li .list-detail .list-right {
+    width: 23%;
+    text-align: center;
+    background: #f55;
+    line-height: 80rpx;
+    font-size: 28rpx;
+    color: #fff;
+}
+.li .list-detail .list-right .group-direction-right {
+    display: inline-block;
+    margin-left: 10rpx;
+    width: 12rpx;
+    height: 20rpx;
+}
